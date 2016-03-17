@@ -2,7 +2,7 @@ from ReadData import ReadData
 import matplotlib.pyplot as plt
 
 readData = ReadData()
-memoryData = readData.ParseXML('data.xml')
+memoryData = readData.ParseXML('Client-side/data.xml')
 
 totalMemory = int(memoryData[0])
 task1 = int(memoryData[1])
