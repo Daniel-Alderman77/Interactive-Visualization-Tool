@@ -1,17 +1,21 @@
+from xml.dom import minidom
+
 class ReadData:
 
     def __init__(self):
         self.name = self
 
-    def ReadData(self, filename):
+    def ParseXML(self, filename):
+        xmldoc = minidom.parse(filename)
+        itemlist = xmldoc.getElementsByTagName('Property')
 
-        data = []
+        totalMemory = itemlist[3].attributes['Value'].value
+        print("Total Memory: %s" %totalMemory)
 
-        dataFile = open(filename, 'r')
+        task1 = itemlist[12].attributes['Value'].value
+        print("Task 1 Memory: %s" %task1)
 
-        for char in dataFile:
-            data.append(char)
+        task2 = itemlist[22].attributes['Value'].value
+        print("Task 2 Memory: %s" %task2)
 
-        print("Number of values in the file:" , len(data))
-
-        dataFile.close()
+        return [totalMemory, task1, task2]
