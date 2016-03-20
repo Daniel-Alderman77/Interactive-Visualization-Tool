@@ -1,8 +1,13 @@
 from ReadData import ReadData
+from RestClient import RestClient
+
 import matplotlib.pyplot as plt
 
 readData = ReadData()
 memoryData = readData.ParseXML('Client-side/data.xml')
+
+restClient = RestClient()
+restClient.GetRequest()
 
 totalMemory = int(memoryData[0])
 task1 = int(memoryData[1])

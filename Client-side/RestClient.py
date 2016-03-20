@@ -1,10 +1,15 @@
 import requests
 
-def GetRequest():
-    session = requests.Session()
+class RestClient:
 
-    request = session.get('http://github.com', timeout = 0.05)
+    def __init__(self):
+        self.name = self
 
-    print(request)
+    def GetRequest(self):
+        session = requests.Session()
 
-    return request
+        request = session.get('http://github.com', timeout = 0.05)
+
+        print(request)
+
+        return request
