@@ -50,8 +50,8 @@ def Render():
     plt.ion()
     plt.show()
 
-    for i in range(100):
-
+    # Number of times the animation refreshes
+    for i in range(10):
 
         memoryAllocation = task1Usage + task2Usage
 

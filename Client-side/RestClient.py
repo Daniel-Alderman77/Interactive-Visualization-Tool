@@ -13,9 +13,13 @@ class RestClient:
         try:
             session = requests.Session()
 
-            request = session.get('http://github.com', timeout = 0.05)
+            request = session.put('http://127.0.0.1:8080/', params={'another_string': 'hello'})
 
-            print(request)
+            request = session.get('http://127.0.0.1:8080/', timeout = 0.05)
+
+            print(request.status_code)
+
+            print(request.text)
 
         except ConnectTimeout:
             print "Connection has timed out"
