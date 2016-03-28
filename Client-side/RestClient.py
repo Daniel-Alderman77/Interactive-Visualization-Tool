@@ -1,5 +1,6 @@
 import requests
-from requests.exceptions import ConnectTimeout
+from requests.exceptions import ReadTimeout
+from requests.exceptions import ConnectionError
 
 class RestClient:
 
@@ -15,13 +16,16 @@ class RestClient:
 
             request = session.put('http://127.0.0.1:8080/', params={'another_string': 'hello'})
 
-            request = session.get('http://127.0.0.1:8080/', timeout = 0.05)
+            request = session.get('http://127.0.0.1:8080/', timeout = 0.1)
 
             print(request.status_code)
 
             print(request.text)
 
-        except ConnectTimeout:
+        except ReadTimeout:
             print "Connection has timed out"
+
+        except ConnectionError:
+            print "Failed to establish connection to Server"
 
         return request
