@@ -1,5 +1,6 @@
 from ReadData import ReadData
 from RestClient import RestClient
+from Prediction import Prediction
 
 import matplotlib.pyplot as plt
 
@@ -12,6 +13,10 @@ restClient.GetRequest()
 totalMemory = int(memoryData[0])
 task1 = int(memoryData[1])
 task2 = int(memoryData[2])
+
+prediction = Prediction()
+results = prediction.Predict(totalMemory)
+print(results)
 
 def MemoryAllocation(currentValue):
     # Memory Allocation
