@@ -3,63 +3,67 @@ from RestClient import RestClient
 
 import matplotlib.pyplot as plt
 
-readData = ReadData()
-memoryData = readData.ParseXML('Client-side/data.xml')
+class Startup():
 
-restClient = RestClient()
-restClient.GetRequest()
+    def __init__(self):
+        self.name = self
 
-totalMemory = int(memoryData[0])
-task1 = int(memoryData[1])
-task2 = int(memoryData[2])
+    def MemoryAllocation(self, currentValue):
+        plt.subplot(221)
+        plt.plot(currentValue)
+        plt.axis([0, 6, 0, 1000])
+        plt.ylabel('Memory Allocation')
+        plt.xlabel('Time')
+        plt.title('Memory Allocation Over Time')
 
-def MemoryAllocation(currentValue):
-    # Memory Allocation
-    plt.subplot(221)
-    plt.plot(currentValue)
-    plt.axis([0, 6, 0, 1000])
-    plt.ylabel('Memory Allocation')
-    plt.xlabel('Time')
-    plt.title('Memory Allocation Over Time')
+    def Task1(self, currentValue):
+        plt.subplot(222)
+        plt.plot(currentValue)
+        plt.axis([0, 6, 0, 1000])
+        plt.ylabel('Memory Allocation')
+        plt.xlabel('Time')
+        plt.title('Task 1 Memory Usage')
 
-def Task1(currentValue):
-    # Task 1
-    plt.subplot(222)
-    plt.plot(currentValue)
-    plt.axis([0, 6, 0, 1000])
-    plt.ylabel('Memory Allocation')
-    plt.xlabel('Time')
-    plt.title('Task 1 Memory Usage')
+    def Task2(self, currentValue):
+        plt.subplot(223)
+        plt.plot(currentValue)
+        plt.axis()
+        plt.ylabel('Memory Allocation')
+        plt.xlabel('Time')
+        plt.title('Task 2 Memory Usage')
 
-def Task2(currentValue):
-    # Task 2
-    plt.subplot(223)
-    plt.plot(currentValue)
-    plt.axis()
-    plt.ylabel('Memory Allocation')
-    plt.xlabel('Time')
-    plt.title('Task 2 Memory Usage')
+    def __call__(self):
 
-def Render():
-    # plot with various axes scales
-    plt.figure(1)
+        readData = ReadData()
+        memoryData = readData.ParseXML('Client-side/data.xml')
 
-    task1Usage = [task1, 400, 350, 500, 400]
-    task2Usage = [task2, 350, 400, 500, 600]
+        restClient = RestClient()
+        restClient.GetRequest()
 
-    plt.ion()
-    plt.show()
+        totalMemory = int(memoryData[0])
+        task1 = int(memoryData[1])
+        task2 = int(memoryData[2])
 
-    # Number of times the animation refreshes
-    for i in range(10):
+        # plot with various axes scales
+        plt.figure(1)
 
-        memoryAllocation = task1Usage + task2Usage
+        task1Usage = [task1, 400, 350, 500, 400]
+        task2Usage = [task2, 350, 400, 500, 600]
 
-        MemoryAllocation(memoryAllocation)
-        Task1(task1Usage)
-        Task2(task2Usage)
+        plt.ion()
+        plt.show()
 
-        plt.draw()
-        plt.pause(0.05)
+        # Number of times the animation refreshes
+        for i in range(10):
 
-Render()
+            memoryAllocation = task1Usage + task2Usage
+
+            self.MemoryAllocation(memoryAllocation)
+            self.Task1(task1Usage)
+            self.Task2(task2Usage)
+
+            plt.draw()
+            plt.pause(0.05)
+
+startup = Startup()
+startup()
