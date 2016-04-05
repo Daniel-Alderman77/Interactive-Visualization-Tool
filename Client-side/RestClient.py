@@ -22,6 +22,9 @@ class RestClient:
 
             print(request.text)
 
+            # Time elapsed between sending the request and arrival of response
+            print(request.elapsed)
+
         except ReadTimeout:
             print "Connection has timed out"
 
