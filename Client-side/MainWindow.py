@@ -1,7 +1,6 @@
 import sys
 from PySide.QtCore import Qt
-from PySide.QtGui import QApplication, QGroupBox
-from PySide.QtGui import QFont, QLabel, QSlider, QVBoxLayout, QHBoxLayout
+from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
 
 app = QApplication(sys.argv)
 
