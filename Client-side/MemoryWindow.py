@@ -1,15 +1,13 @@
 import sys
 from PySide.QtCore import Qt
-from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
+from PySide.QtGui import QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
 
 class MemoryWindow():
-
-    app = QApplication(sys.argv)
 
     # Create a QGroupBox component to act as the window
 
     window = QGroupBox()
-    window.setWindowTitle("Main Window")
+    window.setWindowTitle("Memory Window")
 
     # Create and configure widgets
 
@@ -49,13 +47,11 @@ class MemoryWindow():
     # Stack layouts on top of each other
 
     windowLayout = QVBoxLayout()
-    windowLayout.addLayout(topLayout);
-    windowLayout.addLayout(bottomLayout);
+    windowLayout.addLayout(topLayout)
+    windowLayout.addLayout(bottomLayout)
 
     window.setLayout(windowLayout)
 
     # Make window visible
 
     window.show()
-
-    sys.exit(app.exec_())

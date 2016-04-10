@@ -2,8 +2,6 @@ import sys
 from PySide.QtCore import Qt
 from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
 
-from MemoryWindow import MemoryWindow
-
 class MainWindow():
 
     app = QApplication(sys.argv)
@@ -74,9 +72,9 @@ class MainWindow():
     # Stack layouts on top of each other
 
     windowLayout = QVBoxLayout()
-    windowLayout.addLayout(topLayout);
-    windowLayout.addLayout(middleLayout);
-    windowLayout.addLayout(bottomLayout);
+    windowLayout.addLayout(topLayout)
+    windowLayout.addLayout(middleLayout)
+    windowLayout.addLayout(bottomLayout)
 
     window.setLayout(windowLayout)
 
