@@ -2,82 +2,89 @@ import sys
 from PySide.QtCore import Qt
 from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
 
-app = QApplication(sys.argv)
+from MemoryWindow import MemoryWindow
 
-# Create a QGroupBox component to act as the window
+class MainWindow():
 
-window = QGroupBox()
-window.setWindowTitle("Main Window")
+    app = QApplication(sys.argv)
 
-# Create and configure widgets
+    # Create a QGroupBox component to act as the window
 
-cpuLabel = QLabel()
-cpuLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-cpuLabel.setAlignment(Qt.AlignCenter)
-cpuLabel.setText("CPU Utilisation")
+    window = QGroupBox()
+    window.setWindowTitle("Main Window")
 
-memoryLabel = QLabel()
-memoryLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-memoryLabel.setAlignment(Qt.AlignCenter)
-memoryLabel.setText("Memory Utilisation")
+    # Create and configure widgets
 
-jobsLabel = QLabel()
-jobsLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-jobsLabel.setAlignment(Qt.AlignCenter)
-jobsLabel.setText("Current Jobs")
+    cpuLabel = QLabel()
+    cpuLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    cpuLabel.setAlignment(Qt.AlignCenter)
+    cpuLabel.setText("CPU Utilisation")
 
-hierarchyLabel = QLabel()
-hierarchyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-hierarchyLabel.setAlignment(Qt.AlignCenter)
-hierarchyLabel.setText("Hierarchy View")
+    memoryLabel = QLabel()
+    memoryLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    memoryLabel.setAlignment(Qt.AlignCenter)
+    memoryLabel.setText("Memory Utilisation")
 
-latencyLabel = QLabel()
-latencyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-latencyLabel.setAlignment(Qt.AlignCenter)
-latencyLabel.setText("Latency")
+    jobsLabel = QLabel()
+    jobsLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    jobsLabel.setAlignment(Qt.AlignCenter)
+    jobsLabel.setText("Current Jobs")
 
-# Top Layout
+    hierarchyLabel = QLabel()
+    hierarchyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    hierarchyLabel.setAlignment(Qt.AlignCenter)
+    hierarchyLabel.setText("Hierarchy View")
 
-topLayout = QHBoxLayout()
+    latencyLabel = QLabel()
+    latencyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    latencyLabel.setAlignment(Qt.AlignCenter)
+    latencyLabel.setText("Latency")
 
-topLeftLayout = QVBoxLayout()
-topLeftLayout.addWidget(cpuLabel)
+    # Top Layout
 
-topRightLayout = QVBoxLayout()
-topRightLayout.addWidget(memoryLabel)
+    topLayout = QHBoxLayout()
 
-topLayout.addLayout(topLeftLayout)
-topLayout.addLayout(topRightLayout)
+    topLeftLayout = QVBoxLayout()
+    topLeftLayout.addWidget(cpuLabel)
 
-# Middle Layout
+    topRightLayout = QVBoxLayout()
+    topRightLayout.addWidget(memoryLabel)
 
-middleLayout = QHBoxLayout()
+    topLayout.addLayout(topLeftLayout)
+    topLayout.addLayout(topRightLayout)
 
-middleLeftLayout = QVBoxLayout()
-middleLeftLayout.addWidget(jobsLabel)
+    # Middle Layout
 
-middleRightLayout = QVBoxLayout()
-middleRightLayout.addWidget(hierarchyLabel)
+    middleLayout = QHBoxLayout()
 
-middleLayout.addLayout(middleLeftLayout)
-middleLayout.addLayout(middleRightLayout)
+    middleLeftLayout = QVBoxLayout()
+    middleLeftLayout.addWidget(jobsLabel)
 
-# Bottom layout
+    middleRightLayout = QVBoxLayout()
+    middleRightLayout.addWidget(hierarchyLabel)
 
-bottomLayout = QVBoxLayout()
-bottomLayout.addWidget(latencyLabel)
+    middleLayout.addLayout(middleLeftLayout)
+    middleLayout.addLayout(middleRightLayout)
 
-# Stack layouts on top of each other
+    # Bottom layout
 
-windowLayout = QVBoxLayout()
-windowLayout.addLayout(topLayout);
-windowLayout.addLayout(middleLayout);
-windowLayout.addLayout(bottomLayout);
+    bottomLayout = QVBoxLayout()
+    bottomLayout.addWidget(latencyLabel)
 
-window.setLayout(windowLayout)
+    # Stack layouts on top of each other
 
-# Make window visible
+    windowLayout = QVBoxLayout()
+    windowLayout.addLayout(topLayout);
+    windowLayout.addLayout(middleLayout);
+    windowLayout.addLayout(bottomLayout);
 
-window.show()
+    window.setLayout(windowLayout)
 
-sys.exit(app.exec_())
+    # Make window visible
+
+    window.show()
+
+    sys.exit(app.exec_())
+
+mainWindow = MainWindow()
+mainWindow()

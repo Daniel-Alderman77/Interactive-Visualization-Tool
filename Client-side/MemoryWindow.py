@@ -2,58 +2,60 @@ import sys
 from PySide.QtCore import Qt
 from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
 
-app = QApplication(sys.argv)
+class MemoryWindow():
 
-# Create a QGroupBox component to act as the window
+    app = QApplication(sys.argv)
 
-window = QGroupBox()
-window.setWindowTitle("Main Window")
+    # Create a QGroupBox component to act as the window
 
-# Create and configure widgets
+    window = QGroupBox()
+    window.setWindowTitle("Main Window")
 
-totalLabel = QLabel()
-totalLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-totalLabel.setAlignment(Qt.AlignCenter)
-totalLabel.setText("Total Utilisation")
+    # Create and configure widgets
 
-distributionLabel = QLabel()
-distributionLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-distributionLabel.setAlignment(Qt.AlignCenter)
-distributionLabel.setText("Distribution by Job")
+    totalLabel = QLabel()
+    totalLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    totalLabel.setAlignment(Qt.AlignCenter)
+    totalLabel.setText("Total Utilisation")
 
-latencyLabel = QLabel()
-latencyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-latencyLabel.setAlignment(Qt.AlignCenter)
-latencyLabel.setText("Latency")
+    distributionLabel = QLabel()
+    distributionLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    distributionLabel.setAlignment(Qt.AlignCenter)
+    distributionLabel.setText("Distribution by Job")
 
-# Top Layout
+    latencyLabel = QLabel()
+    latencyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+    latencyLabel.setAlignment(Qt.AlignCenter)
+    latencyLabel.setText("Latency")
 
-topLayout = QHBoxLayout()
+    # Top Layout
 
-topLeftLayout = QVBoxLayout()
-topLeftLayout.addWidget(totalLabel)
+    topLayout = QHBoxLayout()
 
-topRightLayout = QVBoxLayout()
-topRightLayout.addWidget(distributionLabel)
+    topLeftLayout = QVBoxLayout()
+    topLeftLayout.addWidget(totalLabel)
 
-topLayout.addLayout(topLeftLayout)
-topLayout.addLayout(topRightLayout)
+    topRightLayout = QVBoxLayout()
+    topRightLayout.addWidget(distributionLabel)
 
-# Bottom layout
+    topLayout.addLayout(topLeftLayout)
+    topLayout.addLayout(topRightLayout)
 
-bottomLayout = QVBoxLayout()
-bottomLayout.addWidget(latencyLabel)
+    # Bottom layout
 
-# Stack layouts on top of each other
+    bottomLayout = QVBoxLayout()
+    bottomLayout.addWidget(latencyLabel)
 
-windowLayout = QVBoxLayout()
-windowLayout.addLayout(topLayout);
-windowLayout.addLayout(bottomLayout);
+    # Stack layouts on top of each other
 
-window.setLayout(windowLayout)
+    windowLayout = QVBoxLayout()
+    windowLayout.addLayout(topLayout);
+    windowLayout.addLayout(bottomLayout);
 
-# Make window visible
+    window.setLayout(windowLayout)
 
-window.show()
+    # Make window visible
 
-sys.exit(app.exec_())
+    window.show()
+
+    sys.exit(app.exec_())
