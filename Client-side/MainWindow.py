@@ -1,6 +1,13 @@
 import sys
+
 from PySide.QtCore import Qt
-from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout
+from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout, QMainWindow
+import matplotlib
+matplotlib.use('Qt4Agg')
+matplotlib.rcParams['backend.qt4']='PySide'
+
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 class MainWindow():
 
@@ -17,6 +24,18 @@ class MainWindow():
     cpuLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
     cpuLabel.setAlignment(Qt.AlignCenter)
     cpuLabel.setText("CPU Utilisation")
+
+    # generate the plot
+    fig = Figure(figsize=(600, 600), dpi=72, facecolor=(1, 1, 1), edgecolor=(0, 0, 0))
+    ax = fig.add_subplot(111)
+    ax.plot([0, 1])
+    # generate the canvas to display the plot
+    canvas = FigureCanvas(fig)
+
+    win = QMainWindow()
+    # add the plot canvas to a window
+    win.setCentralWidget(canvas)
+
 
     memoryLabel = QLabel()
     memoryLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
@@ -44,6 +63,7 @@ class MainWindow():
 
     topLeftLayout = QVBoxLayout()
     topLeftLayout.addWidget(cpuLabel)
+    topLeftLayout.addWidget(win)
 
     topRightLayout = QVBoxLayout()
     topRightLayout.addWidget(memoryLabel)

@@ -1,3 +1,5 @@
+# Taken from http://scipy-cookbook.readthedocs.org/items/Matplotlib_PySide.html
+
 import sys
 import matplotlib
 matplotlib.use('Qt4Agg')
@@ -6,7 +8,7 @@ matplotlib.rcParams['backend.qt4']='PySide'
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-from PySide import QtCore, QtGui
+from PySide import QtGui
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
