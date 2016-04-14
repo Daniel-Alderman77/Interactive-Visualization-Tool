@@ -2,11 +2,13 @@ import sys
 from PySide.QtCore import Qt
 from PySide.QtGui import QApplication, QGroupBox, QFont, QLabel, QVBoxLayout, QHBoxLayout, QMainWindow
 import matplotlib
+
 matplotlib.use('Qt4Agg')
-matplotlib.rcParams['backend.qt4']='PySide'
+matplotlib.rcParams['backend.qt4'] = 'PySide'
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+
 
 class MainWindow():
     plt.ion()
@@ -42,8 +44,21 @@ class MainWindow():
         # Clear events from canvas
         self.figure.canvas.flush_events()
 
-    def __call__(self):
+    @staticmethod
+    def cpu_figure():
+        # Generate the plot
+        fig = Figure(figsize=(4, 3), dpi=72, facecolor=(1, 1, 1), edgecolor=(0, 0, 0))
+        ax = fig.add_subplot(111)
+        ax.plot([0, 1])
+        # Generate the canvas to display the plot
+        canvas = FigureCanvas(fig)
 
+        win = QMainWindow()
+        # Add the plot canvas to a window
+        win.setCentralWidget(canvas)
+        return win
+
+    def __call__(self):
         app = QApplication(sys.argv)
 
         # Create a QGroupBox component to act as the window
@@ -57,18 +72,6 @@ class MainWindow():
         cpuLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
         cpuLabel.setAlignment(Qt.AlignCenter)
         cpuLabel.setText("CPU Utilisation")
-
-        # generate the plot
-        fig = Figure(figsize=(600, 600), dpi=72, facecolor=(1, 1, 1), edgecolor=(0, 0, 0))
-        ax = fig.add_subplot(111)
-        ax.plot([0, 1])
-        # generate the canvas to display the plot
-        canvas = FigureCanvas(fig)
-
-        win = QMainWindow()
-        # add the plot canvas to a window
-        win.setCentralWidget(canvas)
-
 
         memoryLabel = QLabel()
         memoryLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
@@ -96,10 +99,11 @@ class MainWindow():
 
         topLeftLayout = QVBoxLayout()
         topLeftLayout.addWidget(cpuLabel)
-        topLeftLayout.addWidget(win)
+        topLeftLayout.addWidget(self.cpu_figure())
 
         topRightLayout = QVBoxLayout()
         topRightLayout.addWidget(memoryLabel)
+        topRightLayout.addWidget(self.cpu_figure())
 
         topLayout.addLayout(topLeftLayout)
         topLayout.addLayout(topRightLayout)
@@ -110,9 +114,11 @@ class MainWindow():
 
         middleLeftLayout = QVBoxLayout()
         middleLeftLayout.addWidget(jobsLabel)
+        middleLeftLayout.addWidget(self.cpu_figure())
 
         middleRightLayout = QVBoxLayout()
         middleRightLayout.addWidget(hierarchyLabel)
+        middleRightLayout.addWidget(self.cpu_figure())
 
         middleLayout.addLayout(middleLeftLayout)
         middleLayout.addLayout(middleRightLayout)
@@ -121,6 +127,7 @@ class MainWindow():
 
         bottomLayout = QVBoxLayout()
         bottomLayout.addWidget(latencyLabel)
+        bottomLayout.addWidget(self.cpu_figure())
 
         # Stack layouts on top of each other
 
@@ -136,6 +143,7 @@ class MainWindow():
         window.show()
 
         sys.exit(app.exec_())
+
 
 mainWindow = MainWindow()
 mainWindow()
