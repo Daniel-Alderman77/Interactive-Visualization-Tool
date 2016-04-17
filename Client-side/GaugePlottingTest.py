@@ -1,5 +1,14 @@
 # Taken from http://nbviewer.jupyter.org/gist/nicolasfauchereau/794df533eca594565ab3
 
+import sys
+import matplotlib
+matplotlib.use('Qt4Agg')
+matplotlib.rcParams['backend.qt4']='PySide'
+
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+
+from PySide import QtGui
+
 from matplotlib import cm
 from matplotlib import pyplot as plt
 import numpy as np
@@ -16,7 +25,9 @@ def rot_text(ang):
     rotation = np.degrees(np.radians(ang) * np.pi / np.pi - np.radians(90))
     return rotation
 
-def gauge(labels=['LOW','MEDIUM','HIGH','VERY HIGH','EXTREME'], colors='jet_r', cat=1, title='', fname='./meter.png'):
+def gauge(labels=['LOW','MEDIUM','HIGH','VERY HIGH','EXTREME'], colors='jet_r', cat=1, title=''):
+    app = QtGui.QApplication(sys.argv)
+
 
     """
     some sanity checks first
@@ -106,6 +117,17 @@ def gauge(labels=['LOW','MEDIUM','HIGH','VERY HIGH','EXTREME'], colors='jet_r', 
     ax.axes.set_yticks([])
     ax.axis('equal')
     plt.tight_layout()
-    fig.savefig(fname, dpi=200)
+
+
+    # generate the canvas to display the plot
+    canvas = FigureCanvas(fig)
+
+    win = QtGui.QMainWindow()
+    # add the plot canvas to a window
+    win.setCentralWidget(canvas)
+
+    win.show()
+
+    sys.exit(app.exec_())
 
 gauge()
