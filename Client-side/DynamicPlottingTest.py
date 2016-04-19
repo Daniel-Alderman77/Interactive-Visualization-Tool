@@ -1,5 +1,7 @@
 # Taken from http://stackoverflow.com/questions/10944621/dynamically-updating-plot-in-matplotlib
 
+from Prediction import Prediction
+
 import matplotlib.pyplot as plt
 import time
 
@@ -57,6 +59,10 @@ class DynamicUpdate():
             time.sleep(1)
 
             i = i + 1
+
+        prediction = Prediction()
+        print prediction.Predict(xdata, ydata)
+
         return xdata, ydata
 
 d = DynamicUpdate()
