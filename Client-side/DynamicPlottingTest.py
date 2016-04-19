@@ -40,7 +40,7 @@ class DynamicUpdate():
         self.figure.canvas.flush_events()
 
     def __call__(self):
-        self.on_launch()
+        self.onLaunch()
         xdata = []
         ydata = []
 
@@ -54,7 +54,7 @@ class DynamicUpdate():
             ydata.append(sampleData[i])
             print ydata
 
-            self.on_running(xdata, ydata)
+            self.onRunning(xdata, ydata)
             # Plot once per second
             time.sleep(1)
 
@@ -65,5 +65,5 @@ class DynamicUpdate():
 
         return xdata, ydata
 
-dynamicUpdate =  DynamicUpdate()
+dynamicUpdate = DynamicUpdate()
 dynamicUpdate()
