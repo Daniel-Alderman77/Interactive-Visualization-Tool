@@ -10,14 +10,13 @@ class Prediction:
 
     def Predict(self, xi, yi):
 
-        results = None
-
-        # positions to extrapolate, x = last element in array + 1
-        x = np.linspace(0, xi[-1] + 1, 50)
+        # positions to extrapolate last element in array 1 position
+        x = np.linspace(0, xi[-1], 1)
 
         # when k = 1, linear extrapolation
         extrapolate = InterpolatedUnivariateSpline(xi, yi, k=1)
         y = extrapolate(x)
 
         results = [x, y]
+
         return results

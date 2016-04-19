@@ -61,7 +61,10 @@ class DynamicUpdate():
             i = i + 1
 
         prediction = Prediction()
-        print prediction.Predict(xdata, ydata)
+
+        results = prediction.Predict(xdata, ydata)
+
+        print results[1]
 
         return xdata, ydata
 
