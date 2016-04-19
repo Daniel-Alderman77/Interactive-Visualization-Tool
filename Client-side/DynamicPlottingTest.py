@@ -12,7 +12,7 @@ class DynamicUpdate():
     min_x = 0
     max_x = 10
 
-    def on_launch(self):
+    def onLaunch(self):
         # Set up plot
         self.figure, self.ax = plt.subplots()
         self.lines, = self.ax.plot([], [])
@@ -24,7 +24,7 @@ class DynamicUpdate():
         # Apply grid to graph
         self.ax.grid()
 
-    def on_running(self, xdata, ydata):
+    def onRunning(self, xdata, ydata):
         # Update data (with the new _and_ the old points)
         self.lines.set_xdata(xdata)
         self.lines.set_ydata(ydata)
@@ -65,5 +65,5 @@ class DynamicUpdate():
 
         return xdata, ydata
 
-d = DynamicUpdate()
-d()
+dynamicUpdate =  DynamicUpdate()
+dynamicUpdate()
