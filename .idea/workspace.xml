@@ -4,14 +4,6 @@
     <list default="true" id="2cbec7f8-7b6f-4da9-b8de-3d1b6d29ec32" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/DynamicPlottingTest.py" afterPath="$PROJECT_DIR$/Client-side/DynamicPlottingTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/GaugePlottingTest.py" afterPath="$PROJECT_DIR$/Client-side/GaugePlottingTest.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/MainWindow.py" afterPath="$PROJECT_DIR$/Client-side/MainWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/MatplotlibQt.py" afterPath="$PROJECT_DIR$/Client-side/MatplotlibQt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/MemoryWindow.py" afterPath="$PROJECT_DIR$/Client-side/MemoryWindow.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/Prediction.py" afterPath="$PROJECT_DIR$/Client-side/Prediction.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/ReadData.py" afterPath="$PROJECT_DIR$/Client-side/ReadData.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/RestClient.py" afterPath="$PROJECT_DIR$/Client-side/RestClient.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/Startup.py" afterPath="$PROJECT_DIR$/Client-side/Startup.py" />
     </list>
     <ignored path="sc12dja-FYP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +18,7 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/sc12dja-FYP$RestServer.coverage" NAME="RestServer Coverage Results" MODIFIED="1458557717794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
-    <SUITE FILE_PATH="coverage/sc12dja-FYP$DynamicPlottingTest.coverage" NAME="DynamicPlottingTest Coverage Results" MODIFIED="1461063142579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
+    <SUITE FILE_PATH="coverage/sc12dja-FYP$DynamicPlottingTest.coverage" NAME="DynamicPlottingTest Coverage Results" MODIFIED="1463052487240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1460815387006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Startup__1_.coverage" NAME="Startup (1) Coverage Results" MODIFIED="1458424207140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Startup_Server.coverage" NAME="Startup Server Coverage Results" MODIFIED="1458557297894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
@@ -51,26 +43,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MatplotlibQt.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MatplotlibQt.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client-side/MatplotlibQt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-              <folding>
-                <element signature="e#81#161#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamicPlottingTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client-side/DynamicPlottingTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
-              <folding>
-                <element signature="e#98#131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="225">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,23 +56,19 @@
       <file leaf-file-name="GaugePlottingTest.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/GaugePlottingTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding>
-                <element signature="e#86#166#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="480">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/MainWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
-              <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1530">
+              <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,8 +76,8 @@
       <file leaf-file-name="MemoryWindow.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/MemoryWindow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state relative-caret-position="810">
+              <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -112,8 +86,8 @@
       <file leaf-file-name="ReadData.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/ReadData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="22" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -122,8 +96,8 @@
       <file leaf-file-name="RestClient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/RestClient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,8 +106,8 @@
       <file leaf-file-name="Startup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/Startup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="975">
+              <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -185,10 +159,10 @@
         <option value="$PROJECT_DIR$/Client-side/MemoryWindow.py" />
         <option value="$PROJECT_DIR$/Client-side/ReadData.py" />
         <option value="$PROJECT_DIR$/Client-side/RestClient.py" />
-        <option value="$PROJECT_DIR$/Client-side/MainWindow.py" />
         <option value="$PROJECT_DIR$/Client-side/MatplotlibQt.py" />
-        <option value="$PROJECT_DIR$/Client-side/DynamicPlottingTest.py" />
         <option value="$PROJECT_DIR$/Client-side/GaugePlottingTest.py" />
+        <option value="$PROJECT_DIR$/Client-side/MainWindow.py" />
+        <option value="$PROJECT_DIR$/Client-side/DynamicPlottingTest.py" />
       </list>
     </option>
   </component>
@@ -982,9 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#140#158#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -992,7 +963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1006,73 +976,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/Startup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client-side/RestClient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="975">
+          <caret line="68" column="9" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/ReadData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="75">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client-side/GaugePlottingTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client-side/MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/MemoryWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="810">
+          <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client-side/MatplotlibQt.py">
+    <entry file="file://$PROJECT_DIR$/Client-side/RestClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-          <folding>
-            <element signature="e#81#161#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/DynamicPlottingTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+        <state relative-caret-position="450">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#98#131#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client-side/GaugePlottingTest.py">
+    <entry file="file://$PROJECT_DIR$/Client-side/MatplotlibQt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#86#166#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client-side/MainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
