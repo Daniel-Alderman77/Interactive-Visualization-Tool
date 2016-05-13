@@ -5,12 +5,17 @@ import matplotlib
 
 matplotlib.use('Qt4Agg')
 matplotlib.rcParams['backend.qt4'] = 'PySide'
+
+# Warnings need to be ignored to preserve import order
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 
 
-class MainWindow():
+class MainWindow:
+    def __init__(self):
+        self.name = self
+
     plt.ion()
 
     # x range
@@ -68,82 +73,81 @@ class MainWindow():
 
         # Create and configure widgets
 
-        cpuLabel = QLabel()
-        cpuLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-        cpuLabel.setAlignment(Qt.AlignCenter)
-        cpuLabel.setText("CPU Utilisation")
+        cpu_label = QLabel()
+        cpu_label.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+        cpu_label.setAlignment(Qt.AlignCenter)
+        cpu_label.setText("CPU Utilisation")
 
-        memoryLabel = QLabel()
-        memoryLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-        memoryLabel.setAlignment(Qt.AlignCenter)
-        memoryLabel.setText("Memory Utilisation")
+        memory_label = QLabel()
+        memory_label.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+        memory_label.setAlignment(Qt.AlignCenter)
+        memory_label.setText("Memory Utilisation")
 
-        jobsLabel = QLabel()
-        jobsLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-        jobsLabel.setAlignment(Qt.AlignCenter)
-        jobsLabel.setText("Current Jobs")
+        jobs_label = QLabel()
+        jobs_label.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+        jobs_label.setAlignment(Qt.AlignCenter)
+        jobs_label.setText("Current Jobs")
 
-        hierarchyLabel = QLabel()
-        hierarchyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-        hierarchyLabel.setAlignment(Qt.AlignCenter)
-        hierarchyLabel.setText("Hierarchy View")
+        hierarchy_label = QLabel()
+        hierarchy_label.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+        hierarchy_label.setAlignment(Qt.AlignCenter)
+        hierarchy_label.setText("Hierarchy View")
 
-        latencyLabel = QLabel()
-        latencyLabel.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
-        latencyLabel.setAlignment(Qt.AlignCenter)
-        latencyLabel.setText("Latency")
+        latency_label = QLabel()
+        latency_label.setFont(QFont("DejaVu Sans Mono", 28, QFont.Bold))
+        latency_label.setAlignment(Qt.AlignCenter)
+        latency_label.setText("Latency")
 
         # Top Layout
 
-        topLayout = QHBoxLayout()
+        top_layout = QHBoxLayout()
 
-        topLeftLayout = QVBoxLayout()
-        topLeftLayout.addWidget(cpuLabel)
-        topLeftLayout.addWidget(self.cpu_figure())
+        top_left_layout = QVBoxLayout()
+        top_left_layout.addWidget(cpu_label)
+        top_left_layout.addWidget(self.cpu_figure())
 
-        topRightLayout = QVBoxLayout()
-        topRightLayout.addWidget(memoryLabel)
-        topRightLayout.addWidget(self.cpu_figure())
+        top_right_layout = QVBoxLayout()
+        top_right_layout.addWidget(memory_label)
+        top_right_layout.addWidget(self.cpu_figure())
 
-        topLayout.addLayout(topLeftLayout)
-        topLayout.addLayout(topRightLayout)
+        top_layout.addLayout(top_left_layout)
+        top_layout.addLayout(top_right_layout)
 
         # Middle Layout
 
-        middleLayout = QHBoxLayout()
+        middle_layout = QHBoxLayout()
 
-        middleLeftLayout = QVBoxLayout()
-        middleLeftLayout.addWidget(jobsLabel)
-        middleLeftLayout.addWidget(self.cpu_figure())
+        middle_left_layout = QVBoxLayout()
+        middle_left_layout.addWidget(jobs_label)
+        middle_left_layout.addWidget(self.cpu_figure())
 
-        middleRightLayout = QVBoxLayout()
-        middleRightLayout.addWidget(hierarchyLabel)
-        middleRightLayout.addWidget(self.cpu_figure())
+        middle_right_layout = QVBoxLayout()
+        middle_right_layout.addWidget(hierarchy_label)
+        middle_right_layout.addWidget(self.cpu_figure())
 
-        middleLayout.addLayout(middleLeftLayout)
-        middleLayout.addLayout(middleRightLayout)
+        middle_layout.addLayout(middle_left_layout)
+        middle_layout.addLayout(middle_right_layout)
 
         # Bottom layout
 
-        bottomLayout = QVBoxLayout()
-        bottomLayout.addWidget(latencyLabel)
-        bottomLayout.addWidget(self.cpu_figure())
+        bottom_layout = QVBoxLayout()
+        bottom_layout.addWidget(latency_label)
+        bottom_layout.addWidget(self.cpu_figure())
 
         # Stack layouts on top of each other
 
-        windowLayout = QVBoxLayout()
-        windowLayout.addLayout(topLayout)
-        windowLayout.addLayout(middleLayout)
-        windowLayout.addLayout(bottomLayout)
+        window_layout = QVBoxLayout()
+        window_layout.addLayout(top_layout)
+        window_layout.addLayout(middle_layout)
+        window_layout.addLayout(bottom_layout)
 
-        window.setLayout(windowLayout)
+        window.setLayout(window_layout)
 
         # Make window visible
 
         window.show()
 
         sys.exit(app.exec_())
-
 
 mainWindow = MainWindow()
 mainWindow()
