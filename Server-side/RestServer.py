@@ -1,14 +1,15 @@
 import cherrypy
 
+
 class RestServer(object):
     exposed = True
 
     @cherrypy.tools.accept(media='text/plain')
-    def GET(self):
+    def get(self):
         return cherrypy.session['mystring']
 
-    def PUT(self, another_string):
-         cherrypy.session['mystring'] = another_string
+    def put(self, another_string):
+        cherrypy.session['mystring'] = another_string
 
 if __name__ == '__main__':
     conf = {
