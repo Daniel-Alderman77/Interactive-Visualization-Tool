@@ -2,12 +2,13 @@ import requests
 from requests.exceptions import ReadTimeout
 from requests.exceptions import ConnectionError
 
+
 class RestClient:
 
     def __init__(self):
         self.name = self
 
-    def GetRequest(self):
+    def get_request(self):
 
         request = None
 
@@ -16,7 +17,7 @@ class RestClient:
 
             request = session.put('http://127.0.0.1:8080/', params={'another_string': 'hello'})
 
-            request = session.get('http://127.0.0.1:8080/', timeout = 0.1)
+            request = session.get('http://127.0.0.1:8080/', timeout=0.1)
 
             print(request.status_code)
 
