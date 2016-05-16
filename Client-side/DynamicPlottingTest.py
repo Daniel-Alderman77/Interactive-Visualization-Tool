@@ -67,7 +67,7 @@ class DynamicUpdate:
 
         prediction = Prediction()
 
-        results = prediction.Predict(xdata, ydata)
+        results = prediction.predict(xdata, ydata)
 
         print results[1]
 
