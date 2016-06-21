@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Message Type="Log" UTCTimeStamp="2016-02-04T09:56:55.5385862Z">
+  <LOG Time="10800">
+    <LOG-GRAPH Time="10800" />
+    <LOG-NODE ID="1" Time="10936.812200000002" Type="Server_Task_Workload_Models.SPEC_Server">
+      <Property Name="Threads" Value="2" />
+      <Property Name="Cores" Value="1" />
+      <Property Name="PerformanceScore" Value="1" />
+      <Property Name="Memory" Value="1000" />
+      <Property Name="CPU" Value="2" />
+      <Property Name="Memory_Workload" Value="800" />
+      <Property Name="CPU_Workload" Value="1.8" />
+      <Property Name="Workload_Pattern" />
+      <Property Name="Status" Value="Executing" />
+      <Property Name="ID" Value="1" />
+      <FUNCTIONS>
+        <LOG-ACTION ID="2" Time="11111.7772" Type="Server_Task_Workload_Models.Task">
+          <Property Name="Length" Value="30" />
+          <Property Name="CPU_Allocated" Value="0.9" />
+          <Property Name="Memory_Allocated" Value="400" />
+          <Property Name="CPU_Required" Value="0.9" />
+          <Property Name="Memory_Required" Value="400" />
+          <Property Name="Host" Value="1" />
+          <Property Name="Progress" Value="0.56666666666666665" />
+          <Property Name="HostMachine" Value="Server_Task_Workload_Models.SPEC_Server : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="2" />
+        </LOG-ACTION>
+        <LOG-ACTION ID="3" Time="11205.7584" Type="Server_Task_Workload_Models.Task">
+          <Property Name="Length" Value="30" />
+          <Property Name="CPU_Allocated" Value="0.9" />
+          <Property Name="Memory_Allocated" Value="400" />
+          <Property Name="CPU_Required" Value="0.9" />
+          <Property Name="Memory_Required" Value="400" />
+          <Property Name="Host" Value="1" />
+          <Property Name="Progress" Value="0.53333333333333333" />
+          <Property Name="HostMachine" Value="Server_Task_Workload_Models.SPEC_Server : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="3" />
+        </LOG-ACTION>
+      </FUNCTIONS>
+    </LOG-NODE>
+  </LOG>
+</Message>

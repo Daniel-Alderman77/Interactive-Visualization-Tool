@@ -1,25 +1,11 @@
-import cherrypy
+from flask import Flask
+
+app = Flask(__name__, static_url_path='')
 
 
-class RestServer(object):
-    exposed = True
-
-    @cherrypy.tools.accept(media='text/plain')
-    def get(self):
-        return cherrypy.session['mystring']
-
-    def put(self, another_string):
-        cherrypy.session['mystring'] = another_string
+@app.route('/')
+def root():
+    return app.send_static_file('data.xml')
 
 if __name__ == '__main__':
-    conf = {
-        '/': {
-            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True,
-            'tools.response_headers.on': True,
-            'tools.response_headers.headers': [('Content-Type', 'text/plain')],
-        }
-    }
-    cherrypy.config.update("server.conf")
-
-    cherrypy.quickstart(RestServer(), '/', conf)
+    app.run(debug=True)
