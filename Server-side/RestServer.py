@@ -16,9 +16,9 @@ class Hello(Resource):
 api.add_resource(Hello, '/file_count/')
 
 
-@app.route('/data/')
-def get_data():
-    return app.send_static_file('data.xml')
+@app.route('/data/<path:path>')
+def get_data(path):
+    return app.send_static_file(path)
 
 if __name__ == '__main__':
     app.run(debug=True)
