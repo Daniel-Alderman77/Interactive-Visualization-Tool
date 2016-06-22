@@ -15,9 +15,7 @@ class RESTClient:
         try:
             session = requests.Session()
 
-            request = session.put('http://127.0.0.1:8080/', params={'another_string': 'hello'})
-
-            request = session.get('http://127.0.0.1:8080/', timeout=0.1)
+            request = session.get('http://127.0.0.1:5000/file_count/', timeout=0.1)
 
             print(request.status_code)
 
@@ -33,3 +31,9 @@ class RESTClient:
             print "Failed to establish connection to Server"
 
         return request
+
+    def __call__(self):
+        self.get_request()
+
+client = RESTClient()
+client()
