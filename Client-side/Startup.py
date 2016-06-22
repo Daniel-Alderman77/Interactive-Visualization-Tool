@@ -1,5 +1,5 @@
 from ReadData import ReadData
-from RestClient import RestClient
+from RESTClient import RESTClient
 
 import matplotlib.pyplot as plt
 
@@ -38,7 +38,7 @@ class Startup:
         read_data = ReadData()
         memory_data = read_data.parse_xml('Client-side/data.xml')
 
-        rest_client = RestClient()
+        rest_client = RESTClient()
         rest_client.GetRequest()
 
         total_memory = int(memory_data[0])

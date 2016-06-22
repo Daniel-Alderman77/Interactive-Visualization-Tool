@@ -3,7 +3,7 @@ from requests.exceptions import ReadTimeout
 from requests.exceptions import ConnectionError
 
 
-class RestClient:
+class RESTClient:
 
     def __init__(self):
         self.name = self

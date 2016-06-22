@@ -1,9 +1,7 @@
 import glob
-from os import listdir
 
 from flask import Flask
 from flask_restful import Resource, Api
-from os.path import isfile, join
 
 app = Flask(__name__, static_url_path='')
 api = Api(app)
