@@ -1,6 +1,7 @@
 import requests
 from requests.exceptions import ReadTimeout
 from requests.exceptions import ConnectionError
+import json
 
 
 class RESTClient:
@@ -32,8 +33,19 @@ class RESTClient:
 
         return request
 
+    def get_data(self):
+        print ("")
+
     def __call__(self):
-        self.get_request()
+        response = self.get_request()
+
+        response_dict = json.loads(response.text)
+
+        if 'Number of files' in response_dict:
+            number_of_files = response_dict['Number of files']
+            print number_of_files
+
+        self.get_data()
 
 client = RESTClient()
 client()
