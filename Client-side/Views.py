@@ -1,4 +1,8 @@
-from Tkinter import Frame, Button, Toplevel, Tk, LEFT, BOTTOM, TOP
+from Tkinter import Frame, Button, Toplevel, Tk, LEFT, BOTTOM, TOP, BOTH
+
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.figure import Figure
+from numpy import arange, sin, pi
 
 
 class MainView:
@@ -7,26 +11,23 @@ class MainView:
 
         self.frame = Frame(self.master)
 
-        self.top_frame = Frame(self.master)
-        self.top_frame.pack(side=TOP)
-
         self.bottom_frame = Frame(self.master)
         self.bottom_frame.pack(side=BOTTOM)
 
-        self.cpu_button = Button(self.top_frame, text='CPU Utilisation', width=25, command=self.cpu_view)
-        self.cpu_button.pack(side=LEFT)
+        self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
+        self.cpu_button.grid(row=0, column=0)
 
-        self.memory_button = Button(self.top_frame, text='Memory Utilisation', width=25, command=self.memory_view)
-        self.memory_button.pack(side=LEFT)
+        self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
+        self.memory_button.grid(row=0, column=1)
 
         self.jobs_button = Button(self.frame, text='Current Jobs', width=25, command=self.jobs_view)
-        self.jobs_button.pack(side=LEFT)
+        self.jobs_button.grid(row=1, column=0)
 
         self.hier_button = Button(self.frame, text='Hierarchical View', width=25, command=self.hier_view)
-        self.hier_button.pack(side=LEFT)
+        self.hier_button.grid(row=1, column=1)
 
         self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.latency_view)
-        self.latency_button.pack(side=BOTTOM)
+        self.latency_button.pack(side=LEFT)
 
         self.frame.pack()
 
@@ -55,8 +56,10 @@ class SubView:
     def __init__(self, master):
         self.master = master
         self.frame = Frame(self.master)
+
         self.close_button = Button(self.frame, text='Close', width=25, command=self.close_window)
         self.close_button.pack()
+
         self.frame.pack()
 
     def close_window(self):
