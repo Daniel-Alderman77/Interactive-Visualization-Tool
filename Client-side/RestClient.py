@@ -87,10 +87,10 @@ class RESTClient:
 
                 with open(os.path.join(path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
-            print "Connection is successful"
+            return True
 
         except:
-            print "Server is unavailable"
+            return False
 
 client = RESTClient()
 client()

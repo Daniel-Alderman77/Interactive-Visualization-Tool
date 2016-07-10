@@ -19,16 +19,24 @@ class Startup:
                 'List of files': list_of_files}
 
     def __call__(self):
-        print self.get_file_count()
-
-        read_data = ReadData()
-        memory_data = read_data.parse_xml('data_store/data.xml')
-
         rest_client = RESTClient()
         rest_client()
 
-        total_memory = int(memory_data[0])
-        print total_memory
+        if rest_client.__call__() == True:
+            print "Connection is successful"
+        else:
+            print "Server is unavailable"
+
+            if self.get_file_count()["Number of files"] > 0:
+                print "Files are available for coldstart prediction"
+
+                read_data = ReadData()
+                memory_data = read_data.parse_xml('data_store/data.xml')
+
+                total_memory = int(memory_data[0])
+                print total_memory
+            else:
+                print "Files are not available for coldstart prediction"
 
 startup = Startup()
 startup()
