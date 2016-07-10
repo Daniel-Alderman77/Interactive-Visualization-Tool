@@ -22,15 +22,30 @@ class Startup:
         rest_client = RESTClient()
         rest_client()
 
-        if rest_client.__call__() == True:
+        read_data = ReadData()
+
+        # total_number_of_files_available = rest_client.__call__()[1]
+        #
+        # while self.get_file_count()["Number of files"] <= total_number_of_files_available:
+        #     print "Now attempting to retrieve files"
+        #
+        if rest_client.__call__()[0] == True:
             print "Connection is successful"
+
+            print self.get_file_count()["Number of files"]
+
+            if self.get_file_count()["Number of files"]:
+                print "Files have been transferred"
+                read_data.parse_xml('data_store/data.xml')
+            else:
+                print "Files have not been transferred"
+
         else:
             print "Server is unavailable"
 
             if self.get_file_count()["Number of files"] > 0:
                 print "Files are available for coldstart prediction"
 
-                read_data = ReadData()
                 memory_data = read_data.parse_xml('data_store/data.xml')
 
                 total_memory = int(memory_data[0])

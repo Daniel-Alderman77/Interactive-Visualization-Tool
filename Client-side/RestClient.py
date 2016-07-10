@@ -66,6 +66,8 @@ class RESTClient:
 
             response_dict = json.loads(response.text)
 
+            number_of_files = 0
+
             if 'Number of files' in response_dict:
                 number_of_files = response_dict['Number of files']
                 # print number_of_files
@@ -87,7 +89,7 @@ class RESTClient:
 
                 with open(os.path.join(path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
-            return True
+            return True, number_of_files
 
         except:
             return False
