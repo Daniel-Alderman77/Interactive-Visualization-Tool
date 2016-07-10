@@ -60,32 +60,37 @@ class RESTClient:
         return request
 
     def __call__(self):
-        response = self.get_request()
 
-        response_dict = json.loads(response.text)
+        try:
+            response = self.get_request()
 
-        if 'Number of files' in response_dict:
-            number_of_files = response_dict['Number of files']
-            # print number_of_files
+            response_dict = json.loads(response.text)
 
-            list_of_files = response_dict['List of files']
-            # print list_of_files[0]
+            if 'Number of files' in response_dict:
+                number_of_files = response_dict['Number of files']
+                # print number_of_files
 
-            data = self.get_data(list_of_files[0])
+                list_of_files = response_dict['List of files']
+                # print list_of_files[0]
 
-            path = "data_store"
+                data = self.get_data(list_of_files[0])
 
-            if not os.path.exists(path):
-                os.makedirs(path)
+                path = "data_store"
 
-            filename = (list_of_files[0])
+                if not os.path.exists(path):
+                    os.makedirs(path)
 
-            # Encode data into string from unicode
-            data_file_contents = data.text.encode('ascii', 'ignore')
+                filename = (list_of_files[0])
 
-            with open(os.path.join(path, filename), 'wb') as data_file:
-                data_file.write(data_file_contents)
+                # Encode data into string from unicode
+                data_file_contents = data.text.encode('ascii', 'ignore')
 
+                with open(os.path.join(path, filename), 'wb') as data_file:
+                    data_file.write(data_file_contents)
+            print "Connection is successful"
+
+        except:
+            print "Server is unavailable"
 
 client = RESTClient()
 client()

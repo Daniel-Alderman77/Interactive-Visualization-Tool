@@ -1,5 +1,4 @@
 import glob
-
 from FileHandler import ReadData
 from RESTClient import RESTClient
 
