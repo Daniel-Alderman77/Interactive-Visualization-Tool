@@ -1,4 +1,4 @@
-from ReadData import ReadData
+from FileHandler import ReadData
 from RESTClient import RESTClient
 
 import matplotlib.pyplot as plt
