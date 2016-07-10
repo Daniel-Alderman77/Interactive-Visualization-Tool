@@ -19,12 +19,12 @@ class RESTClient:
 
             request = session.get('http://127.0.0.1:5000/file_count/', timeout=0.1)
 
-            print(request.status_code)
+            # print(request.status_code)
 
-            print(request.text)
+            # print(request.text)
 
             # Time elapsed between sending the request and arrival of response
-            print(request.elapsed)
+            # print(request.elapsed)
 
         except ReadTimeout:
             print "Connection has timed out"
@@ -44,12 +44,12 @@ class RESTClient:
 
             request = session.get(path, timeout=0.1)
 
-            print(request.status_code)
+            # print(request.status_code)
 
-            print(request.text)
+            # print(request.text)
 
             # Time elapsed between sending the request and arrival of response
-            print(request.elapsed)
+            # print(request.elapsed)
 
         except ReadTimeout:
             print "Connection has timed out"
@@ -66,10 +66,10 @@ class RESTClient:
 
         if 'Number of files' in response_dict:
             number_of_files = response_dict['Number of files']
-            print number_of_files
+            # print number_of_files
 
             list_of_files = response_dict['List of files']
-            print list_of_files[0]
+            # print list_of_files[0]
 
             data = self.get_data(list_of_files[0])
 
