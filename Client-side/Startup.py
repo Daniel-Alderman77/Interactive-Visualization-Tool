@@ -36,10 +36,10 @@ class Startup:
     def __call__(self):
 
         read_data = ReadData()
-        memory_data = read_data.parse_xml('Client-side/data.xml')
+        memory_data = read_data.parse_xml('data_store/data.xml')
 
-        rest_client = RESTClient()
-        rest_client.GetRequest()
+        client = RESTClient()
+        client()
 
         total_memory = int(memory_data[0])
         task1 = int(memory_data[1])
