@@ -1,3 +1,4 @@
+import os
 import requests
 from requests.exceptions import ReadTimeout
 from requests.exceptions import ConnectionError
@@ -63,8 +64,6 @@ class RESTClient:
 
         response_dict = json.loads(response.text)
 
-        data = 0
-
         if 'Number of files' in response_dict:
             number_of_files = response_dict['Number of files']
             print number_of_files
@@ -74,7 +73,19 @@ class RESTClient:
 
             data = self.get_data(list_of_files[0])
 
-        print data.text
+            path = "data_store"
+
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+            filename = (list_of_files[0])
+
+            # Encode data into string from unicode
+            data_file_contents = data.text.encode('ascii', 'ignore')
+
+            with open(os.path.join(path, filename), 'wb') as data_file:
+                data_file.write(data_file_contents)
+
 
 client = RESTClient()
 client()
