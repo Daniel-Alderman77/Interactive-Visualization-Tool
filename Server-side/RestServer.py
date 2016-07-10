@@ -7,7 +7,7 @@ app = Flask(__name__, static_url_path='')
 api = Api(app)
 
 
-class Hello(Resource):
+class Server(Resource):
     def get(self):
         file_count = (len(glob.glob1("static", "*.xml")))
 
@@ -18,7 +18,7 @@ class Hello(Resource):
         return {'Number of files': file_count,
                 'List of files': list_of_files}
 
-api.add_resource(Hello, '/file_count/')
+api.add_resource(Server, '/file_count/')
 
 
 @app.route('/data/<path:path>')
