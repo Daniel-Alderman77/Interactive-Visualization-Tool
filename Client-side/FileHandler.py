@@ -6,7 +6,7 @@ class ReadData:
     def __init__(self):
         self.name = self
 
-    def parse_xml(self, filename):
+    def parse_memory_data(self, filename):
         total_memory = None
         task1 = None
         task2 = None

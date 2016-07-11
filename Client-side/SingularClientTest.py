@@ -37,7 +37,7 @@ class Startup:
 
                 if self.get_file_count()["Number of files"]:
                     print "Files have been transferred"
-                    read_data.parse_xml('data_store/data.xml')
+                    read_data.parse_memory_data('data_store/data.xml')
                 else:
                     print "Files have not been transferred"
 
@@ -47,7 +47,7 @@ class Startup:
             if self.get_file_count()["Number of files"] > 0:
                 print "Files are available for coldstart prediction"
 
-                memory_data = read_data.parse_xml('data_store/data.xml')
+                memory_data = read_data.parse_memory_data('data_store/data.xml')
 
                 total_memory = int(memory_data[0])
                 print total_memory

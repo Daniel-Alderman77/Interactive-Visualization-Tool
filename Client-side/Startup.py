@@ -36,7 +36,7 @@ class Startup:
     def __call__(self):
 
         read_data = ReadData()
-        memory_data = read_data.parse_xml('data_store/data.xml')
+        memory_data = read_data.parse_memory_data('data_store/data.xml')
 
         rest_client = RESTClient()
         rest_client()
