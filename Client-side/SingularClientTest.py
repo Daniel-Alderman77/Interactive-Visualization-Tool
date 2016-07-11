@@ -1,5 +1,4 @@
-from FileHandler import ResponseDeserialization, WebServiceClient
-from RESTClient import RESTClient
+from FileHandler import WebServiceClient
 
 
 class Startup:
