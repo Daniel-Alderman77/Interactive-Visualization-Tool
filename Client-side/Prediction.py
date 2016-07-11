@@ -13,6 +13,9 @@ class PredictionAlgorithm:
     def __init__(self):
         self.name = self
 
+    # TODO - Implement Linear Regression
+    # TODO - Implement Random Forest Regression
+    # TODO - Implement Regression Analysis
     def predict(self, xi, yi):
 
         # positions to extrapolate last element in array 1 position
@@ -75,6 +78,7 @@ class DataStore:
             with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
                 data_file.write(data_file_contents)
 
+    # TODO - Implement coldstart prediction
     def coldstart_prediction(self):
         client = FileHandler.WebServiceClient()
 

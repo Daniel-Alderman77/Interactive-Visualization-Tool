@@ -19,8 +19,6 @@ parser = reqparse.RequestParser()
 parser.add_argument('task')
 
 
-# Todo
-# shows a single todo item and lets you delete a todo item
 class Todo(Resource):
     def get(self, todo_id):
         abort_if_todo_doesnt_exist(todo_id)

@@ -41,7 +41,7 @@ class MainView:
 
     def cpu_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = CpuView(self.new_window)
+        self.app = CPUView(self.new_window)
 
     def memory_view(self):
         self.new_window = Toplevel(self.master)
@@ -87,13 +87,15 @@ class SubView:
         self.master.destroy()
 
 
-class CpuView(SubView):
+# TODO - Implement CPUView UI
+class CPUView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
         self.close_button = Button(self.frame, text='CpuView', width=25, command=self.close_window)
         self.close_button.pack()
 
 
+# TODO - Implement MemoryView UI
 class MemoryView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
@@ -101,6 +103,7 @@ class MemoryView(SubView):
         self.close_button.pack()
 
 
+# TODO - Implement JobsView UI
 class JobsView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
@@ -108,6 +111,7 @@ class JobsView(SubView):
         self.close_button.pack()
 
 
+# TODO - Implement HierView UI
 class HierView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
@@ -115,6 +119,7 @@ class HierView(SubView):
         self.close_button.pack()
 
 
+# TODO - Implement LatencyView UI
 class LatencyView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
