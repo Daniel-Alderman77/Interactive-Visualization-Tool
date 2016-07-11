@@ -5,7 +5,7 @@ import numpy as np
 from scipy.interpolate import InterpolatedUnivariateSpline
 
 
-class Prediction:
+class PredictionAlgorithm:
 
     def __init__(self):
         self.name = self
@@ -22,3 +22,9 @@ class Prediction:
         results = [x, y]
 
         return results
+
+
+class DataStore:
+
+    def __init__(self):
+        self.name = self
