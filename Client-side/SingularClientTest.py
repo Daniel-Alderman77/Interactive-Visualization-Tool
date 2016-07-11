@@ -29,18 +29,19 @@ class Startup:
         # while self.get_file_count()["Number of files"] <= total_number_of_files_available:
         #     print "Now attempting to retrieve files"
         #
-        if rest_client.__call__()[0] == True:
-            print "Connection is successful"
+        try:
+            if rest_client.__call__()[0] == True:
+                print "Connection is successful"
 
-            print self.get_file_count()["Number of files"]
+                print self.get_file_count()["Number of files"]
 
-            if self.get_file_count()["Number of files"]:
-                print "Files have been transferred"
-                read_data.parse_xml('data_store/data.xml')
-            else:
-                print "Files have not been transferred"
+                if self.get_file_count()["Number of files"]:
+                    print "Files have been transferred"
+                    read_data.parse_xml('data_store/data.xml')
+                else:
+                    print "Files have not been transferred"
 
-        else:
+        except:
             print "Server is unavailable"
 
             if self.get_file_count()["Number of files"] > 0:
