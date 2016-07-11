@@ -67,7 +67,7 @@ class RESTClient:
         if file_count > 0:
             list_of_files = glob.glob1("data_store", "*.xml")
 
-        return file_count
+        return file_count, list_of_files
 
     def __call__(self):
 
@@ -103,21 +103,32 @@ class RESTClient:
                 # Prediction cache
                 prediction_cache_path = "prediction_cache"
 
+                if not os.path.exists(prediction_cache_path):
+                    os.makedirs(prediction_cache_path)
+
                 # Check if number of files in cache is > 4
-                if self.get_prediction_cache_file_count() > 4:
+                if self.get_prediction_cache_file_count()[0] > 4:
                     print "Greater than 4 files in prediction_cache"
 
-                    if not os.path.exists(prediction_cache_path):
-                        os.makedirs(prediction_cache_path)
+                    try:
+                        # Remove oldest file in prediction cache
+                        oldest_file = self.get_prediction_cache_file_count()[1][0]
 
-                    with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
-                        data_file.write(data_file_contents)
+                        os.remove(prediction_cache_path + oldest_file)
+
+                        print "Oldest file " + oldest_file + " removed"
+
+                        # Write new file as replacement
+                        with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+                            data_file.write(data_file_contents)
+
+                        print "New file " + filename + " written as replacement"
+
+                    except:
+                        print "File cannot be removed"
 
                 else:
                     print "Less than 4 files in prediction_cache"
-
-                    if not os.path.exists(prediction_cache_path):
-                        os.makedirs(prediction_cache_path)
 
                     with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
                         data_file.write(data_file_contents)
