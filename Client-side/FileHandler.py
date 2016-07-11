@@ -34,10 +34,13 @@ class WebServiceClient:
         #
 
         try:
-            if rest_client.__call__()[0] == True:
+            if rest_client.__call__() == True:
                 print "Connection is successful"
 
                 number_of_files = self.get_file_count()["Number of files"]
+
+                print number_of_files
+                print rest_client.get_number_of_files()
 
                 if number_of_files:
                     print "Files have been transferred"

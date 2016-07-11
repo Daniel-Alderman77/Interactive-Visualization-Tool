@@ -12,6 +12,12 @@ class RESTClient:
     def __init__(self):
         self.name = self
 
+    def get_number_of_files(self):
+        return self.number_of_files
+
+    def set_number_of_files(self, x):
+        self.number_of_files = x
+
     def get_request(self):
 
         request = None
@@ -97,7 +103,9 @@ class RESTClient:
 
                 data_store.prediction_cache(filename, data_file_contents)
 
-            return True, number_of_files
+                self.set_number_of_files(number_of_files)
+
+            return True
 
         except:
             return False
