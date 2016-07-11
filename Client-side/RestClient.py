@@ -1,3 +1,4 @@
+import glob
 import os
 import requests
 from requests.exceptions import ReadTimeout
@@ -59,6 +60,15 @@ class RESTClient:
 
         return request
 
+    def get_prediction_cache_file_count(self):
+        file_count = (len(glob.glob1("data_store", "*.xml")))
+
+        list_of_files = []
+        if file_count > 0:
+            list_of_files = glob.glob1("data_store", "*.xml")
+
+        return file_count
+
     def __call__(self):
 
         try:
@@ -82,11 +92,6 @@ class RESTClient:
                 if not os.path.exists(data_store_path):
                     os.makedirs(data_store_path)
 
-                prediction_cache_path = "prediction_cache"
-
-                if not os.path.exists(prediction_cache_path):
-                    os.makedirs(prediction_cache_path)
-
                 filename = (list_of_files[0])
 
                 # Encode data into string from unicode
@@ -95,8 +100,8 @@ class RESTClient:
                 with open(os.path.join(data_store_path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
 
-                with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
-                    data_file.write(data_file_contents)
+                # Prediction cache
+                prediction_cache_path = "prediction_cache"
 
             return True, number_of_files
 
