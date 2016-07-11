@@ -1,4 +1,4 @@
-from FileHandler import ReadData
+from FileHandler import ResponseDeserialization
 from RESTClient import RESTClient
 
 import matplotlib.pyplot as plt
@@ -35,7 +35,7 @@ class Startup:
 
     def __call__(self):
 
-        read_data = ReadData()
+        read_data = ResponseDeserialization()
         memory_data = read_data.parse_memory_data('data_store/data.xml')
 
         rest_client = RESTClient()

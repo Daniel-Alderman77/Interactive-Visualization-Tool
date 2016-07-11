@@ -1,4 +1,4 @@
-from FileHandler import ReadData, RequestData
+from FileHandler import ResponseDeserialization, WebServiceClient
 from RESTClient import RESTClient
 
 
@@ -10,9 +10,9 @@ class Startup:
     def __call__(self):
         rest_client = RESTClient()
 
-        read_data = ReadData()
+        read_data = ResponseDeserialization()
 
-        request_data = RequestData()
+        request_data = WebServiceClient()
 
         # total_number_of_files_available = rest_client.__call__()[1]
         #

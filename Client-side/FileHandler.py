@@ -4,7 +4,7 @@ from lxml import etree
 from RESTClient import RESTClient
 
 
-class RequestData:
+class WebServiceClient:
 
     def __init__(self):
         self.name = self
@@ -22,7 +22,7 @@ class RequestData:
     def request_data(self):
         rest_client = RESTClient()
 
-        read_data = ReadData()
+        read_data = ResponseDeserialization()
 
         try:
             if rest_client.__call__()[0] == True:
@@ -50,7 +50,7 @@ class RequestData:
                 print "Files are not available for coldstart prediction"
 
 
-class ReadData:
+class ResponseDeserialization:
 
     def __init__(self):
         self.name = self
@@ -87,3 +87,9 @@ class ReadData:
         print("Task 2 Memory: %s" % task2)
 
         return [total_memory, task1, task2]
+
+
+class FaultDetection:
+
+    def __init__(self):
+        self.name = self
