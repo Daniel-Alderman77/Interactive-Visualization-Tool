@@ -20,7 +20,6 @@ class Startup:
 
     def __call__(self):
         rest_client = RESTClient()
-        rest_client()
 
         read_data = ReadData()
 

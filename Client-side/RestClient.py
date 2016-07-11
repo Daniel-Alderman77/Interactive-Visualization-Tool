@@ -103,10 +103,26 @@ class RESTClient:
                 # Prediction cache
                 prediction_cache_path = "prediction_cache"
 
+                # Check if number of files in cache is > 4
+                if self.get_prediction_cache_file_count() > 4:
+                    print "Greater than 4 files in prediction_cache"
+
+                    if not os.path.exists(prediction_cache_path):
+                        os.makedirs(prediction_cache_path)
+
+                    with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+                        data_file.write(data_file_contents)
+
+                else:
+                    print "Less than 4 files in prediction_cache"
+
+                    if not os.path.exists(prediction_cache_path):
+                        os.makedirs(prediction_cache_path)
+
+                    with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+                        data_file.write(data_file_contents)
+
             return True, number_of_files
 
         except:
             return False
-
-client = RESTClient()
-client()
