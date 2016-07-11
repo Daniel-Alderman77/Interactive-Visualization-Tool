@@ -42,7 +42,7 @@ class WebServiceClient:
         except:
             print "Server is unavailable"
 
-            data_store.prediction_data_store()
+            data_store.coldstart_prediction()
 
 
 class ResponseDeserialization:
