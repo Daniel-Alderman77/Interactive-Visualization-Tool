@@ -2,6 +2,7 @@ import glob
 from lxml import etree
 
 from RESTClient import RESTClient
+from Prediction import DataStore
 
 
 class WebServiceClient:
@@ -24,6 +25,8 @@ class WebServiceClient:
 
         read_data = ResponseDeserialization()
 
+        data_store = DataStore()
+
         try:
             if rest_client.__call__()[0] == True:
                 print "Connection is successful"
@@ -39,15 +42,7 @@ class WebServiceClient:
         except:
             print "Server is unavailable"
 
-            if self.get_file_count()["Number of files"] > 0:
-                print "Files are available for coldstart prediction"
-
-                memory_data = read_data.parse_memory_data('data_store/data.xml')
-
-                total_memory = int(memory_data[0])
-                print total_memory
-            else:
-                print "Files are not available for coldstart prediction"
+            data_store.prediction_data_store()
 
 
 class ResponseDeserialization:

@@ -3,6 +3,7 @@
 
 import numpy as np
 from scipy.interpolate import InterpolatedUnivariateSpline
+import FileHandler
 
 
 class PredictionAlgorithm:
@@ -28,3 +29,12 @@ class DataStore:
 
     def __init__(self):
         self.name = self
+
+    def prediction_data_store(self):
+        client = FileHandler.WebServiceClient()
+
+        if client.get_file_count()["Number of files"] > 0:
+            print "Files are available for coldstart prediction"
+
+        else:
+            print "Files are not available for coldstart prediction"
