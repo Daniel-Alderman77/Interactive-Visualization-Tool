@@ -77,18 +77,27 @@ class RESTClient:
 
                 data = self.get_data(list_of_files[0])
 
-                path = "data_store"
+                data_store_path = "data_store"
 
-                if not os.path.exists(path):
-                    os.makedirs(path)
+                if not os.path.exists(data_store_path):
+                    os.makedirs(data_store_path)
+
+                prediction_cache_path = "prediction_cache"
+
+                if not os.path.exists(prediction_cache_path):
+                    os.makedirs(prediction_cache_path)
 
                 filename = (list_of_files[0])
 
                 # Encode data into string from unicode
                 data_file_contents = data.text.encode('ascii', 'ignore')
 
-                with open(os.path.join(path, filename), 'wb') as data_file:
+                with open(os.path.join(data_store_path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
+
+                with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+                    data_file.write(data_file_contents)
+
             return True, number_of_files
 
         except:
