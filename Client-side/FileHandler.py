@@ -27,6 +27,12 @@ class WebServiceClient:
 
         data_store = DataStore()
 
+        # total_number_of_files_available = rest_client.__call__()[1]
+        #
+        # while self.get_file_count()["Number of files"] <= total_number_of_files_available:
+        #     print "Now attempting to retrieve files"
+        #
+
         try:
             if rest_client.__call__()[0] == True:
                 print "Connection is successful"
