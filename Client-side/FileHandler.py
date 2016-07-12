@@ -98,49 +98,41 @@ class ResponseDeserialization:
 
     def parse_energy_data(self, filename):
         try:
-            total_energy = 0
+            energy_values = {'node_ID': [], 'energy': []}
 
-            energy_values = []
+            total_energy = 0
 
             root = etree.parse(filename)
 
-            print root
+            properties = root.findall('.//Property')
 
-            nodes = root.findall('.//LOG-NODE')
+            print len(properties)
 
-            print nodes
+            for property in properties:
+                if property.get('Name') == 'ID':
+                    node_id = property.get('Value')
 
-            print type(nodes)
+                    energy_values['node_ID'].append(node_id)
 
-            for i in nodes:
-                print etree.tostring(i)
+                if property.get('Name') == 'Energy':
+                    energy_value = property.get('Value')
 
-            # actions = nodes.findall('.//FUNCTIONS')
+                    energy_values['energy'].append(energy_value)
 
-            # print actions
+                    total_energy = int(energy_value) + total_energy
 
-            # TODO - Implement for loop to search for values based on number nodes in file
+            print len(energy_values)
 
-            # log_action_contents = actions.getchildren()
-            #
-            # print log_action_contents
-            #
-            # i = 0
-            #
-            # for content in log_action_contents:
-            #     if content.get('Name') == 'Energy':
-            #         value = content.get('Value')
-            #         energy_values.append(value)
-            #         total_energy = value + total_energy
-            #
-            #         i = i + 1
-            #         print i
+            print energy_values
+
+            print energy_values['node_ID'][0]
+
+            print energy_values['energy'][0]
 
             # Calculate total energy usage
+            print("Total Energy: %s" % total_energy)
 
-            # print("Total Memory: %s" % total_energy)
-
-            # return [total_energy, energy_values]
+            return [total_energy, energy_values]
         except:
             print "No energy data available"
 
