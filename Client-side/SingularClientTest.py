@@ -1,12 +1,12 @@
 import shutil
 
-from FileHandler import WebServiceClient
+from FileHandler import WebServiceClient, ResponseDeserialization
 from Views import UserInterface
 
 
 # Initial Loop
 # TODO - If response is successful, deserialize data, pass data to visualizer
-# TODO - Else, coldstart prediction
+# TODO - Else, coldstart prediction, pass data to visulizer
 # TODO - Exhaust file call new one
 
 # Repeated Loop
@@ -22,6 +22,8 @@ class Startup:
     def initial_loop(self, index):
         web_service_client = WebServiceClient()
 
+        response_deserialization = ResponseDeserialization()
+
         # Contact server and return number of remote files available
         number_of_remote_files = web_service_client.get_remote_file_count(index)
 
@@ -29,7 +31,12 @@ class Startup:
 
         # Check file transfer has been successful
         if web_service_client.check_transfer(index) == True:
-            print True
+            list_of_files = web_service_client.get_local_file_count()["List of files"]
+
+            filename = 'data_store/' + list_of_files[index]
+
+            # Deserialize filename passed as a parameter
+            response_deserialization.parse_memory_data(filename)
 
     def __call__(self):
         user_interface = UserInterface()
