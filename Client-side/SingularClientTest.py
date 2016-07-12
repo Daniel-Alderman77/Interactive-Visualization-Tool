@@ -27,7 +27,14 @@ class Startup:
 
         web_service_client = WebServiceClient()
 
-        web_service_client.get_remote_file_count()
+        # Contact server and return number of remote files available
+        number_of_remote_files = web_service_client.get_remote_file_count()
+
+        print number_of_remote_files
+
+        # If connection is successful retrieve datafile
+        if number_of_remote_files > 0:
+            web_service_client.request_data()
 
         # End UI loop
         user_interface.main_loop(root)

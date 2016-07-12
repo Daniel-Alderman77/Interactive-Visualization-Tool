@@ -27,14 +27,9 @@ class WebServiceClient:
             if rest_client.__call__() == True:
                 print "Connection is successful"
 
-                number_of_local_files = self.get_local_file_count()["Number of files"]
-
-                print number_of_local_files
-
                 number_of_remote_files = rest_client.get_number_of_files()
 
-                print number_of_remote_files
-
+                return number_of_remote_files
         except:
             print "Server is unavailable"
 
@@ -52,22 +47,18 @@ class WebServiceClient:
         #
 
         try:
-            if rest_client.__call__() == True:
-                print "Connection is successful"
+            number_of_files = self.get_local_file_count()["Number of files"]
 
-                number_of_files = self.get_local_file_count()["Number of files"]
+            print number_of_files
 
-                print number_of_files
-                print rest_client.get_number_of_files()
-
-                if number_of_files:
-                    print "Files have been transferred"
-                    read_data.parse_memory_data('data_store/data.xml')
-                else:
-                    print "Files have not been transferred"
+            if number_of_files:
+                print "File has been transferred"
+                read_data.parse_memory_data('data_store/data.xml')
+            else:
+                print "File has not been transferred"
 
         except:
-            print "Server is unavailable"
+            print "File cannot be transferred"
 
             data_store.coldstart_prediction()
 
