@@ -36,7 +36,9 @@ class Startup:
             filename = 'data_store/' + list_of_files[index]
 
             # Deserialize filename passed as a parameter
-            response_deserialization.parse_memory_data(filename)
+            # response_deserialization.parse_memory_data(filename)
+
+            response_deserialization.parse_energy_data(filename)
 
     def __call__(self):
         user_interface = UserInterface()

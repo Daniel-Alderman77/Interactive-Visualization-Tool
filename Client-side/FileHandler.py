@@ -2,7 +2,6 @@ import glob
 from lxml import etree
 
 from RESTClient import RESTClient
-from Prediction import DataStore
 
 
 class WebServiceClient:
@@ -19,7 +18,7 @@ class WebServiceClient:
 
         return {'Number of files': file_count,
                 'List of files': list_of_files}
-    
+
     def get_remote_file_count(self, index):
         rest_client = RESTClient()
 
@@ -75,6 +74,8 @@ class ResponseDeserialization:
 
             actions = root.findall('.//LOG-ACTION')
 
+            # TODO - Implement for loop to search for values based on number nodes in file
+
             log_action_contents = actions[0].getchildren()
             for content in log_action_contents:
                 if content.get('Name') == 'Memory_Allocated':
@@ -94,6 +95,54 @@ class ResponseDeserialization:
             return [total_memory, task1, task2]
         except:
             print "No memory data available"
+
+    def parse_energy_data(self, filename):
+        try:
+            total_energy = 0
+
+            energy_values = []
+
+            root = etree.parse(filename)
+
+            print root
+
+            nodes = root.findall('.//LOG-NODE')
+
+            print nodes
+
+            print type(nodes)
+
+            for i in nodes:
+                print etree.tostring(i)
+
+            # actions = nodes.findall('.//FUNCTIONS')
+
+            # print actions
+
+            # TODO - Implement for loop to search for values based on number nodes in file
+
+            # log_action_contents = actions.getchildren()
+            #
+            # print log_action_contents
+            #
+            # i = 0
+            #
+            # for content in log_action_contents:
+            #     if content.get('Name') == 'Energy':
+            #         value = content.get('Value')
+            #         energy_values.append(value)
+            #         total_energy = value + total_energy
+            #
+            #         i = i + 1
+            #         print i
+
+            # Calculate total energy usage
+
+            # print("Total Memory: %s" % total_energy)
+
+            # return [total_energy, energy_values]
+        except:
+            print "No energy data available"
 
 
 # TODO - Implement Late-timing fault detection
