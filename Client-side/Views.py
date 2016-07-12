@@ -127,11 +127,17 @@ class LatencyView(SubView):
         self.close_button.pack()
 
 
-def main():
-    root = Tk()
-    app = MainView(root)
-    root.title('Interactive Visualization Tool')
-    root.mainloop()
+class UserInterface:
 
-if __name__ == '__main__':
-    main()
+    def __init__(self):
+        self.name = self
+
+    def run(self):
+        root = Tk()
+        app = MainView(root)
+        root.title('Interactive Visualization Tool')
+
+        return root
+
+    def main_loop(self, root):
+        root.mainloop()
