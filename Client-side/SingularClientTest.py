@@ -46,8 +46,6 @@ class Startup:
         # Start UI
         root = user_interface.run()
 
-        web_service_client = WebServiceClient()
-
         index = 0
 
         # Start initial loop
