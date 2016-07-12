@@ -21,12 +21,15 @@ class Startup:
 
     def __call__(self):
         user_interface = UserInterface()
+
+        # Start UI
         root = user_interface.run()
 
         request_data = WebServiceClient()
 
         request_data.request_data()
 
+        # End UI loop
         user_interface.main_loop(root)
 
 startup = Startup()

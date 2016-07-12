@@ -18,7 +18,7 @@ class RESTClient:
     def set_number_of_files(self, x):
         self.number_of_files = x
 
-    def get_request(self):
+    def get_file_count(self):
 
         request = None
 
@@ -42,7 +42,7 @@ class RESTClient:
 
         return request
 
-    def get_data(self, argument):
+    def get_datafile(self, argument):
         request = None
 
         try:
@@ -70,7 +70,7 @@ class RESTClient:
     # TODO - Refactor __call__ method, to be called programmatically
     def __call__(self):
         try:
-            response = self.get_request()
+            response = self.get_file_count()
 
             response_dict = json.loads(response.text)
 
@@ -83,7 +83,7 @@ class RESTClient:
                 list_of_files = response_dict['List of files']
                 # print list_of_files[0]
 
-                data = self.get_data(list_of_files[0])
+                data = self.get_datafile(list_of_files[0])
 
                 data_store_path = "data_store"
 
