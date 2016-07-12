@@ -106,8 +106,6 @@ class ResponseDeserialization:
 
             properties = root.findall('.//Property')
 
-            print len(properties)
-
             for property in properties:
                 if property.get('Name') == 'ID':
                     node_id = property.get('Value')
@@ -121,18 +119,26 @@ class ResponseDeserialization:
 
                     total_energy = int(energy_value) + total_energy
 
-            print len(energy_values)
-
-            print energy_values
-
-            print energy_values['node_ID'][0]
-
-            print energy_values['energy'][0]
+            # print len(energy_values)
+            #
+            # print energy_values
+            #
+            # print energy_values['node_ID'][0]
+            #
+            # print energy_values['energy'][0]
 
             # Calculate total energy usage
             print("Total Energy: %s" % total_energy)
 
-            return [total_energy, energy_values]
+            log_nodes = root.findall('.//LOG-NODE')
+
+            first_log_node = log_nodes[0]
+
+            time_stamp = first_log_node.get('Time')
+
+            print("Time Stamp: %s" % time_stamp)
+
+            return [total_energy, energy_values, time_stamp]
         except:
             print "No energy data available"
 
