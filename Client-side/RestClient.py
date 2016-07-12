@@ -67,8 +67,7 @@ class RESTClient:
 
         return request
 
-    # TODO - Refactor __call__ method, to be called programmatically
-    def __call__(self):
+    def retrieve_datafile(self):
         try:
             response = self.get_file_count()
 

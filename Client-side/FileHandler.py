@@ -24,7 +24,7 @@ class WebServiceClient:
         rest_client = RESTClient()
 
         try:
-            if rest_client.__call__() == True:
+            if rest_client.retrieve_datafile() == True:
                 print "Connection is successful"
 
                 number_of_remote_files = rest_client.get_number_of_files()
