@@ -27,7 +27,7 @@ class Startup:
         # Contact server and return number of remote files available
         number_of_remote_files = web_service_client.get_remote_file_count(index)
 
-        print number_of_remote_files
+        print("Number of remote files: %s" % number_of_remote_files)
 
         # Check file transfer has been successful
         if web_service_client.check_transfer(index) == True:
