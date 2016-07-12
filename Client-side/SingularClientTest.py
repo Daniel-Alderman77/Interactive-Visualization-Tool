@@ -1,6 +1,3 @@
-import glob
-import os
-
 import shutil
 
 from FileHandler import WebServiceClient
@@ -22,6 +19,18 @@ class Startup:
     def __init__(self):
         self.name = self
 
+    def initial_loop(self, index):
+        web_service_client = WebServiceClient()
+
+        # Contact server and return number of remote files available
+        number_of_remote_files = web_service_client.get_remote_file_count(index)
+
+        print number_of_remote_files
+
+        # Check file transfer has been successful
+        if web_service_client.check_transfer(index) == True:
+            print True
+
     def __call__(self):
         user_interface = UserInterface()
 
@@ -32,14 +41,10 @@ class Startup:
 
         index = 0
 
-        # Contact server and return number of remote files available
-        number_of_remote_files = web_service_client.get_remote_file_count(index)
+        # Start initial loop
+        self.initial_loop(index)
 
-        print number_of_remote_files
-
-        # Check file transfer has been successful
-        if web_service_client.check_transfer(index) == True:
-            print True
+        # TODO - Start repeated loop
 
         # End UI loop
         user_interface.main_loop(root)
