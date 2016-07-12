@@ -10,7 +10,7 @@ class WebServiceClient:
     def __init__(self):
         self.name = self
 
-    def get_file_count(self):
+    def get_local_file_count(self):
         file_count = (len(glob.glob1("data_store", "*.xml")))
 
         list_of_files = []
@@ -19,6 +19,24 @@ class WebServiceClient:
 
         return {'Number of files': file_count,
                 'List of files': list_of_files}
+    
+    def get_remote_file_count(self):
+        rest_client = RESTClient()
+
+        try:
+            if rest_client.__call__() == True:
+                print "Connection is successful"
+
+                number_of_local_files = self.get_local_file_count()["Number of files"]
+
+                print number_of_local_files
+
+                number_of_remote_files = rest_client.get_number_of_files()
+
+                print number_of_remote_files
+
+        except:
+            print "Server is unavailable"
 
     def request_data(self):
         rest_client = RESTClient()
@@ -37,7 +55,7 @@ class WebServiceClient:
             if rest_client.__call__() == True:
                 print "Connection is successful"
 
-                number_of_files = self.get_file_count()["Number of files"]
+                number_of_files = self.get_local_file_count()["Number of files"]
 
                 print number_of_files
                 print rest_client.get_number_of_files()

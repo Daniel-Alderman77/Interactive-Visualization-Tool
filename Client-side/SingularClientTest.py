@@ -3,7 +3,6 @@ from Views import UserInterface
 
 
 # Initial Loop
-# TODO - Client contacts server
 # TODO - If response is successful, deserialize data, pass data to visualizer
 # TODO - Else, coldstart prediction
 # TODO - Exhaust file call new one
@@ -25,9 +24,9 @@ class Startup:
         # Start UI
         root = user_interface.run()
 
-        request_data = WebServiceClient()
+        web_service_client = WebServiceClient()
 
-        request_data.request_data()
+        web_service_client.get_remote_file_count()
 
         # End UI loop
         user_interface.main_loop(root)

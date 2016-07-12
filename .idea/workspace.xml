@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2cbec7f8-7b6f-4da9-b8de-3d1b6d29ec32" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/RestClient.py" afterPath="$PROJECT_DIR$/Client-side/RestClient.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/FileHandler.py" afterPath="$PROJECT_DIR$/Client-side/FileHandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/Prediction.py" afterPath="$PROJECT_DIR$/Client-side/Prediction.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client-side/SingularClientTest.py" afterPath="$PROJECT_DIR$/Client-side/SingularClientTest.py" />
     </list>
     <ignored path="sc12dja-FYP.iws" />
@@ -21,7 +22,7 @@
     <SUITE FILE_PATH="coverage/sc12dja-FYP$RestServer.coverage" NAME="RestServer Coverage Results" MODIFIED="1466605392222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$DynamicPlottingTest.coverage" NAME="DynamicPlottingTest Coverage Results" MODIFIED="1466953611623" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$FileHandler.coverage" NAME="FileHandler Coverage Results" MODIFIED="1468254930817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
-    <SUITE FILE_PATH="coverage/sc12dja-FYP$SingularClientTest.coverage" NAME="SingularClientTest Coverage Results" MODIFIED="1468325000581" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
+    <SUITE FILE_PATH="coverage/sc12dja-FYP$SingularClientTest.coverage" NAME="SingularClientTest Coverage Results" MODIFIED="1468326222952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1466953751446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Startup__1_.coverage" NAME="Startup (1) Coverage Results" MODIFIED="1458424207140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Startup_Server.coverage" NAME="Startup Server Coverage Results" MODIFIED="1458557297894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
@@ -35,7 +36,7 @@
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Prediction.coverage" NAME="Prediction Coverage Results" MODIFIED="1461060540085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$test.coverage" NAME="test Coverage Results" MODIFIED="1460322796310" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$embedding_in_tk.coverage" NAME="embedding_in_tk Coverage Results" MODIFIED="1466964998005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Examples" />
-    <SUITE FILE_PATH="coverage/sc12dja-FYP$RESTServer.coverage" NAME="RESTServer Coverage Results" MODIFIED="1468324994416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
+    <SUITE FILE_PATH="coverage/sc12dja-FYP$RESTServer.coverage" NAME="RESTServer Coverage Results" MODIFIED="1468325822926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Server-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$RestClient.coverage" NAME="RestClient Coverage Results" MODIFIED="1458479208884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Views.coverage" NAME="Views Coverage Results" MODIFIED="1467107661732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
     <SUITE FILE_PATH="coverage/sc12dja-FYP$Startup.coverage" NAME="Startup Coverage Results" MODIFIED="1468168851761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Client-side" />
@@ -65,7 +66,7 @@
       <file leaf-file-name="RESTClient.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/RESTClient.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
+            <state relative-caret-position="780">
               <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -77,8 +78,8 @@
       <file leaf-file-name="FileHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client-side/FileHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+            <state relative-caret-position="390">
+              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -89,8 +90,8 @@
       <file leaf-file-name="SingularClientTest.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client-side/SingularClientTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+            <state relative-caret-position="75">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -180,10 +181,10 @@
         <option value="$PROJECT_DIR$/Client-side/Prediction.py" />
         <option value="$PROJECT_DIR$/Client-side/ExportTestResults.py" />
         <option value="$PROJECT_DIR$/Client-side/Visualizer.py" />
-        <option value="$PROJECT_DIR$/Client-side/FileHandler.py" />
         <option value="$PROJECT_DIR$/Client-side/Views.py" />
-        <option value="$PROJECT_DIR$/Client-side/SingularClientTest.py" />
         <option value="$PROJECT_DIR$/Client-side/RESTClient.py" />
+        <option value="$PROJECT_DIR$/Client-side/FileHandler.py" />
+        <option value="$PROJECT_DIR$/Client-side/SingularClientTest.py" />
       </list>
     </option>
   </component>
@@ -196,7 +197,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="823" />
+    <option name="height" value="828" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -242,10 +243,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -720,28 +721,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1440" height="828" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28612304" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29041487" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655826" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28116712" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32384825" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32968536" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2804878" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32968536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.3915989" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2804878" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32384825" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928476" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39205298" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -1001,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/FileHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        <state relative-caret-position="390">
+          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -1011,7 +1012,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/RESTClient.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
+        <state relative-caret-position="780">
           <caret line="59" column="36" selection-start-line="59" selection-start-column="36" selection-end-line="59" selection-end-column="36" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -1021,8 +1022,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client-side/SingularClientTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>

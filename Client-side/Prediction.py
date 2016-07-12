@@ -82,7 +82,7 @@ class DataStore:
     def coldstart_prediction(self):
         client = FileHandler.WebServiceClient()
 
-        if client.get_file_count()["Number of files"] > 0:
+        if client.get_local_file_count()["Number of files"] > 0:
             print "Files are available for coldstart prediction"
 
         else:
