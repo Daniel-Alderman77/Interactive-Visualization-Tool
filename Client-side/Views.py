@@ -5,6 +5,7 @@ from matplotlib.figure import Figure
 from numpy import arange, sin, pi
 
 
+# TODO - Display percentage progress through number of remote files
 class MainView:
     def __init__(self, master):
         self.master = master
