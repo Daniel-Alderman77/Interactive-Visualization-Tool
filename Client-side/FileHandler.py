@@ -20,11 +20,11 @@ class WebServiceClient:
         return {'Number of files': file_count,
                 'List of files': list_of_files}
     
-    def get_remote_file_count(self):
+    def get_remote_file_count(self, index):
         rest_client = RESTClient()
 
         try:
-            if rest_client.read_datafile() == True:
+            if rest_client.read_datafile(index) == True:
                 print "Connection is successful"
 
                 number_of_remote_files = rest_client.get_number_of_files()
@@ -33,26 +33,25 @@ class WebServiceClient:
         except:
             print "Server is unavailable"
 
-    def check_transfer(self):
-        read_data = ResponseDeserialization()
-
-        data_store = DataStore()
-
+    def check_transfer(self, index):
         try:
             number_of_files = self.get_local_file_count()["Number of files"]
 
             print number_of_files
 
-            if number_of_files:
+            if index == (number_of_files - 1):
                 print "File has been transferred"
-                read_data.parse_memory_data('data_store/data.xml')
+
+                return True
             else:
                 print "File has not been transferred"
+
+                return False
 
         except:
             print "File cannot be transferred"
 
-            data_store.coldstart_prediction()
+            return False
 
 
 class ResponseDeserialization:

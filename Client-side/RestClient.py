@@ -73,7 +73,7 @@ class RESTClient:
 
         return request
 
-    def read_datafile(self):
+    def read_datafile(self, index):
         try:
             response = self.get_file_count()
 
@@ -84,7 +84,7 @@ class RESTClient:
 
                 list_of_files = response_dict['List of files']
 
-                data = self.get_datafile(list_of_files[0])
+                data = self.get_datafile(list_of_files[index])
 
                 data_store_path = "data_store"
 

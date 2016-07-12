@@ -1,3 +1,8 @@
+import glob
+import os
+
+import shutil
+
 from FileHandler import WebServiceClient
 from Views import UserInterface
 
@@ -8,12 +13,11 @@ from Views import UserInterface
 # TODO - Exhaust file call new one
 
 # Repeated Loop
-# TODO - Client contacts server
 # TODO - If response is successful, deserialize data, pass data to visualizer
 # TODO - Else, use prediction
 # TODO - Exhaust file call new one
 # TODO - Repeat till all files have retrieved from sever-side and rendered to user
-# TODO - As application exits cleanup environment, delete all data from data_store, stop server
+# TODO - As application exits cleanup environment, stop server
 class Startup:
 
     def __init__(self):
@@ -27,17 +31,26 @@ class Startup:
 
         web_service_client = WebServiceClient()
 
+        index = 0
+
         # Contact server and return number of remote files available
-        number_of_remote_files = web_service_client.get_remote_file_count()
+        number_of_remote_files = web_service_client.get_remote_file_count(index)
 
         print number_of_remote_files
 
         # Check file transfer has been successful
-        if number_of_remote_files > 0:
-            web_service_client.check_transfer()
+        if web_service_client.check_transfer(index) == True:
+            print True
 
         # End UI loop
         user_interface.main_loop(root)
+
+        # Deletes data_store directory as app closes
+        try:
+            shutil.rmtree('data_store')
+        except:
+            print "data_store directory cannot be deleted"
+
 
 startup = Startup()
 startup()
