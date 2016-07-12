@@ -32,9 +32,9 @@ class Startup:
 
         print number_of_remote_files
 
-        # If connection is successful retrieve datafile
+        # Check file transfer has been successful
         if number_of_remote_files > 0:
-            web_service_client.request_data()
+            web_service_client.check_transfer()
 
         # End UI loop
         user_interface.main_loop(root)

@@ -24,7 +24,7 @@ class WebServiceClient:
         rest_client = RESTClient()
 
         try:
-            if rest_client.retrieve_datafile() == True:
+            if rest_client.read_datafile() == True:
                 print "Connection is successful"
 
                 number_of_remote_files = rest_client.get_number_of_files()
@@ -33,18 +33,10 @@ class WebServiceClient:
         except:
             print "Server is unavailable"
 
-    def request_data(self):
-        rest_client = RESTClient()
-
+    def check_transfer(self):
         read_data = ResponseDeserialization()
 
         data_store = DataStore()
-
-        # total_number_of_files_available = rest_client.__call__()[1]
-        #
-        # while self.get_file_count()["Number of files"] <= total_number_of_files_available:
-        #     print "Now attempting to retrieve files"
-        #
 
         try:
             number_of_files = self.get_local_file_count()["Number of files"]

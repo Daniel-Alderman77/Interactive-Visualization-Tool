@@ -15,8 +15,14 @@ class RESTClient:
     def get_number_of_files(self):
         return self.number_of_files
 
-    def set_number_of_files(self, x):
-        self.number_of_files = x
+    def set_number_of_files(self, file):
+        self.number_of_files = file
+
+    def get_list_of_files(self):
+        return self.list_of_files
+
+    def set_list_of_files(self, list):
+        self.list_of_files = list
 
     def get_file_count(self):
 
@@ -67,20 +73,16 @@ class RESTClient:
 
         return request
 
-    def retrieve_datafile(self):
+    def read_datafile(self):
         try:
             response = self.get_file_count()
 
             response_dict = json.loads(response.text)
 
-            number_of_files = 0
-
             if 'Number of files' in response_dict:
                 number_of_files = response_dict['Number of files']
-                # print number_of_files
 
                 list_of_files = response_dict['List of files']
-                # print list_of_files[0]
 
                 data = self.get_datafile(list_of_files[0])
 
@@ -103,6 +105,8 @@ class RESTClient:
                 data_store.prediction_cache(filename, data_file_contents)
 
                 self.set_number_of_files(number_of_files)
+
+                self.set_list_of_files(list_of_files)
 
             return True
 
