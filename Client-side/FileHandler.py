@@ -57,6 +57,13 @@ class ResponseDeserialization:
 
     def __init__(self):
         self.name = self
+        self.energy_visualizer_data = []
+
+    def get_energy_visualizer_data(self):
+        return self.energy_visualizer_data
+
+    def set_energy_visualizer_data(self, parameters):
+        self.energy_visualizer_data = parameters
 
     def parse_memory_data(self, filename):
         try:
@@ -138,7 +145,12 @@ class ResponseDeserialization:
 
             print("Time Stamp: %s" % time_stamp)
 
-            return [total_energy, energy_values, time_stamp]
+            parameters = [total_energy, energy_values, time_stamp]
+
+            self.set_energy_visualizer_data(parameters)
+
+            print self.get_energy_visualizer_data()
+
         except:
             print "No energy data available"
 

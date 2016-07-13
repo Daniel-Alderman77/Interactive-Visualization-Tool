@@ -17,22 +17,22 @@ class MainView:
         self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
         self.cpu_button.grid(row=0, column=0)
 
-        self.cpu_graph = visualizer.draw_graph(self.frame, 1, 0)
+        self.cpu_graph = visualizer.draw_energy_graph(self.frame, 1, 0)
 
         self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
         self.memory_button.grid(row=0, column=1)
 
-        self.memory_graph = visualizer.draw_graph(self.frame, 1, 1)
+        self.memory_graph = visualizer.draw_energy_graph(self.frame, 1, 1)
 
         self.jobs_button = Button(self.frame, text='Current Jobs', width=25, command=self.jobs_view)
         self.jobs_button.grid(row=2, column=0)
 
-        self.jobs_graph = visualizer.draw_graph(self.frame, 3, 0)
+        self.jobs_graph = visualizer.draw_energy_graph(self.frame, 3, 0)
 
         self.hier_button = Button(self.frame, text='Hierarchical View', width=25, command=self.hier_view)
         self.hier_button.grid(row=2, column=1)
 
-        self.hier_graph = visualizer.draw_graph(self.frame, 3, 1)
+        self.hier_graph = visualizer.draw_energy_graph(self.frame, 3, 1)
 
         self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.latency_view)
         self.latency_button.pack(side=LEFT)

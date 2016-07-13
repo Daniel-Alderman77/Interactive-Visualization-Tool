@@ -2,6 +2,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from numpy import arange, sin, pi
 
+from FileHandler import ResponseDeserialization
+
 # TODO - Implement Visualizer
 # TODO - Implement line graphs
 # TODO - Implement Guage plot
@@ -13,7 +15,11 @@ class Visualizer:
     def __init__(self):
         self.name = self
 
-    def draw_graph(self, frame, row, column):
+    def draw_energy_graph(self, frame, row, column):
+        response_deserialization = ResponseDeserialization()
+
+        print response_deserialization.get_energy_visualizer_data()
+
         figure = Figure(figsize=(3, 2), dpi=100)
         subplot = figure.add_subplot(111)
         values = arange(0.0, 3.0, 0.01)
