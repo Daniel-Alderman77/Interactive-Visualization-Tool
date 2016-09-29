@@ -29,10 +29,10 @@ class MainView:
 
         self.jobs_graph = visualizer.draw_energy_graph(self.frame, 3, 0)
 
-        self.hier_button = Button(self.frame, text='Hierarchical View', width=25, command=self.hier_view)
-        self.hier_button.grid(row=2, column=1)
+        self.energy_button = Button(self.frame, text='Energy View', width=25, command=self.energy_view)
+        self.energy_button.grid(row=2, column=1)
 
-        self.hier_graph = visualizer.draw_energy_graph(self.frame, 3, 1)
+        self.energy_graph = visualizer.draw_energy_graph(self.frame, 3, 1)
 
         self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.latency_view)
         self.latency_button.pack(side=LEFT)
@@ -51,9 +51,9 @@ class MainView:
         self.new_window = Toplevel(self.master)
         self.app = JobsView(self.new_window)
 
-    def hier_view(self):
+    def energy_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = HierView(self.new_window)
+        self.app = EnergyView(self.new_window)
 
     def latency_view(self):
         self.new_window = Toplevel(self.master)
@@ -98,11 +98,11 @@ class JobsView(SubView):
         self.close_button.pack()
 
 
-# TODO - Implement HierView UI
-class HierView(SubView):
+# TODO - Implement EnergyView UI
+class EnergyView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='HierView', width=25, command=self.close_window)
+        self.close_button = Button(self.frame, text='EnergyView', width=25, command=self.close_window)
         self.close_button.pack()
 
 
