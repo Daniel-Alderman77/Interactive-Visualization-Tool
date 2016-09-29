@@ -1,3 +1,6 @@
+import matplotlib
+matplotlib.use('TkAgg')
+
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from numpy import arange, sin, pi
@@ -20,11 +23,14 @@ class Visualizer:
 
         print response_deserialization.get_energy_visualizer_data()
 
-        figure = Figure(figsize=(3, 2), dpi=100)
+        figure = Figure(figsize=(6, 5), dpi=100)
         subplot = figure.add_subplot(111)
         values = arange(0.0, 3.0, 0.01)
         s = sin(2 * pi * values)
 
+        subplot.set_title('Tk embedding')
+        subplot.set_xlabel('X axis label')
+        subplot.set_ylabel('Y label')
         subplot.plot(values, s)
 
         # a tk.DrawingArea
