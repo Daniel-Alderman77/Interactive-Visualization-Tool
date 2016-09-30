@@ -18,6 +18,11 @@ class Visualizer:
     def __init__(self):
         self.name = self
 
+    # TODO - Implement CPU graph
+    # TODO - Implement Memory graph
+    # TODO - Implement Jobs graph
+
+    # TODO - Implement energy graph
     def draw_energy_graph(self, frame, row, column):
         response_deserialization = ResponseDeserialization()
 
@@ -37,3 +42,5 @@ class Visualizer:
         canvas = FigureCanvasTkAgg(figure, frame)
         canvas.show()
         canvas.get_tk_widget().grid(row=row, column=column)
+
+    # TODO - Implement Latency graph
