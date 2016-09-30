@@ -23,7 +23,7 @@ class Visualizer:
 
         print response_deserialization.get_energy_visualizer_data()
 
-        figure = Figure(figsize=(6, 5), dpi=100)
+        figure = Figure(figsize=(6, 5), dpi=60)
         subplot = figure.add_subplot(111)
         values = arange(0.0, 3.0, 0.01)
         s = sin(2 * pi * values)
