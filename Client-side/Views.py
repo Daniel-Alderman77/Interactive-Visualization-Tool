@@ -6,7 +6,7 @@ from matplotlib import animation
 
 
 from Tkinter import Frame, Button, Toplevel, Tk, LEFT, BOTTOM
-from Visualizer import Visualizer, LineGraph
+from Visualizer import Visualizer, LineGraph, EnergyGraph
 
 
 # TODO - Display percentage progress through number of remote files
@@ -49,7 +49,17 @@ class MainView:
         self.energy_button = Button(self.frame, text='Energy View', width=25, command=self.energy_view)
         self.energy_button.grid(row=2, column=1)
 
-        self.energy_graph = visualizer.draw_energy_graph(self.frame, 3, 1)
+        energy_graph = EnergyGraph()
+
+        # tk.DrawingArea
+        canvas = FigureCanvasTkAgg(energy_graph.fig, self.frame)
+
+        # call the animator
+        anim = animation.FuncAnimation(energy_graph.fig, energy_graph.animate, init_func=energy_graph.init, frames=200,
+                                       interval=1000, blit=False)
+
+        canvas.show()
+        canvas.get_tk_widget().grid(row=3, column=1)
 
         self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.latency_view)
         self.latency_button.pack(side=LEFT)
