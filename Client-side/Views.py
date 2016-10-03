@@ -5,8 +5,8 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
 
 
-from Tkinter import Frame, Button, Toplevel, Tk, LEFT, BOTTOM
-from Visualizer import Visualizer, LineGraph, EnergyGraph
+from Tkinter import Frame, Button, Toplevel, Tk, BOTTOM
+from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph
 
 
 # TODO - Display percentage progress through number of remote files
@@ -62,7 +62,19 @@ class MainView:
         canvas.get_tk_widget().grid(row=3, column=1)
 
         self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.latency_view)
-        self.latency_button.pack(side=LEFT)
+        self.latency_button.grid(row=5, column=0)
+
+        latency_graph = LatencyGraph()
+
+        # tk.DrawingArea
+        canvas = FigureCanvasTkAgg(latency_graph.fig, self.frame)
+
+        # call the animator
+        anim = animation.FuncAnimation(latency_graph.fig, latency_graph.animate, init_func=latency_graph.init, frames=200,
+                                       interval=1000, blit=False)
+
+        canvas.show()
+        canvas.get_tk_widget().grid(row=5)
 
         self.frame.pack()
 
