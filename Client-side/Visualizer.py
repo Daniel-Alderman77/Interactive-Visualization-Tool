@@ -56,7 +56,7 @@ class LineGraph:
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure()
+        self.fig = plt.figure(figsize=(6, 5), dpi=60)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
         self.line, = self.ax.plot([], [], lw=2)
 

@@ -35,7 +35,7 @@ class MainView:
 
         canvas.show()
         canvas.get_tk_widget().grid(row=1, column=0)
-        
+
         self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
         self.memory_button.grid(row=0, column=1)
 
