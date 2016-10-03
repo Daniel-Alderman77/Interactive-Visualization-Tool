@@ -31,7 +31,7 @@ class Visualizer:
 
         print response_deserialization.get_energy_visualizer_data()
 
-        figure = Figure(figsize=(6, 5), dpi=60)
+        figure = Figure(figsize=(6, 5), dpi=50)
         subplot = figure.add_subplot(111)
         values = arange(0.0, 3.0, 0.01)
         s = sin(2 * pi * values)
@@ -53,7 +53,7 @@ class LineGraph:
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=60)
+        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
         self.ax.set_title('Title')
         self.ax.set_xlabel('X Label')
@@ -100,7 +100,7 @@ class EnergyGraph():
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=60)
+        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
         self.ax.set_title('Energy Usage Over Time')
         self.ax.set_xlabel('Time')
@@ -147,8 +147,8 @@ class LatencyGraph:
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=60)
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
+        self.fig = plt.figure(figsize=(12, 5), dpi=50)
+        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 10))
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Latency')
         self.ax.set_ylabel('Energy Usage')
@@ -181,7 +181,7 @@ class LatencyGraph:
         y = self.randomise_values()[1]
 
         if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 10, x[-1]])
+            self.ax.set_xlim([x[-1] - 20, x[-1]])
 
         self.line.set_data(x, y)
         plt.draw()
