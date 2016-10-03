@@ -1,5 +1,7 @@
 import glob
 from lxml import etree
+import requests
+from requests.exceptions import ReadTimeout, ConnectionError
 
 from RESTClient import RESTClient
 
@@ -51,6 +53,20 @@ class WebServiceClient:
             print "File cannot be transferred"
 
             return False
+
+    def caculate_ping(self):
+        try:
+            session = requests.Session()
+
+            request = session.get('http://127.0.0.1:5000/')
+
+            print 'Ping = ', request.elapsed
+
+        except ReadTimeout:
+            print "Connection has timed out"
+
+        except ConnectionError:
+            print "Failed to establish connection to Server"
 
 
 class ResponseDeserialization:
