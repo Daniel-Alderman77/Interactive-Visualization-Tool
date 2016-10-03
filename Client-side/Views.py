@@ -5,7 +5,9 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
 
 
-from Tkinter import Frame, Button, Toplevel, Tk, BOTTOM
+from Tkinter import BOTTOM, Tk, Toplevel
+# Override the basic Tk widgets, with platform specific widgets
+from tkinter.ttk import *
 from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph
 
 
