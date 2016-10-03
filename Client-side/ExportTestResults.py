@@ -1,4 +1,5 @@
 import csv
+import time
 
 # TODO - Write 'Throughput'to file
 # TODO - Write 'Percentage of jobs completed' to file
@@ -14,14 +15,16 @@ class ExportTestResults:
         self.name = self
 
     def write_to_file(self):
-        with open('test_results/test.csv', 'wb') as test_file:
-            fieldnames = ['first_name', 'last_name']
+        date_time_str = time.strftime("%d-%m-%Y--%H-%M-%S")
+
+        with open('test_results/' + date_time_str + '.csv', 'wb') as test_file:
+            fieldnames = ['time', 'last_name']
             writer = csv.DictWriter(test_file, fieldnames=fieldnames)
 
+            time_str = time.strftime("%H-%M-%S")
+
             writer.writeheader()
-            writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-            writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
-            writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+            writer.writerow({'time': time_str, 'last_name': 'Beans'})
 
 export_test_results = ExportTestResults()
 
