@@ -1,5 +1,12 @@
+import matplotlib
+
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib import animation
+
+
 from Tkinter import Frame, Button, Toplevel, Tk, LEFT, BOTTOM
-from Visualizer import Visualizer
+from Visualizer import Visualizer, LineGraph
 
 
 # TODO - Display percentage progress through number of remote files
@@ -17,8 +24,18 @@ class MainView:
         self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
         self.cpu_button.grid(row=0, column=0)
 
-        self.cpu_graph = visualizer.draw_energy_graph(self.frame, 1, 0)
+        line_graph = LineGraph()
 
+        # tk.DrawingArea
+        canvas = FigureCanvasTkAgg(line_graph.fig, self.frame)
+
+        # call the animator
+        anim = animation.FuncAnimation(line_graph.fig, line_graph.animate, init_func=line_graph.init, frames=200,
+                                       interval=1000, blit=False)
+
+        canvas.show()
+        canvas.get_tk_widget().grid(row=1, column=0)
+        
         self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
         self.memory_button.grid(row=0, column=1)
 
