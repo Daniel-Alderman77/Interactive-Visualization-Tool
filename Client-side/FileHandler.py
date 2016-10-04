@@ -56,7 +56,7 @@ class WebServiceClient:
 
             return False
 
-    def caculate_ping(self):
+    def calculate_ping(self):
         export_test_results = ExportTestResults()
 
         try:

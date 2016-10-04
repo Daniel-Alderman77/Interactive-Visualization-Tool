@@ -29,7 +29,7 @@ class Startup:
 
         print("Number of remote files: %s" % number_of_remote_files)
 
-        web_service_client.caculate_ping()
+        web_service_client.calculate_ping()
 
         # Check file transfer has been successful
         if web_service_client.check_transfer(index) == True:
