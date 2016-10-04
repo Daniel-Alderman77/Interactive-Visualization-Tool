@@ -10,6 +10,7 @@ class WebServiceClient:
 
     def __init__(self):
         self.name = self
+        self.ping = ""
 
     def get_local_file_count(self):
         file_count = (len(glob.glob1("data_store", "*.xml")))
@@ -60,13 +61,19 @@ class WebServiceClient:
 
             request = session.get('http://127.0.0.1:5000/')
 
-            print 'Ping = ', request.elapsed
+            self.ping = request.elapsed
+
+            print 'Ping = ', self.ping
 
         except ReadTimeout:
             print "Connection has timed out"
 
+            self.ping = "ReadTimeout"
+
         except ConnectionError:
             print "Failed to establish connection to Server"
+
+            self.ping = "ConnectionError"
 
 
 class ResponseDeserialization:

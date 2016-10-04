@@ -31,6 +31,8 @@ class Startup:
 
         web_service_client.caculate_ping()
 
+        print web_service_client.ping
+
         # Check file transfer has been successful
         if web_service_client.check_transfer(index) == True:
             list_of_files = web_service_client.get_local_file_count()["List of files"]
