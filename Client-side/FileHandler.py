@@ -4,6 +4,7 @@ import requests
 from requests.exceptions import ReadTimeout, ConnectionError
 
 from RESTClient import RESTClient
+from ExportTestResults import ExportTestResults
 
 
 class WebServiceClient:
@@ -56,6 +57,8 @@ class WebServiceClient:
             return False
 
     def caculate_ping(self):
+        export_test_results = ExportTestResults()
+
         try:
             session = requests.Session()
 
@@ -65,15 +68,21 @@ class WebServiceClient:
 
             print 'Ping = ', self.ping
 
+            export_test_results.write_to_file(self.ping)
+
         except ReadTimeout:
             print "Connection has timed out"
 
             self.ping = "ReadTimeout"
 
+            export_test_results.write_to_file(self.ping)
+
         except ConnectionError:
             print "Failed to establish connection to Server"
 
             self.ping = "ConnectionError"
+
+            export_test_results.write_to_file(self.ping)
 
 
 class ResponseDeserialization:
