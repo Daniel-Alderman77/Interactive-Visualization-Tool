@@ -12,7 +12,7 @@ from matplotlib import pyplot as plt
 from FileHandler import ResponseDeserialization
 
 # TODO - Implement Visualizer
-# TODO - Implement Guage plot
+# TODO - Implement Gauge plot
 # TODO - Implement real-time plotting
 # TODO - Implement CPU graph
 # TODO - Implement Memory graph
@@ -186,3 +186,9 @@ class LatencyGraph:
         self.line.set_data(x, y)
         plt.draw()
         return self.line,
+
+
+class GaugePlot:
+
+    def __init__(self):
+        self.name = self
