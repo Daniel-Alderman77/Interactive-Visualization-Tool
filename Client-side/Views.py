@@ -98,7 +98,7 @@ class MainView:
 
     def faults_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = FaultsView(self.new_window)
+        self.app = FaultsView(self.new_window, 50)
 
 
 class SubView:
@@ -149,12 +149,17 @@ class EnergyView(SubView):
 
 # TODO - Implement FaultsView UI
 class FaultsView(SubView):
-    def __init__(self, master):
+    def __init__(self, master, progress_value):
         SubView.__init__(self, master)
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
         progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
         progress_bar.pack()
         progress_bar["maximum"] = 100
-        progress_bar["value"] = 50
+        progress_bar["value"] = progress_value
 
 
 class UserInterface:
