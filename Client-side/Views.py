@@ -5,7 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
 
 
-from Tkinter import BOTTOM, Tk, Toplevel
+from Tkinter import BOTTOM, Tk, Toplevel, HORIZONTAL
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
 from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph
@@ -151,6 +151,10 @@ class EnergyView(SubView):
 class FaultsView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = 50
 
 
 class UserInterface:
