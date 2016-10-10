@@ -63,7 +63,7 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=3, column=1)
 
-        self.latency_button = Button(self.bottom_frame, text='Latency', width=25, command=self.faults_view)
+        self.latency_button = Button(self.bottom_frame, text='Faults', width=25, command=self.faults_view)
         self.latency_button.grid(row=5, column=0)
 
         latency_graph = LatencyGraph()
@@ -98,7 +98,7 @@ class MainView:
 
     def faults_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = LatencyView(self.new_window)
+        self.app = FaultsView(self.new_window)
 
 
 class SubView:
@@ -147,12 +147,10 @@ class EnergyView(SubView):
         self.close_button.pack()
 
 
-# TODO - Implement LatencyView UI
-class LatencyView(SubView):
+# TODO - Implement FaultsView UI
+class FaultsView(SubView):
     def __init__(self, master):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='LatencyView', width=25, command=self.close_window)
-        self.close_button.pack()
 
 
 class UserInterface:
