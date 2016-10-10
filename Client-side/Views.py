@@ -82,19 +82,19 @@ class MainView:
 
     def cpu_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = CPUView(self.new_window)
+        self.app = CPUView(self.new_window, 50)
 
     def memory_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = MemoryView(self.new_window)
+        self.app = MemoryView(self.new_window, 50)
 
     def jobs_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = JobsView(self.new_window)
+        self.app = JobsView(self.new_window, 50)
 
     def energy_view(self):
         self.new_window = Toplevel(self.master)
-        self.app = EnergyView(self.new_window)
+        self.app = EnergyView(self.new_window, 50)
 
     def faults_view(self):
         self.new_window = Toplevel(self.master)
@@ -117,34 +117,62 @@ class SubView:
 
 # TODO - Implement CPUView UI
 class CPUView(SubView):
-    def __init__(self, master):
+    def __init__(self, master, progress_value):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='CpuView', width=25, command=self.close_window)
-        self.close_button.pack()
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = progress_value
 
 
 # TODO - Implement MemoryView UI
 class MemoryView(SubView):
-    def __init__(self, master):
+    def __init__(self, master, progress_value):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='MemoryView', width=25, command=self.close_window)
-        self.close_button.pack()
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = progress_value
 
 
 # TODO - Implement JobsView UI
 class JobsView(SubView):
-    def __init__(self, master):
+    def __init__(self, master, progress_value):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='JobsView', width=25, command=self.close_window)
-        self.close_button.pack()
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = progress_value
 
 
 # TODO - Implement EnergyView UI
 class EnergyView(SubView):
-    def __init__(self, master):
+    def __init__(self, master, progress_value):
         SubView.__init__(self, master)
-        self.close_button = Button(self.frame, text='EnergyView', width=25, command=self.close_window)
-        self.close_button.pack()
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = progress_value
 
 
 # TODO - Implement FaultsView UI
