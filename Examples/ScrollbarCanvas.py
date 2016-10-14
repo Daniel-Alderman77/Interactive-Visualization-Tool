@@ -1,14 +1,27 @@
 from Tkinter import *
 
 root = Tk()
-scrollbar = Scrollbar(root)
-scrollbar.pack(side=RIGHT, fill=Y)
 
-my_list = Listbox(root, yscrollcommand=scrollbar.set)
-for line in range(100):
-    my_list.insert(END, "This is line number " + str(line))
+frame = Frame(root, bd=2, relief=SUNKEN)
 
-my_list.pack(side=LEFT, fill=BOTH)
-scrollbar.config(command=my_list.yview)
+frame.grid_rowconfigure(0, weight=1)
+frame.grid_columnconfigure(0, weight=1)
+
+xscrollbar = Scrollbar(frame, orient=HORIZONTAL)
+xscrollbar.grid(row=1, column=0, sticky=E + W)
+
+yscrollbar = Scrollbar(frame)
+yscrollbar.grid(row=0, column=1, sticky=N + S)
+
+canvas = Canvas(frame, bd=0, scrollregion=(0, 0, 3000, 3000),
+                xscrollcommand=xscrollbar.set,
+                yscrollcommand=yscrollbar.set)
+
+canvas.grid(row=0, column=0, sticky=N + S + E + W)
+
+xscrollbar.config(command=canvas.xview)
+yscrollbar.config(command=canvas.yview)
+
+frame.pack()
 
 mainloop()
