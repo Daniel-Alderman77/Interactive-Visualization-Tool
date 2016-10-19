@@ -195,8 +195,6 @@ class GaugePlot:
 
     def __init__(self):
         self.name = self
-<<<<<<< HEAD
-=======
 
 
 # TODO - Implement ProgressBar
@@ -219,4 +217,3 @@ class ProgressBar:
         progress_bar["value"] = progress_value
 
         self.frame.pack()
->>>>>>> origin/Tkinter
