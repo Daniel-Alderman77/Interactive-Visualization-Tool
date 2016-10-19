@@ -191,10 +191,3 @@ class GaugePlot:
 
     def __init__(self):
         self.name = self
-
-
-# TODO - Implement ProgressBar
-class ProgressBar:
-
-    def __init__(self):
-        self.name = self
