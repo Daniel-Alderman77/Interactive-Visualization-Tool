@@ -72,8 +72,8 @@ class MainView:
         canvas = FigureCanvasTkAgg(latency_graph.fig, self.frame)
 
         # call the animator
-        anim = animation.FuncAnimation(latency_graph.fig, latency_graph.animate, init_func=latency_graph.init, frames=200,
-                                       interval=1000, blit=False)
+        anim = animation.FuncAnimation(latency_graph.fig, latency_graph.animate, init_func=latency_graph.init,
+                                       frames=200, interval=1000, blit=False)
 
         canvas.show()
         canvas.get_tk_widget().grid(row=5)

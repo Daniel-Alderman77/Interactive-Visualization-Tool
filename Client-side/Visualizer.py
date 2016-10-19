@@ -11,14 +11,10 @@ from matplotlib import pyplot as plt
 
 from FileHandler import ResponseDeserialization
 
-# TODO - Implement Visualizer
-# TODO - Implement Gauge plot
 # TODO - Implement real-time plotting
 # TODO - Implement CPU graph
 # TODO - Implement Memory graph
 # TODO - Implement Jobs graph
-# TODO - Implement Energy graph
-# TODO - Implement Latency graph
 
 
 class Visualizer:
@@ -94,6 +90,7 @@ class LineGraph:
         return self.line,
 
 
+# TODO - Implement Energy graph
 class EnergyGraph():
 
     def __init__(self):
@@ -141,6 +138,7 @@ class EnergyGraph():
         return self.line,
 
 
+# TODO - Implement Latency graph
 class LatencyGraph:
 
     def __init__(self):
@@ -188,7 +186,15 @@ class LatencyGraph:
         return self.line,
 
 
+# TODO - Implement Gauge plot
 class GaugePlot:
+
+    def __init__(self):
+        self.name = self
+
+
+# TODO - Implement ProgressBar
+class ProgressBar:
 
     def __init__(self):
         self.name = self
