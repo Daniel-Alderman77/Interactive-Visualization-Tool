@@ -8,7 +8,7 @@ from matplotlib import animation
 from Tkinter import BOTTOM, Tk, Toplevel, HORIZONTAL
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
-from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph
+from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph, ProgressBar
 
 
 # TODO - Display percentage progress through number of remote files
@@ -77,6 +77,10 @@ class MainView:
 
         canvas.show()
         canvas.get_tk_widget().grid(row=5)
+
+        progress_bar = ProgressBar()
+
+        progress_bar.draw_frame(50)
 
         self.frame.pack()
 
