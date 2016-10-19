@@ -9,6 +9,10 @@ import random
 
 from matplotlib import pyplot as plt
 
+# Override the basic Tk widgets, with platform specific widgets
+from tkinter.ttk import *
+from Tkinter import HORIZONTAL
+
 from FileHandler import ResponseDeserialization
 
 # TODO - Implement real-time plotting
@@ -198,3 +202,18 @@ class ProgressBar:
 
     def __init__(self):
         self.name = self
+        self.frame = Frame()
+
+    def draw_frame(self, progress_value):
+
+        progress_string = "Progress through simulation - " + str(progress_value) + "%"
+
+        progress_label = Label(self.frame, text=progress_string)
+        progress_label.pack()
+
+        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        progress_bar.pack()
+        progress_bar["maximum"] = 100
+        progress_bar["value"] = progress_value
+
+        self.frame.pack()
