@@ -6,7 +6,7 @@ from Views import UserInterface
 
 # Initial Loop
 # TODO - If response is successful, deserialize data, pass data to visualizer
-# TODO - Else, coldstart prediction, pass data to visulizer
+# TODO - Else, cold start prediction, pass data to visualizer
 # TODO - Exhaust file call new one
 
 # Repeated Loop
@@ -32,7 +32,7 @@ class Startup:
         web_service_client.calculate_ping()
 
         # Check file transfer has been successful
-        if web_service_client.check_transfer(index) == True:
+        if web_service_client.check_transfer(index):
             list_of_files = web_service_client.get_local_file_count()["List of files"]
 
             filename = 'data_store/' + list_of_files[index]
@@ -41,6 +41,8 @@ class Startup:
             # response_deserialization.parse_memory_data(filename)
 
             response_deserialization.parse_energy_data(filename)
+        else:
+            print "Now starting cold start prediction"
 
     def __call__(self):
         user_interface = UserInterface()
@@ -61,8 +63,10 @@ class Startup:
         # Deletes data_store directory as app closes
         try:
             shutil.rmtree('data_store')
-        except:
+        except Exception as e:
+            print(e)
             print "data_store directory cannot be deleted"
+            raise
 
 
 startup = Startup()
