@@ -19,6 +19,7 @@ from FileHandler import ResponseDeserialization
 # TODO - Implement CPU graph
 # TODO - Implement Memory graph
 # TODO - Implement Jobs graph
+# TODO - Minimise code duplication through inheritance
 
 
 class Visualizer:
