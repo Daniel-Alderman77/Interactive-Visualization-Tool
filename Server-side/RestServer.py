@@ -1,25 +1,29 @@
-import cherrypy
+import glob
+
+from flask import Flask
+from flask_restful import Resource, Api
+
+app = Flask(__name__, static_url_path='')
+api = Api(app)
 
 
-class RestServer(object):
-    exposed = True
-
-    @cherrypy.tools.accept(media='text/plain')
+class Server(Resource):
     def get(self):
-        return cherrypy.session['mystring']
+        file_count = (len(glob.glob1("static", "*.xml")))
 
-    def put(self, another_string):
-        cherrypy.session['mystring'] = another_string
+        list_of_files = []
+        if file_count > 0:
+            list_of_files = glob.glob1("static", "*.xml")
+
+        return {'Number of files': file_count,
+                'List of files': list_of_files}
+
+api.add_resource(Server, '/file_count/')
+
+
+@app.route('/data/<path:path>')
+def get_data(path):
+    return app.send_static_file(path)
 
 if __name__ == '__main__':
-    conf = {
-        '/': {
-            'request.dispatch': cherrypy.dispatch.MethodDispatcher(),
-            'tools.sessions.on': True,
-            'tools.response_headers.on': True,
-            'tools.response_headers.headers': [('Content-Type', 'text/plain')],
-        }
-    }
-    cherrypy.config.update("server.conf")
-
-    cherrypy.quickstart(RestServer(), '/', conf)
+    app.run(debug=True)
