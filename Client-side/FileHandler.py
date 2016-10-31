@@ -132,8 +132,11 @@ class ResponseDeserialization:
             print("Task 2 Memory: %s" % task2)
 
             return [total_memory, task1, task2]
-        except:
+
+        except Exception as e:
+            print(e)
             print "No memory data available"
+            raise
 
     def parse_energy_data(self, filename):
         try:
@@ -183,8 +186,10 @@ class ResponseDeserialization:
 
             print self.get_energy_visualizer_data()
 
-        except:
+        except Exception as e:
+            print(e)
             print "No energy data available"
+            raise
 
 
 # TODO - Implement Late-timing fault detection

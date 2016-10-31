@@ -63,6 +63,7 @@ class Startup:
         # Deletes data_store directory as app closes
         try:
             shutil.rmtree('data_store')
+
         except Exception as e:
             print(e)
             print "data_store directory cannot be deleted"
