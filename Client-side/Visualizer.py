@@ -27,7 +27,8 @@ class Visualizer:
     def __init__(self):
         self.name = self
 
-    def draw_energy_graph(self, frame, row, column):
+    @staticmethod
+    def draw_energy_graph(frame, row, column):
         response_deserialization = ResponseDeserialization()
 
         print response_deserialization.get_energy_visualizer_data()

@@ -16,7 +16,8 @@ class PredictionAlgorithm:
     # TODO - Implement Linear Regression
     # TODO - Implement Random Forest Regression
     # TODO - Implement Regression Analysis
-    def predict(self, xi, yi):
+    @staticmethod
+    def predict(xi, yi):
 
         # positions to extrapolate last element in array 1 position
         x = np.linspace(0, xi[-1], 1)
@@ -35,7 +36,8 @@ class DataStore:
     def __init__(self):
         self.name = self
 
-    def get_prediction_cache_file_count(self):
+    @staticmethod
+    def get_prediction_cache_file_count():
         file_count = (len(glob.glob1("data_store", "*.xml")))
 
         list_of_files = []
@@ -79,7 +81,8 @@ class DataStore:
                 data_file.write(data_file_contents)
 
     # TODO - Implement coldstart prediction
-    def coldstart_prediction(self):
+    @staticmethod
+    def coldstart_prediction():
         client = FileHandler.WebServiceClient()
 
         if client.get_local_file_count()["Number of files"] > 0:

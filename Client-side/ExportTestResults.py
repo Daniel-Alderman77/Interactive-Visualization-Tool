@@ -13,7 +13,8 @@ class ExportTestResults:
     def __init__(self):
         self.name = self
 
-    def write_to_file(self, ping):
+    @staticmethod
+    def write_to_file(ping):
         date_time_str = time.strftime("%d-%m-%Y--%H-%M-%S")
 
         with open('test_results/' + date_time_str + '.csv', 'wb') as test_file:

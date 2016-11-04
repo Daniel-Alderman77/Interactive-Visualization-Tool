@@ -13,7 +13,8 @@ class WebServiceClient:
         self.name = self
         self.ping = ""
 
-    def get_local_file_count(self):
+    @staticmethod
+    def get_local_file_count():
         file_count = (len(glob.glob1("data_store", "*.xml")))
 
         list_of_files = []
@@ -23,11 +24,12 @@ class WebServiceClient:
         return {'Number of files': file_count,
                 'List of files': list_of_files}
 
-    def get_remote_file_count(self, index):
+    @staticmethod
+    def get_remote_file_count(index):
         rest_client = RESTClient()
 
         try:
-            if rest_client.read_datafile(index) == True:
+            if rest_client.read_datafile(index):
                 print "Connection is successful"
 
                 number_of_remote_files = rest_client.get_number_of_files()
@@ -97,7 +99,8 @@ class ResponseDeserialization:
     def set_energy_visualizer_data(self, parameters):
         self.energy_visualizer_data = parameters
 
-    def parse_memory_data(self, filename):
+    @staticmethod
+    def parse_memory_data(filename):
         try:
             total_memory = None
             task1 = None
@@ -159,7 +162,7 @@ class ResponseDeserialization:
 
                     energy_values['energy'].append(energy_value)
 
-                    total_energy = int(energy_value) + total_energy
+                    total_energy += int(energy_value)
 
             # print len(energy_values)
             #

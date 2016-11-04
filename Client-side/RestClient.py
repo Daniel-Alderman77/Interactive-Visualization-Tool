@@ -24,7 +24,8 @@ class RESTClient:
     def set_list_of_files(self, list):
         self.list_of_files = list
 
-    def get_file_count(self):
+    @staticmethod
+    def get_file_count():
 
         request = None
 
@@ -48,7 +49,8 @@ class RESTClient:
 
         return request
 
-    def get_datafile(self, argument):
+    @staticmethod
+    def get_datafile(argument):
         request = None
 
         try:
