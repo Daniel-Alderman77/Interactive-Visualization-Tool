@@ -137,7 +137,8 @@ class ResponseDeserialization:
             print "No memory data available"
             raise
 
-    def parse_energy_data(self, filename):
+    @staticmethod
+    def parse_energy_data(filename):
         try:
             energy_values = {'node_ID': [], 'energy': []}
 

@@ -1,5 +1,3 @@
-import os
-
 import matplotlib
 matplotlib.use('TkAgg')
 
@@ -14,8 +12,6 @@ from matplotlib import pyplot as plt
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
 from Tkinter import HORIZONTAL
-
-from FileHandler import ResponseDeserialization
 
 # TODO - Implement real-time plotting
 # TODO - Implement CPU graph
@@ -102,7 +98,7 @@ class EnergyGraph():
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(6, 5), dpi=50)
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('Energy Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Energy Usage')
@@ -136,10 +132,10 @@ class EnergyGraph():
         with open(pickle_file, 'rb') as pickle:
             energy_data = cPickle.load(pickle)
 
-        print energy_data
+        print energy_data[1]['energy'][0]
 
         x = self.randomise_values()[0]
-        y = self.randomise_values()[1]
+        y = energy_data[1]['energy'][0]
 
         if x[-1] > self.ax.get_xlim()[1]:
             self.ax.set_xlim([x[-1] - 10, x[-1]])

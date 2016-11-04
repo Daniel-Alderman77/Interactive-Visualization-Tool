@@ -5,7 +5,6 @@ from Views import UserInterface
 
 
 # Initial Loop
-# TODO - If response is successful, deserialize data, pass data to visualizer
 # TODO - Else, cold start prediction, pass data to visualizer
 # TODO - Exhaust file call new one
 
