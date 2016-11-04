@@ -1,10 +1,12 @@
+import os
+
 import matplotlib
 matplotlib.use('TkAgg')
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from numpy import arange, sin, pi
-
+import cPickle
 import random
 
 from matplotlib import pyplot as plt
@@ -129,7 +131,12 @@ class EnergyGraph():
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        # Read file
+        pickle_file = 'visualizer_cache/energy_data.p'
+        # Read data file from cache
+        with open(pickle_file, 'rb') as pickle:
+            energy_data = cPickle.load(pickle)
+
+        print energy_data
 
         x = self.randomise_values()[0]
         y = self.randomise_values()[1]

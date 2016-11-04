@@ -1,5 +1,6 @@
 import glob
 import cPickle
+import os
 
 from lxml import etree
 import requests
@@ -180,9 +181,21 @@ class ResponseDeserialization:
 
             energy_data = [total_energy, energy_values, time_stamp]
 
-            # Write data to file
-            with open('visualizer_cache/energy_data.p', 'wb') as fp:
-                cPickle.dump(energy_data, fp)
+            pickle_name = 'visualizer_cache/energy_data.p'
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open('visualizer_cache/energy_data.p', 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
+
+            else:
+                # Pickle data to a new file
+                with open('visualizer_cache/energy_data.p', 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
 
         except Exception as e:
             print(e)
