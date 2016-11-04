@@ -1,4 +1,6 @@
 import glob
+import cPickle
+
 from lxml import etree
 import requests
 from requests.exceptions import ReadTimeout, ConnectionError
@@ -91,13 +93,6 @@ class ResponseDeserialization:
 
     def __init__(self):
         self.name = self
-        self.energy_visualizer_data = []
-
-    def get_energy_visualizer_data(self):
-        return self.energy_visualizer_data
-
-    def set_energy_visualizer_data(self, parameters):
-        self.energy_visualizer_data = parameters
 
     @staticmethod
     def parse_memory_data(filename):
@@ -183,11 +178,11 @@ class ResponseDeserialization:
 
             print("Time Stamp: %s" % time_stamp)
 
-            parameters = [total_energy, energy_values, time_stamp]
+            energy_data = [total_energy, energy_values, time_stamp]
 
-            self.set_energy_visualizer_data(parameters)
-
-            print self.get_energy_visualizer_data()
+            # Write data to file
+            with open('visualizer_cache/energy_data.p', 'wb') as fp:
+                cPickle.dump(energy_data, fp)
 
         except Exception as e:
             print(e)

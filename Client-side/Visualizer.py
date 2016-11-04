@@ -29,10 +29,6 @@ class Visualizer:
 
     @staticmethod
     def draw_energy_graph(frame, row, column):
-        response_deserialization = ResponseDeserialization()
-
-        print response_deserialization.get_energy_visualizer_data()
-
         figure = Figure(figsize=(6, 5), dpi=50)
         subplot = figure.add_subplot(111)
         values = arange(0.0, 3.0, 0.01)
@@ -133,6 +129,8 @@ class EnergyGraph():
 
     # animation function.  This is called sequentially
     def animate(self, i):
+        # Read file
+
         x = self.randomise_values()[0]
         y = self.randomise_values()[1]
 
