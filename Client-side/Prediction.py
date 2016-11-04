@@ -80,9 +80,9 @@ class DataStore:
             with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
                 data_file.write(data_file_contents)
 
-    # TODO - Implement coldstart prediction
+    # TODO - Implement cold start prediction
     @staticmethod
-    def coldstart_prediction():
+    def cold_start_prediction():
         client = FileHandler.WebServiceClient()
 
         if client.get_local_file_count()["Number of files"] > 0:

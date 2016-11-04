@@ -19,7 +19,8 @@ class Startup:
     def __init__(self):
         self.name = self
 
-    def initial_loop(self, index):
+    @staticmethod
+    def initial_loop(index):
         web_service_client = WebServiceClient()
 
         response_deserialization = ResponseDeserialization()
