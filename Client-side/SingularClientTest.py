@@ -13,6 +13,7 @@ from Views import UserInterface
 # TODO - Else, use prediction
 # TODO - Exhaust file call new one
 # TODO - Repeat till all files have retrieved from sever-side and rendered to user
+
 class Startup:
 
     def __init__(self):

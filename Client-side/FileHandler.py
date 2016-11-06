@@ -95,6 +95,9 @@ class ResponseDeserialization:
     def __init__(self):
         self.name = self
 
+    # TODO - Implement parse_cpu_data
+
+    # TODO - Implement parse_memory_data
     @staticmethod
     def parse_memory_data(filename):
         try:
@@ -111,8 +114,6 @@ class ResponseDeserialization:
                     total_memory = content.get('Value')
 
             actions = root.findall('.//LOG-ACTION')
-
-            # TODO - Implement for loop to search for values based on number nodes in file
 
             log_action_contents = actions[0].getchildren()
             for content in log_action_contents:
@@ -136,6 +137,8 @@ class ResponseDeserialization:
             print(e)
             print "No memory data available"
             raise
+
+    # TODO - Implement parse_jobs_data
 
     @staticmethod
     def parse_energy_data(filename):
