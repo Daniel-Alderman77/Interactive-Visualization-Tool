@@ -1,4 +1,5 @@
 import matplotlib
+# Required to be imported and delcared first in this order to prevent Tk canvas crash
 matplotlib.use('TkAgg')
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
