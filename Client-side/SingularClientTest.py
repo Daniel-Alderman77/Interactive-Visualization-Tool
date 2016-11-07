@@ -1,4 +1,5 @@
-import shutil
+import glob
+import os
 
 from FileHandler import WebServiceClient, ResponseDeserialization
 from Views import UserInterface
@@ -42,6 +43,7 @@ class Startup:
             # response_deserialization.parse_memory_data(filename)
 
             response_deserialization.parse_energy_data(filename)
+
         else:
             print "Now starting cold start prediction"
 
@@ -61,14 +63,18 @@ class Startup:
         # End UI loop
         user_interface.main_loop(root)
 
-        # Deletes data_store directory as app closes
-        try:
-            shutil.rmtree('data_store')
+        # Load filenames in data_store in array
+        data_store = glob.glob1("data_store", "*.xml")
 
-        except Exception as e:
-            print(e)
-            print "data_store directory cannot be deleted"
-            raise
+        # Remove last element so this file can be used for cold start prediction
+        data_store.pop([-1])
+
+        # Deletes each file named in the list
+        for data_file in data_store:
+            try:
+                os.remove(data_file)
+            except OSError:
+                pass
 
 
 startup = Startup()
