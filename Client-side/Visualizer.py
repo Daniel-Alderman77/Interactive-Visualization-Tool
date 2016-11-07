@@ -91,7 +91,7 @@ class LineGraph:
 
 
 # TODO - Implement Energy graph
-class EnergyGraph():
+class EnergyGraph:
 
     def __init__(self):
         self.name = self

@@ -15,7 +15,7 @@ class ExportTestResults:
 
     @staticmethod
     def write_to_file(ping):
-        date_time_str = time.strftime("%d-%m-%Y--%H-%M-%S")
+        date_time_str = time.strftime("%d-%m-%Y--%H:%M:%S")
 
         with open('test_results/' + date_time_str + '.csv', 'wb') as test_file:
             fieldnames = ['time', 'ping']
