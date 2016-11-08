@@ -129,12 +129,26 @@ class JobsGraph(LineGraph):
         LineGraph.__init__(self)
         self.name = self
 
-        # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 100))
+        # Set up the figure and the axis
+        self.ax = plt.axes(xlim=(0, 2), ylim=(0, 50))
         self.ax.set_title('Number of jobs running over time')
-        self.ax.set_xlabel('Time')
-        self.ax.set_ylabel('Number of jobs runnning')
+        self.ax.set_xlabel('Machines')
+        self.ax.set_ylabel('Number of jobs running')
+
+        # Set up line animated line to be plotted
         self.line, = self.ax.plot([], [], lw=2)
+
+        # Set up bar charts
+        width = 0.35
+
+        means1 = 40
+        bar1 = self.ax.bar(0, means1, width, color='r')
+
+        means2 = 25
+        bar2 = self.ax.bar(1, means2, width, color='y')
+
+        # Set up legend
+        self.ax.legend((bar1[0], bar2[0], self.line), ('Node 1', 'Node 2', 'Average Number of Jobs'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
