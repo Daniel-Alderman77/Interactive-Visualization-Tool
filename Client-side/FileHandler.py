@@ -98,60 +98,57 @@ class ResponseDeserialization:
     @staticmethod
     def parse_cpu_data(filename):
         try:
-            energy_values = {'node_ID': [], 'energy': []}
+            cpu_values = []
 
-            total_energy = 0
+            tree = etree.parse(filename)
+            root = tree.getroot()
 
-            root = etree.parse(filename)
+            nodes = root[0]
+            for node in nodes:
+                if node.tag == 'LOG-NODE':
+                    log_nodes = node
+                    machine_id = node.get('ID')
 
-            properties = root.findall('.//Property')
+                    properties = log_nodes.findall('.//Property')
 
-            for property in properties:
-                if property.get('Name') == 'ID':
-                    node_id = property.get('Value')
+                    for property in properties:
+                        if property.get('Name') == 'T_out':
+                            cpu_time = property.get('Value')
 
-                    energy_values['node_ID'].append(node_id)
+                            cpu_values.append({machine_id: cpu_time})
 
-                if property.get('Name') == 'Energy':
-                    energy_value = property.get('Value')
+            print("CPU Time: %s" % cpu_values)
 
-                    energy_values['energy'].append(energy_value)
-
-                    total_energy += int(energy_value)
-
-            # Calculate total energy usage
-            print("Total Energy: %s" % total_energy)
-
-            log_nodes = root.findall('.//LOG-NODE')
-
-            first_log_node = log_nodes[0]
-
-            time_stamp = first_log_node.get('Time')
-
-            print("Time Stamp: %s" % time_stamp)
-
-            energy_data = [total_energy, energy_values, time_stamp]
-
-            pickle_name = 'visualizer_cache/energy_data.p'
-
-            # Check with pickle exists
-            if os.path.isfile(pickle_name):
-                # If the pickle exists delete ut
-                os.remove(pickle_name)
-
-                # And create new pickle file
-                with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(energy_data, pickle)
-
-            else:
-                # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
-
-                # Pickle data to a new file
-                with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(energy_data, pickle)
+            # log_nodes = root.findall('.//LOG-NODE')
+            #
+            # first_log_node = log_nodes[0]
+            #
+            # time_stamp = first_log_node.get('Time')
+            #
+            # print("Time Stamp: %s" % time_stamp)
+            #
+            # energy_data = [total_energy, energy_values, time_stamp]
+            #
+            # pickle_name = 'visualizer_cache/energy_data.p'
+            #
+            # # Check with pickle exists
+            # if os.path.isfile(pickle_name):
+            #     # If the pickle exists delete ut
+            #     os.remove(pickle_name)
+            #
+            #     # And create new pickle file
+            #     with open(pickle_name, 'wb') as pickle:
+            #         cPickle.dump(energy_data, pickle)
+            #
+            # else:
+            #     # If visualizer_cache doesnt't exist create it
+            #     directory = 'visualizer_cache'
+            #     if not os.path.exists(directory):
+            #         os.makedirs(directory)
+            #
+            #     # Pickle data to a new file
+            #     with open(pickle_name, 'wb') as pickle:
+            #         cPickle.dump(energy_data, pickle)
 
         except Exception as e:
             print(e)
