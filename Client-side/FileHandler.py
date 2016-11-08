@@ -139,7 +139,73 @@ class ResponseDeserialization:
             raise
 
     # TODO - Implement parse_jobs_data
+    @staticmethod
+    def parse_jobs_data(filename):
+        try:
+            energy_values = {'node_ID': [], 'energy': []}
 
+            total_energy = 0
+
+            root = etree.parse(filename)
+
+            properties = root.findall('.//Property')
+
+            for property in properties:
+                if property.get('Name') == 'ID':
+                    node_id = property.get('Value')
+
+                    energy_values['node_ID'].append(node_id)
+
+                if property.get('Name') == 'Energy':
+                    energy_value = property.get('Value')
+
+                    energy_values['energy'].append(energy_value)
+
+                    total_energy += int(energy_value)
+
+            # print len(energy_values)
+            #
+            # print energy_values
+            #
+            # print energy_values['node_ID'][0]
+            #
+            # print energy_values['energy'][0]
+
+            # Calculate total energy usage
+            print("Total Energy: %s" % total_energy)
+
+            log_nodes = root.findall('.//LOG-NODE')
+
+            first_log_node = log_nodes[0]
+
+            time_stamp = first_log_node.get('Time')
+
+            print("Time Stamp: %s" % time_stamp)
+
+            energy_data = [total_energy, energy_values, time_stamp]
+
+            pickle_name = 'visualizer_cache/jobs_data.p'
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
+
+            else:
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
+
+        except Exception as e:
+            print(e)
+            print "No energy data available"
+            raise
+
+    # TODO - Implement parse_energy_data
     @staticmethod
     def parse_energy_data(filename):
         try:
@@ -193,12 +259,12 @@ class ResponseDeserialization:
                 os.remove(pickle_name)
 
                 # And create new pickle file
-                with open('visualizer_cache/energy_data.p', 'wb') as pickle:
+                with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(energy_data, pickle)
 
             else:
                 # Pickle data to a new file
-                with open('visualizer_cache/energy_data.p', 'wb') as pickle:
+                with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(energy_data, pickle)
 
         except Exception as e:
