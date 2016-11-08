@@ -138,7 +138,6 @@ class ResponseDeserialization:
             print "No memory data available"
             raise
 
-    # TODO - Implement parse_jobs_data
     @staticmethod
     def parse_jobs_data(filename):
         try:
@@ -200,7 +199,6 @@ class ResponseDeserialization:
             print "No energy data available"
             raise
 
-    # TODO - Implement parse_energy_data
     @staticmethod
     def parse_energy_data(filename):
         try:
