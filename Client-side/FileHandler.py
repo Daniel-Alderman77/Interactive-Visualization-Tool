@@ -143,6 +143,7 @@ class ResponseDeserialization:
     def parse_jobs_data(filename):
         try:
             job_values = []
+            total_machines = 0
 
             tree = etree.parse(filename)
             root = tree.getroot()
@@ -161,38 +162,41 @@ class ResponseDeserialization:
 
                             job_values.append({machine_id: job_id})
 
+                    total_machines += 1
+
             print job_values
 
-        #
-        #     # Calculate total energy usage
-        #     print("Total Energy: %s" % total_energy)
-        #
-        #     log_nodes = root.findall('.//LOG-NODE')
-        #
-        #     first_log_node = log_nodes[0]
-        #
-        #     time_stamp = first_log_node.get('Time')
-        #
-        #     print("Time Stamp: %s" % time_stamp)
-        #
-        #     energy_data = [total_energy, energy_values, time_stamp]
-        #
-        #     pickle_name = 'visualizer_cache/jobs_data.p'
-        #
-        #     # Check with pickle exists
-        #     if os.path.isfile(pickle_name):
-        #         # If the pickle exists delete ut
-        #         os.remove(pickle_name)
-        #
-        #         # And create new pickle file
-        #         with open(pickle_name, 'wb') as pickle:
-        #             cPickle.dump(energy_data, pickle)
-        #
-        #     else:
-        #         # Pickle data to a new file
-        #         with open(pickle_name, 'wb') as pickle:
-        #             cPickle.dump(energy_data, pickle)
-        #
+            # Calculate total number of machines
+            print("Total Number of Machines: %s" % total_machines)
+
+            # Calculate total number of jobs
+            total_jobs = len(job_values)
+            print("Total Number of Jobs: %s" % total_jobs)
+
+            # Calculate time stamp
+            log_nodes = root.findall('.//LOG-NODE')
+            first_log_node = log_nodes[0]
+            time_stamp = first_log_node.get('Time')
+            print("Time Stamp: %s" % time_stamp)
+
+            jobs_data = [total_machines, total_jobs, job_values, time_stamp]
+
+            pickle_name = 'visualizer_cache/jobs_data.p'
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(jobs_data, pickle)
+
+            else:
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(jobs_data, pickle)
+
         except Exception as e:
             print(e)
             print "No energy data available"
