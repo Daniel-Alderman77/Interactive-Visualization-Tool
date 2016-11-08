@@ -18,7 +18,6 @@ from Tkinter import HORIZONTAL
 # TODO - Implement CPU graph
 # TODO - Implement Memory graph
 # TODO - Implement Jobs graph
-# TODO - Minimise code duplication through inheritance
 
 
 class Visualizer:
@@ -82,6 +81,111 @@ class LineGraph:
     def animate(self, i):
         x = self.randomise_values()[0]
         y = self.randomise_values()[1]
+
+        if x[-1] > self.ax.get_xlim()[1]:
+            self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+        self.line.set_data(x, y)
+        plt.draw()
+        return self.line,
+
+
+# TODO - Implement CPU graph
+class CPUGraph(LineGraph):
+
+    def __init__(self):
+        LineGraph.__init__(self)
+        self.name = self
+
+        # First set up the figure, the axis, and the plot element we want to animate
+        self.fig = plt.figure(figsize=(6, 5), dpi=50)
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax.set_title('CPU Usage Over Time')
+        self.ax.set_xlabel('Time')
+        self.ax.set_ylabel('CPU Usage')
+        self.line, = self.ax.plot([], [], lw=2)
+
+    # animation function.  This is called sequentially
+    def animate(self, i):
+        pickle_file = 'visualizer_cache/energy_data.p'
+        # Read data file from cache
+        with open(pickle_file, 'rb') as pickle:
+            energy_data = cPickle.load(pickle)
+
+        print energy_data[1]['energy'][0]
+
+        x = self.randomise_values()[0]
+        y = energy_data[1]['energy'][0]
+
+        if x[-1] > self.ax.get_xlim()[1]:
+            self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+        self.line.set_data(x, y)
+        plt.draw()
+        return self.line,
+
+
+# TODO - Implement Memory graph
+class MemoryGraph(LineGraph):
+
+    def __init__(self):
+        LineGraph.__init__(self)
+        self.name = self
+
+        # First set up the figure, the axis, and the plot element we want to animate
+        self.fig = plt.figure(figsize=(6, 5), dpi=50)
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax.set_title('Memory Usage Over Time')
+        self.ax.set_xlabel('Time')
+        self.ax.set_ylabel('Memory Usage')
+        self.line, = self.ax.plot([], [], lw=2)
+
+    # animation function.  This is called sequentially
+    def animate(self, i):
+        pickle_file = 'visualizer_cache/energy_data.p'
+        # Read data file from cache
+        with open(pickle_file, 'rb') as pickle:
+            energy_data = cPickle.load(pickle)
+
+        print energy_data[1]['energy'][0]
+
+        x = self.randomise_values()[0]
+        y = energy_data[1]['energy'][0]
+
+        if x[-1] > self.ax.get_xlim()[1]:
+            self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+        self.line.set_data(x, y)
+        plt.draw()
+        return self.line,
+
+
+# TODO - Implement Jobs graph
+class JobsGraph(LineGraph):
+
+    def __init__(self):
+        LineGraph.__init__(self)
+        self.name = self
+
+        # First set up the figure, the axis, and the plot element we want to animate
+        self.fig = plt.figure(figsize=(6, 5), dpi=50)
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax.set_title('Number of jobs running over time')
+        self.ax.set_xlabel('Time')
+        self.ax.set_ylabel('Number of jobs runnning')
+        self.line, = self.ax.plot([], [], lw=2)
+
+    # animation function.  This is called sequentially
+    def animate(self, i):
+        pickle_file = 'visualizer_cache/energy_data.p'
+        # Read data file from cache
+        with open(pickle_file, 'rb') as pickle:
+            energy_data = cPickle.load(pickle)
+
+        print energy_data[1]['energy'][0]
+
+        x = self.randomise_values()[0]
+        y = energy_data[1]['energy'][0]
 
         if x[-1] > self.ax.get_xlim()[1]:
             self.ax.set_xlim([x[-1] - 10, x[-1]])
