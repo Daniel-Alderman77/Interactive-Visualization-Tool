@@ -119,36 +119,34 @@ class ResponseDeserialization:
 
             print("CPU Time: %s" % cpu_values)
 
-            # log_nodes = root.findall('.//LOG-NODE')
-            #
-            # first_log_node = log_nodes[0]
-            #
-            # time_stamp = first_log_node.get('Time')
-            #
-            # print("Time Stamp: %s" % time_stamp)
-            #
-            # energy_data = [total_energy, energy_values, time_stamp]
-            #
-            # pickle_name = 'visualizer_cache/energy_data.p'
-            #
-            # # Check with pickle exists
-            # if os.path.isfile(pickle_name):
-            #     # If the pickle exists delete ut
-            #     os.remove(pickle_name)
-            #
-            #     # And create new pickle file
-            #     with open(pickle_name, 'wb') as pickle:
-            #         cPickle.dump(energy_data, pickle)
-            #
-            # else:
-            #     # If visualizer_cache doesnt't exist create it
-            #     directory = 'visualizer_cache'
-            #     if not os.path.exists(directory):
-            #         os.makedirs(directory)
-            #
-            #     # Pickle data to a new file
-            #     with open(pickle_name, 'wb') as pickle:
-            #         cPickle.dump(energy_data, pickle)
+            # Calculate time stamp
+            log_nodes = root.findall('.//LOG-NODE')
+            first_log_node = log_nodes[0]
+            time_stamp = first_log_node.get('Time')
+            print("Time Stamp: %s" % time_stamp)
+
+            cpu_data = [cpu_values, time_stamp]
+
+            pickle_name = 'visualizer_cache/cpu_data.p'
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(cpu_data, pickle)
+
+            else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(cpu_data, pickle)
 
         except Exception as e:
             print(e)
