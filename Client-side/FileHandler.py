@@ -144,6 +144,11 @@ class ResponseDeserialization:
                     cPickle.dump(energy_data, pickle)
 
             else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(energy_data, pickle)
@@ -246,6 +251,7 @@ class ResponseDeserialization:
                     cPickle.dump(jobs_data, pickle)
 
             else:
+                # If visualizer_cache doesnt't exist create it
                 directory = 'visualizer_cache'
                 if not os.path.exists(directory):
                     os.makedirs(directory)
@@ -308,6 +314,11 @@ class ResponseDeserialization:
                     cPickle.dump(energy_data, pickle)
 
             else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(energy_data, pickle)
