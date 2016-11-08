@@ -1,13 +1,5 @@
-import matplotlib
-# Required to be imported and delcared first in this order to prevent Tk canvas crash
-matplotlib.use('TkAgg')
-
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
-from numpy import arange, sin, pi
 import cPickle
 import random
-
 from matplotlib import pyplot as plt
 
 # Override the basic Tk widgets, with platform specific widgets
