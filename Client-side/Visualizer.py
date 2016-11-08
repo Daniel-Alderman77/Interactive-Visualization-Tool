@@ -62,7 +62,7 @@ class CPUGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 500))
         self.ax.set_title('CPU Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('CPU Usage')
@@ -70,15 +70,16 @@ class CPUGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/energy_data.p'
+        pickle_file = 'visualizer_cache/cpu_data.p'
         # Read data file from cache
         with open(pickle_file, 'rb') as pickle:
-            energy_data = cPickle.load(pickle)
+            cpu_data = cPickle.load(pickle)
 
-        print("Energy value: %s" % energy_data[1]['energy'][0])
+        cpu_value = cpu_data[0][0]['1']
+        print("Energy value: %s" % cpu_value)
 
         x = self.randomise_values()[0]
-        y = energy_data[1]['energy'][0]
+        y = cpu_value
 
         if x[-1] > self.ax.get_xlim()[1]:
             self.ax.set_xlim([x[-1] - 10, x[-1]])
