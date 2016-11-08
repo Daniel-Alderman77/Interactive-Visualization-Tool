@@ -150,8 +150,16 @@ class ResponseDeserialization:
             nodes = root[0]
             for node in nodes:
                 if node.tag == 'LOG-NODE':
-                    log_node = node.get('ID')
-                    job_values.append(log_node)
+                    log_nodes = node
+                    machine_id = node.get('ID')
+
+                    properties = log_nodes.findall('.//Property')
+
+                    for property in properties:
+                        if property.get('Name') == 'ID':
+                            job_id = property.get('Value')
+
+                            job_values.append({machine_id: job_id})
 
             print job_values
 
