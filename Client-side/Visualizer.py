@@ -20,36 +20,13 @@ from Tkinter import HORIZONTAL
 # TODO - Implement Jobs graph
 
 
-class Visualizer:
-
-    def __init__(self):
-        self.name = self
-
-    @staticmethod
-    def draw_energy_graph(frame, row, column):
-        figure = Figure(figsize=(6, 5), dpi=50)
-        subplot = figure.add_subplot(111)
-        values = arange(0.0, 3.0, 0.01)
-        s = sin(2 * pi * values)
-
-        subplot.set_title('Tk embedding')
-        subplot.set_xlabel('X axis label')
-        subplot.set_ylabel('Y label')
-        subplot.plot(values, s)
-
-        # a tk.DrawingArea
-        canvas = FigureCanvasTkAgg(figure, frame)
-        canvas.show()
-        canvas.get_tk_widget().grid(row=row, column=column)
-
-
 class LineGraph:
 
     def __init__(self):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=50)
+        self.fig = plt.figure(figsize=(7, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
         self.ax.set_title('Title')
         self.ax.set_xlabel('X Label')
@@ -98,7 +75,6 @@ class CPUGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('CPU Usage Over Time')
         self.ax.set_xlabel('Time')
@@ -133,7 +109,6 @@ class MemoryGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('Memory Usage Over Time')
         self.ax.set_xlabel('Time')
@@ -168,7 +143,6 @@ class JobsGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('Number of jobs running over time')
         self.ax.set_xlabel('Time')
@@ -203,7 +177,6 @@ class EnergyGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(6, 5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('Energy Usage Over Time')
         self.ax.set_xlabel('Time')

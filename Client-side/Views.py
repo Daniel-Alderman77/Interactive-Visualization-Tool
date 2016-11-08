@@ -8,13 +8,12 @@ from matplotlib import animation
 from Tkinter import BOTTOM, Tk, Toplevel, HORIZONTAL
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
-from Visualizer import Visualizer, LineGraph, EnergyGraph, LatencyGraph, ProgressBar
+from Visualizer import CPUGraph, MemoryGraph, JobsGraph, EnergyGraph, LatencyGraph, ProgressBar
 
 
 # TODO - Display percentage progress through number of remote files
 class MainView:
     def __init__(self, master):
-        visualizer = Visualizer()
 
         self.master = master
 
@@ -26,13 +25,13 @@ class MainView:
         self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
         self.cpu_button.grid(row=0, column=0)
 
-        line_graph = LineGraph()
+        cpu_graph = CPUGraph()
 
         # tk.DrawingArea
-        canvas = FigureCanvasTkAgg(line_graph.fig, self.frame)
+        canvas = FigureCanvasTkAgg(cpu_graph.fig, self.frame)
 
         # call the animator
-        anim = animation.FuncAnimation(line_graph.fig, line_graph.animate, init_func=line_graph.init, frames=200,
+        anim = animation.FuncAnimation(cpu_graph.fig, cpu_graph.animate, init_func=cpu_graph.init, frames=200,
                                        interval=1000, blit=False)
 
         canvas.show()
@@ -41,12 +40,32 @@ class MainView:
         self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
         self.memory_button.grid(row=0, column=1)
 
-        self.memory_graph = visualizer.draw_energy_graph(self.frame, 1, 1)
+        memory_graph = MemoryGraph()
+
+        # tk.DrawingArea
+        canvas = FigureCanvasTkAgg(memory_graph.fig, self.frame)
+
+        # call the animator
+        anim = animation.FuncAnimation(memory_graph.fig, memory_graph.animate, init_func=memory_graph.init, frames=200,
+                                       interval=1000, blit=False)
+
+        canvas.show()
+        canvas.get_tk_widget().grid(row=1, column=1)
 
         self.jobs_button = Button(self.frame, text='Current Jobs', width=25, command=self.jobs_view)
         self.jobs_button.grid(row=2, column=0)
 
-        self.jobs_graph = visualizer.draw_energy_graph(self.frame, 3, 0)
+        jobs_graph = JobsGraph()
+
+        # tk.DrawingArea
+        canvas = FigureCanvasTkAgg(jobs_graph.fig, self.frame)
+
+        # call the animator
+        anim = animation.FuncAnimation(jobs_graph.fig, jobs_graph.animate, init_func=jobs_graph.init, frames=200,
+                                       interval=1000, blit=False)
+
+        canvas.show()
+        canvas.get_tk_widget().grid(row=3, column=0)
 
         self.energy_button = Button(self.frame, text='Energy View', width=25, command=self.energy_view)
         self.energy_button.grid(row=2, column=1)
