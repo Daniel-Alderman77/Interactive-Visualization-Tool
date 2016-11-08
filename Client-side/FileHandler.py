@@ -94,7 +94,6 @@ class ResponseDeserialization:
     def __init__(self):
         self.name = self
 
-    # TODO - Implement parse_cpu_data
     @staticmethod
     def parse_cpu_data(filename):
         try:
