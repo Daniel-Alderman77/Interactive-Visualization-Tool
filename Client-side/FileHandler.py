@@ -164,8 +164,6 @@ class ResponseDeserialization:
 
                     total_machines += 1
 
-            print job_values
-
             # Calculate total number of machines
             print("Total Number of Machines: %s" % total_machines)
 

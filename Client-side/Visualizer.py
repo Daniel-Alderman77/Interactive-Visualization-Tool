@@ -130,7 +130,7 @@ class JobsGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 100))
         self.ax.set_title('Number of jobs running over time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Number of jobs runnning')
@@ -138,15 +138,16 @@ class JobsGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/energy_data.p'
+        pickle_file = 'visualizer_cache/jobs_data.p'
         # Read data file from cache
         with open(pickle_file, 'rb') as pickle:
-            energy_data = cPickle.load(pickle)
+            jobs_data = cPickle.load(pickle)
 
-        print("Energy value: %s" % energy_data[1]['energy'][0])
+        average_jobs = jobs_data[1] / jobs_data[0]
+        print("Average number of jobs: %s" % average_jobs)
 
         x = self.randomise_values()[0]
-        y = energy_data[1]['energy'][0]
+        y = average_jobs
 
         if x[-1] > self.ax.get_xlim()[1]:
             self.ax.set_xlim([x[-1] - 10, x[-1]])
