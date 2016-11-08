@@ -6,11 +6,6 @@ from matplotlib import pyplot as plt
 from tkinter.ttk import *
 from Tkinter import HORIZONTAL
 
-# TODO - Implement real-time plotting
-# TODO - Implement CPU graph
-# TODO - Implement Memory graph
-# TODO - Implement Jobs graph
-
 
 class LineGraph:
 
