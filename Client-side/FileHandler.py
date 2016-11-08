@@ -1,7 +1,6 @@
 import glob
 import cPickle
 import os
-
 from lxml import etree
 import requests
 from requests.exceptions import ReadTimeout, ConnectionError
@@ -247,6 +246,10 @@ class ResponseDeserialization:
                     cPickle.dump(jobs_data, pickle)
 
             else:
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(jobs_data, pickle)
