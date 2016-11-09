@@ -71,8 +71,10 @@ class DataStore:
 
                 print "New file " + filename + " written as replacement"
 
-            except:
+            except Exception as e:
+                print(e)
                 print "File cannot be removed"
+                raise
 
         else:
             print "Less than 4 files in prediction_cache"

@@ -37,8 +37,11 @@ class WebServiceClient:
                 number_of_remote_files = rest_client.get_number_of_files()
 
                 return number_of_remote_files
-        except:
+
+        except Exception as e:
+            print(e)
             print "Server is unavailable"
+            raise
 
     def check_transfer(self, index):
         try:
@@ -55,10 +58,10 @@ class WebServiceClient:
 
                 return False
 
-        except:
+        except Exception as e:
+            print(e)
             print "File cannot be transferred"
-
-            return False
+            raise
 
     def calculate_ping(self):
         export_test_results = ExportTestResults()
@@ -152,7 +155,6 @@ class ResponseDeserialization:
             print "No energy data available"
             raise
 
-    # TODO - Implement parse_memory_data
     @staticmethod
     def parse_memory_data(filename):
         try:
