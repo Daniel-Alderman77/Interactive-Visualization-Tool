@@ -66,6 +66,10 @@ class WebServiceClient:
     def calculate_ping(self):
         export_test_results = ExportTestResults()
 
+        latency_data = self.ping
+
+        pickle_name = 'visualizer_cache/latency_data.p'
+
         try:
             session = requests.Session()
 
@@ -77,6 +81,25 @@ class WebServiceClient:
 
             export_test_results.write_to_file(self.ping)
 
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
+
+            else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
+
         except ReadTimeout:
             print "Connection has timed out"
 
@@ -84,12 +107,50 @@ class WebServiceClient:
 
             export_test_results.write_to_file(self.ping)
 
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
+
+            else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
+
         except ConnectionError:
             print "Failed to establish connection to Server"
 
             self.ping = "ConnectionError"
 
             export_test_results.write_to_file(self.ping)
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
+
+            else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(latency_data, pickle)
 
 
 class ResponseDeserialization:
