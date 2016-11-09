@@ -105,15 +105,16 @@ class MemoryGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/energy_data.p'
+        pickle_file = 'visualizer_cache/memory_data.p'
         # Read data file from cache
         with open(pickle_file, 'rb') as pickle:
-            energy_data = cPickle.load(pickle)
+            memory_data = cPickle.load(pickle)
 
-        print("Energy value: %s" % energy_data[1]['energy'][0])
+        memory_value = memory_data[1]['memory'][0]
+        print("Memory value: %s" % memory_value)
 
         x = self.randomise_values()[0]
-        y = energy_data[1]['energy'][0]
+        y = memory_value
 
         if x[-1] > self.ax.get_xlim()[1]:
             self.ax.set_xlim([x[-1] - 10, x[-1]])

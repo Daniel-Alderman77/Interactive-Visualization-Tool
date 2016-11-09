@@ -45,9 +45,6 @@ class Startup:
             response_deserialization.parse_jobs_data(filename)
             response_deserialization.parse_energy_data(filename)
 
-        else:
-            print "Now starting cold start prediction"
-
     def __call__(self):
         user_interface = UserInterface()
 
