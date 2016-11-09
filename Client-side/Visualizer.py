@@ -72,7 +72,7 @@ class CPUGraph(LineGraph):
         self.average, = self.ax.plot([], [], lw=2)
 
         # Set up legend
-        self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Number of Jobs'))
+        self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Utilisation'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -237,19 +237,25 @@ class JobsGraph(LineGraph):
             pass
 
 
-# TODO - Implement Energy graph
 class EnergyGraph(LineGraph):
 
     def __init__(self):
         LineGraph.__init__(self)
         self.name = self
+        self.energy_values = []
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 15000))
         self.ax.set_title('Energy Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Energy Usage')
-        self.line, = self.ax.plot([], [], lw=2)
+
+        # Set up line animated lines to be plotted
+        self.energy, = self.ax.plot([], [], lw=2)
+        self.average, = self.ax.plot([], [], lw=2)
+
+        # Set up legend
+        self.ax.legend((self.energy, self.average), ('Current Utilisation', 'Average Utilisation'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -259,17 +265,37 @@ class EnergyGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 energy_data = cPickle.load(pickle)
 
-            print("Energy value: %s" % energy_data[1]['energy'][0])
-
             x = self.randomise_values()[0]
-            y = energy_data[1]['energy'][0]
+
+            energy_value = energy_data[1]['energy'][0]
+
+            self.energy_values.append(energy_value)
+
+            print("Energy value: %s" % energy_value)
+
+            # Animate CPU utilisation
+            y = energy_value
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-            self.line.set_data(x, y)
+            self.energy.set_data(x, y)
+
+            # Animate average energy usage
+            total_energy_values = 0
+
+            for i in self.energy_values:
+                total_energy_values += int(i)
+
+            y = total_energy_values / len(self.energy_values)
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.average.set_data(x, y)
+
+            # Update graph
             plt.draw()
-            return self.line,
 
         except Exception as e:
             print(e)
