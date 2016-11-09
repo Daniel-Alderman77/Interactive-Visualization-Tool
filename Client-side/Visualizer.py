@@ -54,19 +54,25 @@ class LineGraph:
         return self.line,
 
 
-# TODO - Implement CPU graph
 class CPUGraph(LineGraph):
 
     def __init__(self):
         LineGraph.__init__(self)
         self.name = self
+        self.cpu_values = []
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 500))
         self.ax.set_title('CPU Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('CPU Usage')
-        self.line, = self.ax.plot([], [], lw=2)
+
+        # Set up line animated lines to be plotted
+        self.cpu, = self.ax.plot([], [], lw=2)
+        self.average, = self.ax.plot([], [], lw=2)
+
+        # Set up legend
+        self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Number of Jobs'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -76,18 +82,37 @@ class CPUGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 cpu_data = cPickle.load(pickle)
 
-            cpu_value = cpu_data[0][0]['1']
-            print("Energy value: %s" % cpu_value)
-
             x = self.randomise_values()[0]
+
+            cpu_value = cpu_data[0][0]['1']
+
+            self.cpu_values.append(cpu_value)
+
+            print("CPU value: %s" % cpu_value)
+
+            # Animate CPU utilisation
             y = cpu_value
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-            self.line.set_data(x, y)
+            self.cpu.set_data(x, y)
+
+            # Animate average cpu utilisation
+            total_cpu_values = 0
+
+            for i in self.cpu_values:
+                total_cpu_values += int(i)
+
+            y = total_cpu_values / len(self.cpu_values)
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.average.set_data(x, y)
+
+            # Update graph
             plt.draw()
-            return self.line,
 
         except Exception as e:
             print(e)
