@@ -304,7 +304,6 @@ class EnergyGraph(LineGraph):
             pass
 
 
-# TODO - Implement Latency graph
 class LatencyGraph(LineGraph):
 
     def __init__(self):
