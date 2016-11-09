@@ -156,37 +156,62 @@ class ResponseDeserialization:
     @staticmethod
     def parse_memory_data(filename):
         try:
-            total_memory = None
-            task1 = None
-            task2 = None
+            memory_values = {'node_ID': [], 'memory': []}
+
+            total_memory = 0
 
             root = etree.parse(filename)
 
-            log_node = root.find('.//LOG-NODE')
-            log_node_contents = log_node.getchildren()
-            for content in log_node_contents:
-                if content.get('Name') == 'Memory':
-                    total_memory = content.get('Value')
+            properties = root.findall('.//Property')
 
-            actions = root.findall('.//LOG-ACTION')
+            for property in properties:
+                if property.get('Name') == 'ID':
+                    node_id = property.get('Value')
 
-            log_action_contents = actions[0].getchildren()
-            for content in log_action_contents:
-                if content.get('Name') == 'Memory_Allocated':
-                    task1 = content.get('Value')
+                    memory_values['node_ID'].append(node_id)
 
-            log_action_contents = actions[1].getchildren()
-            for content in log_action_contents:
-                if content.get('Name') == 'Memory_Allocated':
-                    task2 = content.get('Value')
+                if property.get('Name') == 'Memory':
+                    memory_value = property.get('Value')
 
+                    memory_values['memory'].append(memory_value)
+
+                    total_memory += int(memory_value)
+
+            print memory_values
+
+            # Calculate total memory usage
             print("Total Memory: %s" % total_memory)
 
-            print("Task 1 Memory: %s" % task1)
+            log_nodes = root.findall('.//LOG-NODE')
 
-            print("Task 2 Memory: %s" % task2)
+            first_log_node = log_nodes[0]
 
-            return [total_memory, task1, task2]
+            time_stamp = first_log_node.get('Time')
+
+            print("Time Stamp: %s" % time_stamp)
+
+            energy_data = [total_memory, memory_values, time_stamp]
+
+            pickle_name = 'visualizer_cache/memory_data.p'
+
+            # Check with pickle exists
+            if os.path.isfile(pickle_name):
+                # If the pickle exists delete ut
+                os.remove(pickle_name)
+
+                # And create new pickle file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
+
+            else:
+                # If visualizer_cache doesnt't exist create it
+                directory = 'visualizer_cache'
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+
+                # Pickle data to a new file
+                with open(pickle_name, 'wb') as pickle:
+                    cPickle.dump(energy_data, pickle)
 
         except Exception as e:
             print(e)

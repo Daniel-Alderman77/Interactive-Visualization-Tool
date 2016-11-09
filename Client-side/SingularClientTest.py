@@ -41,7 +41,7 @@ class Startup:
 
             # Deserialize filename passed as a parameter
             response_deserialization.parse_cpu_data(filename)
-            # response_deserialization.parse_memory_data(filename)
+            response_deserialization.parse_memory_data(filename)
             response_deserialization.parse_jobs_data(filename)
             response_deserialization.parse_energy_data(filename)
 
