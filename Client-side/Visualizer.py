@@ -70,23 +70,29 @@ class CPUGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/cpu_data.p'
-        # Read data file from cache
-        with open(pickle_file, 'rb') as pickle:
-            cpu_data = cPickle.load(pickle)
+        try:
+            pickle_file = 'visualizer_cache/cpu_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                cpu_data = cPickle.load(pickle)
 
-        cpu_value = cpu_data[0][0]['1']
-        print("Energy value: %s" % cpu_value)
+            cpu_value = cpu_data[0][0]['1']
+            print("Energy value: %s" % cpu_value)
 
-        x = self.randomise_values()[0]
-        y = cpu_value
+            x = self.randomise_values()[0]
+            y = cpu_value
 
-        if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 10, x[-1]])
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-        self.line.set_data(x, y)
-        plt.draw()
-        return self.line,
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
+
+        except Exception as e:
+            print(e)
+            print "No CPU data available"
+            pass
 
 
 # TODO - Implement Memory graph
@@ -105,23 +111,29 @@ class MemoryGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/memory_data.p'
-        # Read data file from cache
-        with open(pickle_file, 'rb') as pickle:
-            memory_data = cPickle.load(pickle)
+        try:
+            pickle_file = 'visualizer_cache/memory_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                memory_data = cPickle.load(pickle)
 
-        memory_value = memory_data[1]['memory'][0]
-        print("Memory value: %s" % memory_value)
+            memory_value = memory_data[1]['memory'][0]
+            print("Memory value: %s" % memory_value)
 
-        x = self.randomise_values()[0]
-        y = memory_value
+            x = self.randomise_values()[0]
+            y = memory_value
 
-        if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 10, x[-1]])
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-        self.line.set_data(x, y)
-        plt.draw()
-        return self.line,
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
+
+        except Exception as e:
+            print(e)
+            print "No memory data available"
+            pass
 
 
 # TODO - Implement Jobs graph
@@ -154,23 +166,29 @@ class JobsGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/jobs_data.p'
-        # Read data file from cache
-        with open(pickle_file, 'rb') as pickle:
-            jobs_data = cPickle.load(pickle)
+        try:
+            pickle_file = 'visualizer_cache/jobs_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                jobs_data = cPickle.load(pickle)
 
-        average_jobs = jobs_data[1] / jobs_data[0]
-        print("Average number of jobs: %s" % average_jobs)
+            average_jobs = jobs_data[1] / jobs_data[0]
+            print("Average number of jobs: %s" % average_jobs)
 
-        x = self.randomise_values()[0]
-        y = average_jobs
+            x = self.randomise_values()[0]
+            y = average_jobs
 
-        if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 10, x[-1]])
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-        self.line.set_data(x, y)
-        plt.draw()
-        return self.line,
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
+
+        except Exception as e:
+            print(e)
+            print "No jobs data available"
+            pass
 
 
 # TODO - Implement Energy graph
@@ -189,22 +207,28 @@ class EnergyGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        pickle_file = 'visualizer_cache/energy_data.p'
-        # Read data file from cache
-        with open(pickle_file, 'rb') as pickle:
-            energy_data = cPickle.load(pickle)
+        try:
+            pickle_file = 'visualizer_cache/energy_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                energy_data = cPickle.load(pickle)
 
-        print("Energy value: %s" % energy_data[1]['energy'][0])
+            print("Energy value: %s" % energy_data[1]['energy'][0])
 
-        x = self.randomise_values()[0]
-        y = energy_data[1]['energy'][0]
+            x = self.randomise_values()[0]
+            y = energy_data[1]['energy'][0]
 
-        if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 10, x[-1]])
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-        self.line.set_data(x, y)
-        plt.draw()
-        return self.line,
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
+
+        except Exception as e:
+            print(e)
+            print "No energy data available"
+            pass
 
 
 # TODO - Implement Latency graph
@@ -224,16 +248,21 @@ class LatencyGraph(LineGraph):
 
     # animation function.  This is called sequentially
     def animate(self, i):
-        x = self.randomise_values()[0]
-        y = self.randomise_values()[1]
+        try:
+            x = self.randomise_values()[0]
+            y = self.randomise_values()[1]
 
-        if x[-1] > self.ax.get_xlim()[1]:
-            self.ax.set_xlim([x[-1] - 20, x[-1]])
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 20, x[-1]])
 
-        self.line.set_data(x, y)
-        plt.draw()
-        return self.line,
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
 
+        except Exception as e:
+            print(e)
+            print "No latency data available"
+            pass
 
 # TODO - Implement Gauge plot
 class GaugePlot:
