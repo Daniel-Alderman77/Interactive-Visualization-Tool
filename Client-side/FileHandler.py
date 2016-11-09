@@ -41,7 +41,7 @@ class WebServiceClient:
         except Exception as e:
             print(e)
             print "Server is unavailable"
-            raise
+            pass
 
     def check_transfer(self, index):
         try:
@@ -61,7 +61,7 @@ class WebServiceClient:
         except Exception as e:
             print(e)
             print "File cannot be transferred"
-            raise
+            pass
 
     def calculate_ping(self):
         export_test_results = ExportTestResults()
@@ -153,7 +153,7 @@ class ResponseDeserialization:
         except Exception as e:
             print(e)
             print "No energy data available"
-            raise
+            pass
 
     @staticmethod
     def parse_memory_data(filename):
@@ -215,7 +215,7 @@ class ResponseDeserialization:
         except Exception as e:
             print(e)
             print "No memory data available"
-            raise
+            pass
 
     @staticmethod
     def parse_jobs_data(filename):
@@ -280,7 +280,7 @@ class ResponseDeserialization:
         except Exception as e:
             print(e)
             print "No energy data available"
-            raise
+            pass
 
     @staticmethod
     def parse_energy_data(filename):
@@ -340,7 +340,7 @@ class ResponseDeserialization:
         except Exception as e:
             print(e)
             print "No energy data available"
-            raise
+            pass
 
 
 # TODO - Implement Late-timing fault detection

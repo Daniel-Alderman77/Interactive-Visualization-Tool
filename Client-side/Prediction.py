@@ -74,7 +74,7 @@ class DataStore:
             except Exception as e:
                 print(e)
                 print "File cannot be removed"
-                raise
+                pass
 
         else:
             print "Less than 4 files in prediction_cache"
