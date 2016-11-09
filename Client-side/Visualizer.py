@@ -136,7 +136,6 @@ class MemoryGraph(LineGraph):
             pass
 
 
-# TODO - Implement Jobs graph
 class JobsGraph(LineGraph):
 
     def __init__(self):
@@ -167,12 +166,8 @@ class JobsGraph(LineGraph):
 
             x = self.randomise_values()[0]
 
-            print("Jobs Data: %s" % jobs_data[2])
-
             node1_jobs = 0
             node2_jobs = 0
-
-            print len(jobs_data[2])
 
             for i in jobs_data[2]:
                 for key in i:
