@@ -182,15 +182,12 @@ class ResponseDeserialization:
             # Calculate total memory usage
             print("Total Memory: %s" % total_memory)
 
+            # Calculate time stamp
             log_nodes = root.findall('.//LOG-NODE')
-
             first_log_node = log_nodes[0]
-
             time_stamp = first_log_node.get('Time')
 
-            print("Time Stamp: %s" % time_stamp)
-
-            energy_data = [total_memory, memory_values, time_stamp]
+            memory_data = [total_memory, memory_values, time_stamp]
 
             pickle_name = 'visualizer_cache/memory_data.p'
 
@@ -201,7 +198,7 @@ class ResponseDeserialization:
 
                 # And create new pickle file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(energy_data, pickle)
+                    cPickle.dump(memory_data, pickle)
 
             else:
                 # If visualizer_cache doesnt't exist create it
@@ -211,7 +208,7 @@ class ResponseDeserialization:
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(energy_data, pickle)
+                    cPickle.dump(memory_data, pickle)
 
         except Exception as e:
             print(e)
@@ -254,7 +251,6 @@ class ResponseDeserialization:
             log_nodes = root.findall('.//LOG-NODE')
             first_log_node = log_nodes[0]
             time_stamp = first_log_node.get('Time')
-            print("Time Stamp: %s" % time_stamp)
 
             jobs_data = [total_machines, total_jobs, job_values, time_stamp]
 
@@ -311,13 +307,10 @@ class ResponseDeserialization:
             # Calculate total energy usage
             print("Total Energy: %s" % total_energy)
 
+            # Calculate time stamp
             log_nodes = root.findall('.//LOG-NODE')
-
             first_log_node = log_nodes[0]
-
             time_stamp = first_log_node.get('Time')
-
-            print("Time Stamp: %s" % time_stamp)
 
             energy_data = [total_energy, energy_values, time_stamp]
 
