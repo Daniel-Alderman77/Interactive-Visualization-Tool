@@ -70,6 +70,8 @@ class WebServiceClient:
 
         pickle_name = 'visualizer_cache/latency_data.p'
 
+        directory = 'visualizer_cache'
+
         try:
             session = requests.Session()
 
@@ -92,7 +94,6 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
                 if not os.path.exists(directory):
                     os.makedirs(directory)
 
@@ -118,7 +119,6 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
                 if not os.path.exists(directory):
                     os.makedirs(directory)
 
@@ -144,7 +144,6 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
                 if not os.path.exists(directory):
                     os.makedirs(directory)
 
