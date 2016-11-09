@@ -66,8 +66,6 @@ class WebServiceClient:
     def calculate_ping(self):
         export_test_results = ExportTestResults()
 
-        latency_data = self.ping
-
         pickle_name = 'visualizer_cache/latency_data.p'
 
         directory = 'visualizer_cache'
@@ -90,7 +88,7 @@ class WebServiceClient:
 
                 # And create new pickle file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
             else:
                 # If visualizer_cache doesnt't exist create it
@@ -99,7 +97,7 @@ class WebServiceClient:
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
         except ReadTimeout:
             print "Connection has timed out"
@@ -115,7 +113,7 @@ class WebServiceClient:
 
                 # And create new pickle file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
             else:
                 # If visualizer_cache doesnt't exist create it
@@ -124,7 +122,7 @@ class WebServiceClient:
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
         except ConnectionError:
             print "Failed to establish connection to Server"
@@ -140,7 +138,7 @@ class WebServiceClient:
 
                 # And create new pickle file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
             else:
                 # If visualizer_cache doesnt't exist create it
@@ -149,7 +147,7 @@ class WebServiceClient:
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
-                    cPickle.dump(latency_data, pickle)
+                    cPickle.dump(self.ping, pickle)
 
 
 class ResponseDeserialization:

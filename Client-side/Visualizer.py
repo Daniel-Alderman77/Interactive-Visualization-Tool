@@ -1,6 +1,7 @@
 import cPickle
 import random
 from matplotlib import pyplot as plt
+import math
 
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
@@ -313,7 +314,7 @@ class LatencyGraph(LineGraph):
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(12, 5), dpi=50)
-        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 40))
+        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 30))
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Latency')
@@ -328,9 +329,15 @@ class LatencyGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
+            pickle_file = 'visualizer_cache/latency_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                latency = cPickle.load(pickle)
+
             x = self.randomise_values()[0]
 
-            latency_value = 10
+            # Convert latency from timedelta object to seconds. Then round up to the nearest second
+            latency_value = math.ceil(latency.total_seconds())
 
             self.latency_values.append(latency_value)
 
