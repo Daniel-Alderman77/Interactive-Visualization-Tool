@@ -309,27 +309,56 @@ class LatencyGraph(LineGraph):
     def __init__(self):
         LineGraph.__init__(self)
         self.name = self
+        self.latency_values = []
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(12, 5), dpi=50)
-        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 10))
+        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 40))
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Latency')
-        self.line, = self.ax.plot([], [], lw=2)
+
+        # Set up line animated lines to be plotted
+        self.latency, = self.ax.plot([], [], lw=2)
+        self.average, = self.ax.plot([], [], lw=2)
+
+        # Set up legend
+        self.ax.legend((self.latency, self.average), ('Current Latency', 'Average Latency'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
             x = self.randomise_values()[0]
-            y = self.randomise_values()[1]
+
+            latency_value = 10
+
+            self.latency_values.append(latency_value)
+
+            print("Current latency: %s" % latency_value)
+
+            # Animate CPU utilisation
+            y = latency_value
 
             if x[-1] > self.ax.get_xlim()[1]:
-                self.ax.set_xlim([x[-1] - 20, x[-1]])
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-            self.line.set_data(x, y)
+            self.latency.set_data(x, y)
+
+            # Animate average energy usage
+            total_latency_values = 0
+
+            for i in self.latency_values:
+                        total_latency_values += int(i)
+
+            y = total_latency_values / len(self.latency_values)
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.average.set_data(x, y)
+
+            # Update graph
             plt.draw()
-            return self.line,
 
         except Exception as e:
             print(e)
