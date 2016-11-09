@@ -165,21 +165,51 @@ class JobsGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 jobs_data = cPickle.load(pickle)
 
+            x = self.randomise_values()[0]
+
+            print("Jobs Data: %s" % jobs_data[2])
+
+            node1_jobs = 0
+            node2_jobs = 0
+
+            print len(jobs_data[2])
+
+            for i in jobs_data[2]:
+                for key in i:
+                    if key == '1':
+                        node1_jobs += 1
+                    else:
+                        node2_jobs += 1
+
+            # Animate node 1 line
+            y = node1_jobs
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.node1.set_data(x, y)
+
+            # Animate node 2 line
+            y = node2_jobs
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.node2.set_data(x, y)
+
             # Animate average jobs line
             average_jobs = jobs_data[1] / jobs_data[0]
             print("Average number of jobs: %s" % average_jobs)
 
-            x = self.randomise_values()[0]
             y = average_jobs
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
             self.average.set_data(x, y)
-            
-            plt.draw()
 
-            return self.average,
+            # Update graph
+            plt.draw()
 
         except Exception as e:
             print(e)

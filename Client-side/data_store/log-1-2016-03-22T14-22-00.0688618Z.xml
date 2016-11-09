@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Message Type="Log" UTCTimeStamp="2016-03-22T14:22:00.0688618Z">
+  <LOG Time="100">
+    <LOG-GRAPH Time="100" Type="SEED.GenericDomain.Network.Graph" />
+    <LOG-NODE ID="1" Time="100" Type="FullDataCenter.Rack">
+      <Property Name="T_out" Value="280" />
+      <Property Name="Status" Value="Executing" />
+      <Property Name="ID" Value="1" />
+      <FUNCTIONS>
+        <LOG-NODE ID="3" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="3" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="5" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="5" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="7" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="7" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="9" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="9" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="11" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="11" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="13" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="13" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="15" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="15" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="17" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="17" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="19" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="19" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="21" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="21" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="23" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="23" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="25" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="25" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="27" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="27" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="29" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="29" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="31" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="31" />
+          <FUNCTIONS />
+        </LOG-NODE>
+      </FUNCTIONS>
+    </LOG-NODE>
+    <LOG-NODE ID="33" Time="100" Type="FullDataCenter.Rack">
+      <Property Name="T_out" Value="280" />
+      <Property Name="Status" Value="Executing" />
+      <Property Name="ID" Value="33" />
+      <FUNCTIONS>
+        <LOG-NODE ID="35" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="35" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="37" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="37" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="39" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="39" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="41" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="41" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="43" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="43" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="45" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="45" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="47" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="47" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="49" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="49" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="51" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="51" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="53" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="53" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="55" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="55" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="57" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="57" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="59" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="59" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="61" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="61" />
+          <FUNCTIONS />
+        </LOG-NODE>
+        <LOG-NODE ID="63" Time="0" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation" />
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="280" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Started" />
+          <Property Name="ID" Value="63" />
+          <FUNCTIONS />
+        </LOG-NODE>
+      </FUNCTIONS>
+    </LOG-NODE>
+  </LOG>
+</Message>
