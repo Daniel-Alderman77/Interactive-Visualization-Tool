@@ -7,6 +7,11 @@ class FaultDetection:
         self.name = self
 
     @staticmethod
+    def http_error(error):
+        export_test_results = ExportTestResults()
+        export_test_results.write_fault_to_file(error)
+
+    @staticmethod
     def late_timing_fault():
         export_test_results = ExportTestResults()
         export_test_results.write_fault_to_file('Late Timing')
@@ -15,5 +20,3 @@ class FaultDetection:
     def connection_error():
         export_test_results = ExportTestResults()
         export_test_results.write_fault_to_file('Connection')
-
-    # TODO - Implement 500 internal server error fault detection

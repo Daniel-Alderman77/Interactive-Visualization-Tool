@@ -3,7 +3,7 @@ import cPickle
 import os
 from lxml import etree
 import requests
-from requests.exceptions import ReadTimeout, ConnectionError
+from requests.exceptions import ReadTimeout, ConnectionError, HTTPError
 
 from RESTClient import RESTClient
 from FaultDetection import FaultDetection
@@ -98,6 +98,10 @@ class WebServiceClient:
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(self.ping, pickle)
+
+        except HTTPError as error:
+            print error
+            fault_detection.http_error(error)
 
         except ReadTimeout:
             print "Connection has timed out"

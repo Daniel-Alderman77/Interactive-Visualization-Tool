@@ -1,6 +1,6 @@
 import os
 import requests
-from requests.exceptions import ReadTimeout, ConnectionError
+from requests.exceptions import ReadTimeout, ConnectionError, HTTPError
 import json
 
 from Prediction import DataStore
@@ -35,6 +35,12 @@ class RESTClient:
 
             request = session.get('http://127.0.0.1:5000/file_count/', timeout=0.1)
 
+            request.raise_for_status()
+
+        except HTTPError as error:
+            print error
+            fault_detection.http_error(error)
+
         except ReadTimeout:
             print "Connection has timed out"
             fault_detection.late_timing_fault()
@@ -57,6 +63,10 @@ class RESTClient:
             path = 'http://127.0.0.1:5000/data/' + argument
 
             request = session.get(path, timeout=0.1)
+
+        except HTTPError as error:
+            print error
+            fault_detection.http_error(error)
 
         except ReadTimeout:
             print "Connection has timed out"
