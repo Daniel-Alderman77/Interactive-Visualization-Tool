@@ -340,7 +340,7 @@ class LatencyGraph(LineGraph):
 
             self.latency_values.append(latency_value)
 
-            print("Current latency: %s" % latency_value)
+            print("Current latency: %s" % latency)
 
             # Animate CPU utilisation
             y = latency_value
