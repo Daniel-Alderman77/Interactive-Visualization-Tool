@@ -13,6 +13,11 @@ class ExportTestResults:
     def __init__(self):
         self.name = self
 
+    # TODO - Implement write_startup_to_file method
+    # TODO - Implement write_fetch_to_file method
+    # TODO - Implement write_fault_to_file method
+    # TODO - Implement finish_to_file method
+
     @staticmethod
     def write_to_file(ping):
         date_time_str = time.strftime("%d-%m-%Y--%H-%M-%S")
