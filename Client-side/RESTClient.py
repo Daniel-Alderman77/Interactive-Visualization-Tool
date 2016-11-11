@@ -48,7 +48,7 @@ class RESTClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
-            fault_detection.fault()
+            fault_detection.http_404()
 
         return request
 
