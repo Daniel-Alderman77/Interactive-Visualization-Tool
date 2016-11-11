@@ -1,5 +1,8 @@
 import glob
 import os
+import threading
+
+import time
 
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
@@ -23,22 +26,28 @@ class Startup:
         self.name = self
 
     @staticmethod
-    def initial_loop(index):
+    def calculate_ping(class_instance):
+        ping_thread = threading.Thread(target=class_instance.calculate_ping())
+        ping_thread.start()
+
+    def initial_loop(self, index):
+        # Create class instances
         export_test_results = ExportTestResults()
         web_service_client = WebServiceClient()
+        response_deserialization = ResponseDeserialization()
+
+        self.calculate_ping(web_service_client)
+
+        web_service_client.calculate_ping()
 
         export_test_results.create_test_file()
 
         export_test_results.write_startup_to_file()
 
-        response_deserialization = ResponseDeserialization()
-
         # Contact server and return number of remote files available
         number_of_remote_files = web_service_client.get_remote_file_count(index)
 
         print("Number of remote files: %s" % number_of_remote_files)
-
-        web_service_client.calculate_ping()
 
         # Check file transfer has been successful
         if web_service_client.check_transfer(index):
