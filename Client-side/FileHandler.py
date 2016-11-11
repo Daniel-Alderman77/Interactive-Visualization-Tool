@@ -6,7 +6,7 @@ import requests
 from requests.exceptions import ReadTimeout, ConnectionError
 
 from RESTClient import RESTClient
-from ExportTestResults import ExportTestResults
+from FaultDetection import FaultDetection
 
 
 class WebServiceClient:
@@ -64,7 +64,7 @@ class WebServiceClient:
             pass
 
     def calculate_ping(self):
-        export_test_results = ExportTestResults()
+        fault_detection = FaultDetection()
 
         pickle_name = 'visualizer_cache/latency_data.p'
 
@@ -126,6 +126,7 @@ class WebServiceClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
+            fault_detection.http_404()
 
             self.ping = "ConnectionError"
 

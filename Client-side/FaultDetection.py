@@ -8,8 +8,9 @@ class FaultDetection:
 
     # TODO - Implement Late-timing fault detection
 
-    # TODO - Implement 404 resource not found fault detection
     @staticmethod
     def http_404():
         export_test_results = ExportTestResults()
-        export_test_results.write_fault_to_file('404')
+        export_test_results.write_fault_to_file('HTTP 404')
+
+    # TODO - Implement 500 internal server error fault detection

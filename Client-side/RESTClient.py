@@ -54,6 +54,8 @@ class RESTClient:
 
     @staticmethod
     def get_datafile(argument):
+        fault_detection = FaultDetection()
+
         request = None
 
         try:
@@ -75,6 +77,7 @@ class RESTClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
+            fault_detection.http_404()
 
         return request
 
