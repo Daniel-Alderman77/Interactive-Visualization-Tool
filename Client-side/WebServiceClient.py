@@ -78,8 +78,6 @@ class WebServiceClient:
 
             print 'Ping = ', self.ping
 
-            # export_test_results.write_to_file(self.ping)
-
             # Check with pickle exists
             if os.path.isfile(pickle_name):
                 # If the pickle exists delete ut
@@ -108,8 +106,6 @@ class WebServiceClient:
 
             self.ping = "ReadTimeout"
 
-            # export_test_results.write_to_file(self.ping)
-
             # Check with pickle exists
             if os.path.isfile(pickle_name):
                 # If the pickle exists delete ut
@@ -134,8 +130,6 @@ class WebServiceClient:
 
             self.ping = "ConnectionError"
 
-            # export_test_results.write_to_file(self.ping)
-
             # Check with pickle exists
             if os.path.isfile(pickle_name):
                 # If the pickle exists delete ut
@@ -153,4 +147,3 @@ class WebServiceClient:
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(self.ping, pickle)
-

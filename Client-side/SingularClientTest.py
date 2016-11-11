@@ -2,8 +2,6 @@ import glob
 import os
 import threading
 
-import time
-
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
 from Views import UserInterface
@@ -27,6 +25,7 @@ class Startup:
 
     @staticmethod
     def calculate_ping(class_instance):
+        # Executes function in background thread
         ping_thread = threading.Thread(target=class_instance.calculate_ping())
         ping_thread.start()
 
@@ -36,9 +35,8 @@ class Startup:
         web_service_client = WebServiceClient()
         response_deserialization = ResponseDeserialization()
 
+        # Calls function that continuously calculates ping
         self.calculate_ping(web_service_client)
-
-        web_service_client.calculate_ping()
 
         export_test_results.create_test_file()
 
