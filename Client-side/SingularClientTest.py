@@ -23,7 +23,12 @@ class Startup:
 
     @staticmethod
     def initial_loop(index):
+        export_test_results = ExportTestResults()
         web_service_client = WebServiceClient()
+
+        export_test_results.create_test_file()
+
+        export_test_results.write_startup_to_file()
 
         response_deserialization = ResponseDeserialization()
 
@@ -33,9 +38,6 @@ class Startup:
         print("Number of remote files: %s" % number_of_remote_files)
 
         web_service_client.calculate_ping()
-
-        export_test_results = ExportTestResults()
-        export_test_results.write_startup_to_file()
 
         # Check file transfer has been successful
         if web_service_client.check_transfer(index):

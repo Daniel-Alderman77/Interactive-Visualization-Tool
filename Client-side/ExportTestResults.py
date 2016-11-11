@@ -32,19 +32,31 @@ class ExportTestResults:
             print "No latency data available"
             pass
 
-    # TODO - Implement write_startup_to_file method
+    def create_test_file(self):
+        try:
+            with open(self.filename, 'wb') as test_file:
+                writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
+
+                writer.writeheader()
+        except Exception as e:
+            print 'fail'
+            print e
+
     def write_startup_to_file(self):
-        with open(self.filename, 'wb') as test_file:
-            writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
+        try:
+            with open(self.filename, 'a') as test_file:
+                writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
-            occurrence_str = 'temp'
+                occurrence_str = 'Startup'
 
-            writer.writeheader()
-            writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
+                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                                                 'Ping': self.get_ping()}))
+
+        except Exception as e:
+            print e
 
     # TODO - Implement write_fetch_to_file method
 
-    # TODO - Implement write_fault_to_file method
     def write_fault_to_file(self, fault):
         try:
             with open(self.filename, 'a') as test_file:
