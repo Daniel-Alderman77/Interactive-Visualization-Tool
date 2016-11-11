@@ -101,6 +101,7 @@ class WebServiceClient:
 
         except ReadTimeout:
             print "Connection has timed out"
+            fault_detection.late_timing_fault()
 
             self.ping = "ReadTimeout"
 

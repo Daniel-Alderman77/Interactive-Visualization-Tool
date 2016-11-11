@@ -39,7 +39,6 @@ class ExportTestResults:
 
                 writer.writeheader()
         except Exception as e:
-            print 'fail'
             print e
 
     def write_startup_to_file(self):

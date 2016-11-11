@@ -36,15 +36,9 @@ class RESTClient:
 
             request = session.get('http://127.0.0.1:5000/file_count/', timeout=0.1)
 
-            # print(request.status_code)
-
-            # print(request.text)
-
-            # Time elapsed between sending the request and arrival of response
-            # print(request.elapsed)
-
         except ReadTimeout:
             print "Connection has timed out"
+            fault_detection.late_timing_fault()
 
         except ConnectionError:
             print "Failed to establish connection to Server"
@@ -65,15 +59,9 @@ class RESTClient:
 
             request = session.get(path, timeout=0.1)
 
-            # print(request.status_code)
-
-            # print(request.text)
-
-            # Time elapsed between sending the request and arrival of response
-            # print(request.elapsed)
-
         except ReadTimeout:
             print "Connection has timed out"
+            fault_detection.late_timing_fault()
 
         except ConnectionError:
             print "Failed to establish connection to Server"
