@@ -5,6 +5,7 @@ from requests.exceptions import ConnectionError
 import json
 
 from Prediction import DataStore
+from FaultDetection import FaultDetection
 
 
 class RESTClient:
@@ -26,6 +27,7 @@ class RESTClient:
 
     @staticmethod
     def get_file_count():
+        fault_detection = FaultDetection()
 
         request = None
 
@@ -46,6 +48,7 @@ class RESTClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
+            fault_detection.fault()
 
         return request
 
