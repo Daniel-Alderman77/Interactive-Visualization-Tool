@@ -14,6 +14,7 @@ class ExportTestResults:
 
     def __init__(self):
         self.name = self
+        self.filename = 'test_results/' + time.strftime("%d-%m-%Y--%H-%M-%S") + '.csv'
 
     @staticmethod
     def get_ping():
@@ -37,9 +38,7 @@ class ExportTestResults:
     def write_startup_to_file(self):
         ping = self.get_ping()
 
-        date_time_str = time.strftime("%d-%m-%Y--%H-%M-%S")
-
-        with open('test_results/' + date_time_str + '.csv', 'wb') as test_file:
+        with open(self.filename, 'wb') as test_file:
             fieldnames = ['time', 'ping']
             writer = csv.DictWriter(test_file, fieldnames=fieldnames)
 
