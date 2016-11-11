@@ -1,7 +1,8 @@
 import glob
 import os
 
-from FileHandler import WebServiceClient, ResponseDeserialization
+from WebServiceClient import WebServiceClient
+from FileHandler import ResponseDeserialization
 from Views import UserInterface
 from ExportTestResults import ExportTestResults
 
