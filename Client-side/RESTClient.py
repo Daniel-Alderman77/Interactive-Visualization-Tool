@@ -1,7 +1,6 @@
 import os
 import requests
-from requests.exceptions import ReadTimeout
-from requests.exceptions import ConnectionError
+from requests.exceptions import ReadTimeout, ConnectionError
 import json
 
 from Prediction import DataStore
@@ -42,7 +41,7 @@ class RESTClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
-            fault_detection.http_404()
+            fault_detection.connection_error()
 
         return request
 
@@ -65,7 +64,7 @@ class RESTClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
-            fault_detection.http_404()
+            fault_detection.connection_error()
 
         return request
 

@@ -12,8 +12,8 @@ class FaultDetection:
         export_test_results.write_fault_to_file('Late Timing')
 
     @staticmethod
-    def http_404():
+    def connection_error():
         export_test_results = ExportTestResults()
-        export_test_results.write_fault_to_file('HTTP 404')
+        export_test_results.write_fault_to_file('Connection')
 
     # TODO - Implement 500 internal server error fault detection

@@ -127,7 +127,7 @@ class WebServiceClient:
 
         except ConnectionError:
             print "Failed to establish connection to Server"
-            fault_detection.http_404()
+            fault_detection.connection_error()
 
             self.ping = "ConnectionError"
 
