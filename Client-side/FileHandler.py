@@ -2,14 +2,18 @@ import cPickle
 import os
 from lxml import etree
 
+from FaultDetection import FaultDetection
+
 
 class ResponseDeserialization:
 
     def __init__(self):
         self.name = self
 
-    @staticmethod
-    def parse_cpu_data(filename):
+        # Create FaultDetection() instance
+        self.fault_detection = FaultDetection()
+
+    def parse_cpu_data(self, filename):
         try:
             cpu_values = []
 
@@ -61,13 +65,12 @@ class ResponseDeserialization:
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(cpu_data, pickle)
 
-        except Exception as e:
-            print(e)
-            print "No energy data available"
+        except Exception:
+            print "No CPU data available"
+            self.fault_detection.null_values_fault('CPU')
             pass
 
-    @staticmethod
-    def parse_memory_data(filename):
+    def parse_memory_data(self, filename):
         try:
             memory_values = {'node_ID': [], 'memory': []}
 
@@ -123,13 +126,12 @@ class ResponseDeserialization:
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(memory_data, pickle)
 
-        except Exception as e:
-            print(e)
-            print "No memory data available"
+        except Exception:
+            print "No Memory data available"
+            self.fault_detection.null_values_fault('Memory')
             pass
 
-    @staticmethod
-    def parse_jobs_data(filename):
+    def parse_jobs_data(self, filename):
         try:
             job_values = []
             total_machines = 0
@@ -188,13 +190,12 @@ class ResponseDeserialization:
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(jobs_data, pickle)
 
-        except Exception as e:
-            print(e)
-            print "No energy data available"
+        except Exception:
+            print "No Jobs data available"
+            self.fault_detection.null_values_fault('Jobs')
             pass
 
-    @staticmethod
-    def parse_energy_data(filename):
+    def parse_energy_data(self, filename):
         try:
             energy_values = {'node_ID': [], 'energy': []}
 
@@ -248,7 +249,7 @@ class ResponseDeserialization:
                 with open(pickle_name, 'wb') as pickle:
                     cPickle.dump(energy_data, pickle)
 
-        except Exception as e:
-            print(e)
-            print "No energy data available"
+        except Exception:
+            print "No Energy data available"
+            self.fault_detection.null_values_fault('Energy')
             pass
