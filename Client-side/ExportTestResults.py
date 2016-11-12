@@ -28,7 +28,7 @@ class ExportTestResults:
 
         except Exception:
             print "No latency data available"
-            self.write_fault_to_file('Null Value')
+            self.write_fault_to_file('Latency Null Value')
             pass
 
     def create_test_file(self):
