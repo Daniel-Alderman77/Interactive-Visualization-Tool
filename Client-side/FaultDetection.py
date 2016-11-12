@@ -20,3 +20,8 @@ class FaultDetection:
     def connection_error():
         export_test_results = ExportTestResults()
         export_test_results.write_fault_to_file('Connection')
+
+    @staticmethod
+    def null_values_fault():
+        export_test_results = ExportTestResults()
+        export_test_results.write_fault_to_file('Null Value')

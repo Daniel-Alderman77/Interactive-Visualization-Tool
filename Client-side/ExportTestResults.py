@@ -17,8 +17,7 @@ class ExportTestResults:
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
         self.time_str = time.strftime("%H:%M:%S")
 
-    @staticmethod
-    def get_ping():
+    def get_ping(self):
         try:
             pickle_file = 'visualizer_cache/latency_data.p'
             # Read data file from cache
@@ -27,9 +26,9 @@ class ExportTestResults:
 
             return latency
 
-        except Exception as e:
-            print(e)
+        except Exception:
             print "No latency data available"
+            self.write_fault_to_file('Null Value')
             pass
 
     def create_test_file(self):
