@@ -115,9 +115,9 @@ class CPUGraph(LineGraph):
             # Update graph
             plt.draw()
 
-        except Exception as e:
-            print(e)
-            print "No CPU data available"
+        except Exception:
+            print "Now Predicting next CPU value"
+            # TODO - Predict next value
             pass
 
 
@@ -156,9 +156,9 @@ class MemoryGraph(LineGraph):
             plt.draw()
             return self.line,
 
-        except Exception as e:
-            print(e)
-            print "No memory data available"
+        except Exception:
+            print "Now Predicting next Memory value"
+            # TODO - Predict next value
             pass
 
 
@@ -232,9 +232,9 @@ class JobsGraph(LineGraph):
             # Update graph
             plt.draw()
 
-        except Exception as e:
-            print(e)
-            print "No jobs data available"
+        except Exception:
+            print "Now Predicting next Jobs value"
+            # TODO - Predict next value
             pass
 
 
@@ -298,9 +298,9 @@ class EnergyGraph(LineGraph):
             # Update graph
             plt.draw()
 
-        except Exception as e:
-            print(e)
-            print "No energy data available"
+        except Exception:
+            print "Now Predicting next Energy value"
+            # TODO - Predict next value
             pass
 
 
@@ -366,9 +366,9 @@ class LatencyGraph(LineGraph):
             # Update graph
             plt.draw()
 
-        except Exception as e:
-            print(e)
-            print "No latency data available"
+        except Exception:
+            print "Now Predicting next Latency value"
+            # TODO - Predict next value
             pass
 
 
