@@ -51,6 +51,8 @@ class Startup:
         if web_service_client.check_transfer(index):
             list_of_files = web_service_client.get_local_file_count()["List of files"]
 
+            export_test_results.write_fetch_to_file(list_of_files[index])
+
             filename = 'data_store/' + list_of_files[index]
 
             # Deserialize filename passed as a parameter

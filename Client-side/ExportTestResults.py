@@ -48,7 +48,18 @@ class ExportTestResults:
         except Exception as e:
             print e
 
-    # TODO - Implement write_fetch_to_file method
+    def write_fetch_to_file(self, filename):
+        try:
+            with open(self.filename, 'a') as test_file:
+                writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
+
+                occurrence_str = filename + ' has been retrieved'
+
+                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                                                 'Ping': self.get_ping()}))
+
+        except Exception as e:
+            print e
 
     def write_fault_to_file(self, fault):
         try:
