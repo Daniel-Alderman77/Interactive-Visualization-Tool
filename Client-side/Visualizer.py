@@ -27,6 +27,8 @@ class LineGraph:
         self.x_array = []
         self.y_array = []
 
+        self.export_test_results = ExportTestResults()
+
     # initialization function: plot the background of each frame
     def init(self):
         self.line.set_data([], [])
@@ -164,7 +166,6 @@ class MemoryGraph(LineGraph):
             # TODO - Predict next value
             # Class instances
             prediction_algorithm = PredictionAlgorithm()
-            export_test_results = ExportTestResults()
 
             x = self.randomise_values()[0]
 
@@ -179,7 +180,7 @@ class MemoryGraph(LineGraph):
             self.line.set_data(x, y)
             plt.draw()
 
-            export_test_results.write_predicted_value_to_file(y, 'Memory')
+            self.export_test_results.write_predicted_value_to_file(y, 'Memory')
 
             return self.line,
 
