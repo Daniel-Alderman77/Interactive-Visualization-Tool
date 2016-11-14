@@ -91,8 +91,6 @@ class ResponseDeserialization:
 
                     total_memory += int(memory_value)
 
-            # print memory_values
-
             # Calculate total memory usage
             print("Total Memory: %s" % total_memory)
 

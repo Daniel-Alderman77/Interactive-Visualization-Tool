@@ -8,7 +8,6 @@ class PredictionAlgorithm:
     def __init__(self):
         self.name = self
 
-    # TODO - Implement Linear Regression
     # TODO - (Extension) Implement Random Forest Regression
     # TODO - (Extension) Implement Regression Analysis
 

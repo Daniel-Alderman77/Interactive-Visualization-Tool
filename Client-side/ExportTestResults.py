@@ -76,7 +76,6 @@ class ExportTestResults:
 
     def write_predicted_value_to_file(self, value, type_of_data):
         try:
-            print self.time_str
             with open(self.filename, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
