@@ -7,6 +7,9 @@ import math
 from tkinter.ttk import *
 from Tkinter import HORIZONTAL
 
+from Prediction import PredictionAlgorithm
+from ExportTestResults import ExportTestResults
+
 
 class LineGraph:
 
@@ -159,8 +162,26 @@ class MemoryGraph(LineGraph):
         except Exception:
             print "Now Predicting next Memory value"
             # TODO - Predict next value
-            pass
+            # Class instances
+            prediction_algorithm = PredictionAlgorithm()
+            export_test_results = ExportTestResults()
 
+            x = self.randomise_values()[0]
+
+            xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
+            yi = [94, 73, 59, 80, 93, 85, 66, 79, 77, 91]
+
+            y = prediction_algorithm.simple_linear_regression(xi, yi, 15)
+
+            if x[-1] > self.ax.get_xlim()[1]:
+                self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+            self.line.set_data(x, y)
+            plt.draw()
+            return self.line,
+
+            pass
+        
 
 class JobsGraph(LineGraph):
 

@@ -23,13 +23,6 @@ class PredictionAlgorithm:
 
         return y
 
-prediction_algorithm = PredictionAlgorithm()
-
-xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
-yi = [94, 73, 59, 80, 93, 85, 66, 79, 77, 91]
-
-prediction_algorithm.simple_linear_regression(xi, yi, 15)
-
 
 class DataStore:
 
