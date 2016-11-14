@@ -34,8 +34,6 @@ class ResponseDeserialization:
 
                             cpu_values.append({machine_id: cpu_time})
 
-            print("CPU Time: %s" % cpu_values)
-
             # Calculate time stamp
             log_nodes = root.findall('.//LOG-NODE')
             first_log_node = log_nodes[0]
