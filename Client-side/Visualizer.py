@@ -27,7 +27,9 @@ class LineGraph:
         self.x_array = []
         self.y_array = []
 
+        # Class instances
         self.export_test_results = ExportTestResults()
+        self.prediction_algorithm = PredictionAlgorithm()
 
     # initialization function: plot the background of each frame
     def init(self):
@@ -164,15 +166,13 @@ class MemoryGraph(LineGraph):
         except Exception:
             print "Now Predicting next Memory value"
             # TODO - Predict next value
-            # Class instances
-            prediction_algorithm = PredictionAlgorithm()
 
             x = self.randomise_values()[0]
 
             xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
             yi = [94, 73, 59, 80, 93, 85, 66, 79, 77, 91]
 
-            y = prediction_algorithm.simple_linear_regression(xi, yi, 15)
+            y = self.prediction_algorithm.simple_linear_regression(xi, yi, 15)
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
