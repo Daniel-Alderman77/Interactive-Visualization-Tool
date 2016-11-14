@@ -1,7 +1,6 @@
 import glob
-import numpy as np
 import os
-from scipy.interpolate import InterpolatedUnivariateSpline
+from scipy import stats
 
 
 class PredictionAlgorithm:
@@ -13,21 +12,23 @@ class PredictionAlgorithm:
     # TODO - (Extension) Implement Random Forest Regression
     # TODO - (Extension) Implement Regression Analysis
 
-    # Based upon
-    # http://stackoverflow.com/questions/2745329/how-to-make-scipy-interpolate-give-an-extrapolated-result-beyond-the-input-range
     @staticmethod
-    def predict(xi, yi):
+    def simple_linear_regression(x_data, y_data, x):
 
-        # positions to extrapolate last element in array 1 position
-        x = np.linspace(0, xi[-1], 1)
+        # Computes least-squares regression with x and y measurements
+        slope, intercept, r_value, p_value, std_err = stats.linregress(x_data, y_data)
 
-        # when k = 1, linear extrapolation
-        extrapolate = InterpolatedUnivariateSpline(xi, yi, k=1)
-        y = extrapolate(x)
+        # For given x compute y value
+        y = intercept + (slope * x)
 
-        results = [x, y]
+        return y
 
-        return results
+prediction_algorithm = PredictionAlgorithm()
+
+xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
+yi = [94, 73, 59, 80, 93, 85, 66, 79, 77, 91]
+
+prediction_algorithm.simple_linear_regression(xi, yi, 15)
 
 
 class DataStore:
