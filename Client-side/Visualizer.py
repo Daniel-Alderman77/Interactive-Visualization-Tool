@@ -372,14 +372,14 @@ class LatencyGraph(LineGraph):
             pass
 
 
-# TODO - Implement Gauge plot
+# TODO - (Extension) Implement Gauge plot
 class GaugePlot:
 
     def __init__(self):
         self.name = self
 
 
-# TODO - Implement ProgressBar
+# TODO - (Extension) Implement ProgressBar
 class ProgressBar:
 
     def __init__(self):

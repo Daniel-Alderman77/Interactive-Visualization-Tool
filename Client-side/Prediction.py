@@ -1,11 +1,7 @@
-# Based upon
-# http://stackoverflow.com/questions/2745329/how-to-make-scipy-interpolate-give-an-extrapolated-result-beyond-the-input-range
 import glob
 import numpy as np
 import os
 from scipy.interpolate import InterpolatedUnivariateSpline
-
-import FileHandler
 
 
 class PredictionAlgorithm:
@@ -14,8 +10,11 @@ class PredictionAlgorithm:
         self.name = self
 
     # TODO - Implement Linear Regression
-    # TODO - Implement Random Forest Regression
-    # TODO - Implement Regression Analysis
+    # TODO - (Extension) Implement Random Forest Regression
+    # TODO - (Extension) Implement Regression Analysis
+
+    # Based upon
+    # http://stackoverflow.com/questions/2745329/how-to-make-scipy-interpolate-give-an-extrapolated-result-beyond-the-input-range
     @staticmethod
     def predict(xi, yi):
 
@@ -83,12 +82,12 @@ class DataStore:
                 data_file.write(data_file_contents)
 
     # TODO - Implement cold start prediction
-    @staticmethod
-    def cold_start_prediction():
-        client = FileHandler.WebServiceClient()
-
-        if client.get_local_file_count()["Number of files"] > 0:
-            print "Files are available for cold start prediction"
-
-        else:
-            print "Files are not available for cold start prediction"
+    # @staticmethod
+    # def cold_start_prediction():
+    #     client = FileHandler.WebServiceClient()
+    #
+    #     if client.get_local_file_count()["Number of files"] > 0:
+    #         print "Files are available for cold start prediction"
+    #
+    #     else:
+    #         print "Files are not available for cold start prediction"
