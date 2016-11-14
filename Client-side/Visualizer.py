@@ -178,10 +178,11 @@ class MemoryGraph(LineGraph):
 
             self.line.set_data(x, y)
             plt.draw()
+
+            export_test_results.write_predicted_value_to_file(y, 'Memory')
+
             return self.line,
 
-            pass
-        
 
 class JobsGraph(LineGraph):
 

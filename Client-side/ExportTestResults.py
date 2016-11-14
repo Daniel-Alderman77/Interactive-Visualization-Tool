@@ -74,6 +74,20 @@ class ExportTestResults:
         except Exception as e:
             print e
 
+    def write_predicted_value_to_file(self, value, type_of_data):
+        try:
+            print self.time_str
+            with open(self.filename, 'a') as test_file:
+                writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
+
+                occurrence_str = str(value) + ' has been predicted for ' + type_of_data
+
+                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                                                 'Ping': self.get_ping()}))
+
+        except Exception as e:
+            print e
+
     # TODO - Implement write_finish_to_file method
     def write_finish_to_file(self):
         # TODO - Write 'Throughput'to file
