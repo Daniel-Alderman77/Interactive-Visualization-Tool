@@ -84,7 +84,6 @@ class DataStore:
 
             print "Wrote " + filename + " to prediction cache"
 
-    # TODO - Implement cold start prediction
     def cold_start_prediction(self, type_of_data, index):
 
         if self.get_prediction_cache_file_count > 0:
