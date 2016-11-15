@@ -145,7 +145,8 @@ class MemoryGraph(LineGraph):
 
         # Initialise list to store plotted values for prediction
         self.index = 0
-        self.plotted_memory_values = []
+        self.plotted_x_values = []
+        self.plotted_y_values = []
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -167,14 +168,15 @@ class MemoryGraph(LineGraph):
             self.line.set_data(x, y)
             plt.draw()
 
-            # Store plotted values for prediction
-            self.plotted_memory_values.append(memory_value)
+            # Append plotted values to list for prediction
+            self.plotted_x_values.append(x)
+            self.plotted_y_values.append(y)
 
             return self.line,
 
         except Exception:
             # If no data has previously been plotted use cold start prediction
-            if len(self.plotted_memory_values) == 0:
+            if len(self.plotted_y_values) == 0:
                 print "Now Predicting next Memory value using cold start prediction"
 
                 self.data_store.cold_start_prediction('Memory', self.index)
@@ -185,16 +187,15 @@ class MemoryGraph(LineGraph):
             # Else use simple linear regression utilising previously plotted data
             else:
                 print "Now Predicting next Memory value using simple linear regression"
-
+                
                 # Reset prediction cache index back to zero
                 self.index = 0
 
                 x = self.randomise_values()[0]
 
-                xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
-                yi = [94, 73, 59, 80, 93, 85, 66, 79, 77, 91]
+                n = len(self.plotted_y_values) + 1
 
-                y = self.prediction_algorithm.simple_linear_regression(xi, yi, 15)
+                y = self.prediction_algorithm.simple_linear_regression(self.plotted_x_values, self.plotted_y_values, n)
 
                 if x[-1] > self.ax.get_xlim()[1]:
                     self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -202,6 +203,11 @@ class MemoryGraph(LineGraph):
                 self.line.set_data(x, y)
                 plt.draw()
 
+                # Append plotted values to list for prediction
+                self.plotted_x_values.append(x)
+                self.plotted_y_values.append(y)
+
+                # Write to test file
                 self.export_test_results.write_predicted_value_to_file(y, 'Memory')
 
                 return self.line,
