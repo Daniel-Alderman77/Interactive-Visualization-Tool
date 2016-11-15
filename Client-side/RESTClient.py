@@ -11,6 +11,7 @@ class RESTClient:
 
     def __init__(self):
         self.name = self
+        self.data_store = DataStore()
 
     def get_number_of_files(self):
         return self.number_of_files
@@ -104,10 +105,8 @@ class RESTClient:
                 with open(os.path.join(data_store_path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
 
-                # Prediction
-                data_store = DataStore()
-
-                data_store.prediction_cache(filename, data_file_contents)
+                # Write file to prediction cache
+                self.data_store.prediction_cache(filename, data_file_contents)
 
                 self.set_number_of_files(number_of_files)
 

@@ -3,6 +3,7 @@ import os
 from scipy import stats
 
 from ExportTestResults import ExportTestResults
+from FileHandler import ResponseDeserialization
 
 
 class PredictionAlgorithm:
@@ -29,7 +30,10 @@ class DataStore:
 
     def __init__(self):
         self.name = self
+
+        # Class instances
         self.export_test_results = ExportTestResults()
+        self.response_deserialization = ResponseDeserialization()
 
     @staticmethod
     def get_prediction_cache_file_count():
@@ -74,6 +78,7 @@ class DataStore:
         else:
             print "Less than 4 files in prediction_cache"
 
+            # Write file to prediction cache
             with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
                 data_file.write(data_file_contents)
 
@@ -82,6 +87,8 @@ class DataStore:
 
         if self.get_prediction_cache_file_count > 0:
             print "Files are available for cold start prediction"
+
+            # Pass file prediction cache to File Handler to be deserialized
 
         else:
             print "No files are available for cold start prediction"
