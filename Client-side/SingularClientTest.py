@@ -62,10 +62,23 @@ class Startup:
             self.response_deserialization.parse_jobs_data(filename)
             self.response_deserialization.parse_energy_data(filename)
 
+    @staticmethod
+    def test_run_cleanup():
+        # Load filenames in data_store in array
+        data_store = glob.glob1("data_store", "*.xml")
+
+        # Deletes each file named in the list
+        for data_file in data_store:
+            try:
+                os.remove(data_file)
+            except OSError:
+                pass
+
     def __call__(self):
         # Start UI
         root = self.user_interface.run()
 
+        # File local datafile index. Increments as each new file is visualized
         index = 0
 
         # Start initial loop
@@ -76,18 +89,7 @@ class Startup:
         # End UI loop
         self.user_interface.main_loop(root)
 
-        # Load filenames in data_store in array
-        data_store = glob.glob1("data_store", "*.xml")
-
-        # Remove last element so this file can be used for cold start prediction
-        data_store.pop([-1])
-
-        # Deletes each file named in the list
-        for data_file in data_store:
-            try:
-                os.remove(data_file)
-            except OSError:
-                pass
+        self.test_run_cleanup()
 
 
 startup = Startup()
