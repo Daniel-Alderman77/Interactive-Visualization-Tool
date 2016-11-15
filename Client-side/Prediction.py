@@ -82,23 +82,31 @@ class DataStore:
             with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
                 data_file.write(data_file_contents)
 
+            print "Wrote " + filename + " to prediction cache"
+
     # TODO - Implement cold start prediction
-    def cold_start_prediction(self, type_of_data):
+    def cold_start_prediction(self, type_of_data, index):
 
         if self.get_prediction_cache_file_count > 0:
             print "Files are available for cold start prediction"
 
-            filename = self.get_prediction_cache_file_count()[1][0]
+            try:
+                filename = self.get_prediction_cache_file_count()[1][index]
 
-            # Pass file prediction cache to File Handler to be deserialized
-            if type_of_data == 'CPU':
-                self.response_deserialization.parse_cpu_data(filename)
-            if type_of_data == 'Memory':
-                self.response_deserialization.parse_memory_data(filename)
-            if type_of_data == 'Jobs':
-                self.response_deserialization.parse_jobs_data(filename)
-            if type_of_data == 'Energy':
-                self.response_deserialization.parse_energy_data(filename)
+                # Pass file prediction cache to File Handler to be deserialized
+                if type_of_data == 'CPU':
+                    self.response_deserialization.parse_cpu_data(filename)
+                if type_of_data == 'Memory':
+                    self.response_deserialization.parse_memory_data(filename)
+                if type_of_data == 'Jobs':
+                    self.response_deserialization.parse_jobs_data(filename)
+                if type_of_data == 'Energy':
+                    self.response_deserialization.parse_energy_data(filename)
+
+            except IndexError:
+                print 'Cold start prediction has exhausted files in prediction cache for ' + type_of_data
+
+                self.export_test_results.write_fault_to_file('Exhausted files in prediction cache')
 
         else:
             print "No files are available for cold start prediction"

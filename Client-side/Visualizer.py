@@ -144,6 +144,7 @@ class MemoryGraph(LineGraph):
         self.line, = self.ax.plot([], [], lw=2)
 
         # Initialise list to store plotted values for prediction
+        self.index = 0
         self.plotted_memory_values = []
 
     # animation function.  This is called sequentially
@@ -178,11 +179,18 @@ class MemoryGraph(LineGraph):
             if len(self.plotted_memory_values) == 0:
                 print "Now Predicting next Memory value using cold start prediction"
 
-                self.data_store.cold_start_prediction('Memory')
+                self.data_store.cold_start_prediction('Memory', self.index)
+
+                # Increment index
+                self.index += 1
 
             # Else use simple linear regression utilising previously plotted data
             else:
                 print "Now Predicting next Memory value using simple linear regression"
+
+                # Reset prediction cache index back to zero
+                self.index = 0
+
                 x = self.randomise_values()[0]
 
                 xi = [17, 13, 12, 15, 16, 14, 16, 16, 18, 19]
