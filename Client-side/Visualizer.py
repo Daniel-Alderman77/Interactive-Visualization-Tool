@@ -7,7 +7,7 @@ import math
 from tkinter.ttk import *
 from Tkinter import HORIZONTAL
 
-from Prediction import PredictionAlgorithm
+from Prediction import PredictionAlgorithm, DataStore
 from ExportTestResults import ExportTestResults
 
 
@@ -30,6 +30,7 @@ class LineGraph:
         # Class instances
         self.export_test_results = ExportTestResults()
         self.prediction_algorithm = PredictionAlgorithm()
+        self.data_store = DataStore()
 
     # initialization function: plot the background of each frame
     def init(self):
@@ -142,7 +143,7 @@ class MemoryGraph(LineGraph):
         self.ax.set_ylabel('Memory Usage')
         self.line, = self.ax.plot([], [], lw=2)
 
-        # Store plotted values for prediction
+        # Initialise list to store plotted values for prediction
         self.plotted_memory_values = []
 
     # animation function.  This is called sequentially
@@ -164,6 +165,10 @@ class MemoryGraph(LineGraph):
 
             self.line.set_data(x, y)
             plt.draw()
+
+            # Store plotted values for prediction
+            self.plotted_memory_values.append(memory_value)
+
             return self.line,
 
         except Exception:
@@ -172,7 +177,10 @@ class MemoryGraph(LineGraph):
             # If no data has previously been plotted use cold start prediction
             if len(self.plotted_memory_values) is not 0:
                 print "Now Predicting next Memory value using cold start prediction"
+
                 print self.plotted_memory_values
+
+                self.data_store.cold_start_prediction()
 
             # Else use simple linear regression utilising previously plotted data
             else:

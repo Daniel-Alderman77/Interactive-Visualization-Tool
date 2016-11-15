@@ -2,6 +2,8 @@ import glob
 import os
 from scipy import stats
 
+from ExportTestResults import ExportTestResults
+
 
 class PredictionAlgorithm:
 
@@ -27,6 +29,7 @@ class DataStore:
 
     def __init__(self):
         self.name = self
+        self.export_test_results = ExportTestResults()
 
     @staticmethod
     def get_prediction_cache_file_count():
@@ -75,12 +78,12 @@ class DataStore:
                 data_file.write(data_file_contents)
 
     # TODO - Implement cold start prediction
-    # @staticmethod
-    # def cold_start_prediction():
-    #     client = FileHandler.WebServiceClient()
-    #
-    #     if client.get_local_file_count()["Number of files"] > 0:
-    #         print "Files are available for cold start prediction"
-    #
-    #     else:
-    #         print "Files are not available for cold start prediction"
+    def cold_start_prediction(self):
+
+        if self.get_prediction_cache_file_count > 0:
+            print "Files are available for cold start prediction"
+
+        else:
+            print "No files are available for cold start prediction"
+
+            self.export_test_results.write_fault_to_file('No files are available for cold start prediction')
