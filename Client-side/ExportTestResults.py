@@ -2,12 +2,13 @@ import csv
 import time
 import cPickle
 
+test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
+
 
 class ExportTestResults:
 
     def __init__(self):
         self.name = self
-        self.filename = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
         self.start_time = time.time()
 
@@ -27,7 +28,7 @@ class ExportTestResults:
 
     def create_test_file(self):
         try:
-            with open(self.filename, 'wb') as test_file:
+            with open(test_file_name, 'wb') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 writer.writeheader()
@@ -36,7 +37,7 @@ class ExportTestResults:
 
     def write_startup_to_file(self):
         try:
-            with open(self.filename, 'a') as test_file:
+            with open(test_file_name, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 time_str = time.strftime("%H:%M:%S")
@@ -51,7 +52,7 @@ class ExportTestResults:
 
     def write_fetch_to_file(self, filename):
         try:
-            with open(self.filename, 'a') as test_file:
+            with open(test_file_name, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 time_str = time.strftime("%H:%M:%S")
@@ -66,7 +67,7 @@ class ExportTestResults:
 
     def write_fault_to_file(self, fault):
         try:
-            with open(self.filename, 'a') as test_file:
+            with open(test_file_name, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 time_str = time.strftime("%H:%M:%S")
@@ -81,7 +82,7 @@ class ExportTestResults:
 
     def write_predicted_value_to_file(self, value, type_of_data):
         try:
-            with open(self.filename, 'a') as test_file:
+            with open(test_file_name, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 time_str = time.strftime("%H:%M:%S")
