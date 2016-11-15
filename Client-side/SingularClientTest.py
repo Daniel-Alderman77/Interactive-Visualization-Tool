@@ -9,7 +9,6 @@ from ExportTestResults import ExportTestResults
 
 
 # Initial Loop
-# TODO - Else, cold start prediction, pass data to visualizer
 # TODO - Exhaust file call new one
 
 # Repeated Loop
@@ -23,6 +22,12 @@ class Startup:
     def __init__(self):
         self.name = self
 
+        # Create class instances
+        self.export_test_results = ExportTestResults()
+        self.web_service_client = WebServiceClient()
+        self.response_deserialization = ResponseDeserialization()
+        self.user_interface = UserInterface()
+
     @staticmethod
     def calculate_ping(class_instance):
         # Executes function in background thread
@@ -30,42 +35,36 @@ class Startup:
         ping_thread.start()
 
     def initial_loop(self, index):
-        # Create class instances
-        export_test_results = ExportTestResults()
-        web_service_client = WebServiceClient()
-        response_deserialization = ResponseDeserialization()
 
         # Calls function that continuously calculates ping
-        self.calculate_ping(web_service_client)
+        self.calculate_ping(self.web_service_client)
 
-        export_test_results.create_test_file()
+        self.export_test_results.create_test_file()
 
-        export_test_results.write_startup_to_file()
+        self.export_test_results.write_startup_to_file()
 
         # Contact server and return number of remote files available
-        number_of_remote_files = web_service_client.get_remote_file_count(index)
+        number_of_remote_files = self.web_service_client.get_remote_file_count(index)
 
         print("Number of remote files: %s" % number_of_remote_files)
 
         # Check file transfer has been successful
-        if web_service_client.check_transfer(index):
-            list_of_files = web_service_client.get_local_file_count()["List of files"]
+        if self.web_service_client.check_transfer(index):
+            list_of_files = self.web_service_client.get_local_file_count()["List of files"]
 
-            export_test_results.write_fetch_to_file(list_of_files[index])
+            self.export_test_results.write_fetch_to_file(list_of_files[index])
 
             filename = 'data_store/' + list_of_files[index]
 
             # Deserialize filename passed as a parameter
-            response_deserialization.parse_cpu_data(filename)
-            response_deserialization.parse_memory_data(filename)
-            response_deserialization.parse_jobs_data(filename)
-            response_deserialization.parse_energy_data(filename)
+            self.response_deserialization.parse_cpu_data(filename)
+            self.response_deserialization.parse_memory_data(filename)
+            self.response_deserialization.parse_jobs_data(filename)
+            self.response_deserialization.parse_energy_data(filename)
 
     def __call__(self):
-        user_interface = UserInterface()
-
         # Start UI
-        root = user_interface.run()
+        root = self.user_interface.run()
 
         index = 0
 
@@ -75,7 +74,7 @@ class Startup:
         # TODO - Start repeated loop
 
         # End UI loop
-        user_interface.main_loop(root)
+        self.user_interface.main_loop(root)
 
         # Load filenames in data_store in array
         data_store = glob.glob1("data_store", "*.xml")
