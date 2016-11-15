@@ -9,7 +9,6 @@ class ExportTestResults:
         self.name = self
         self.filename = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
-        self.time_str = time.strftime("%H:%M:%S")
         self.start_time = time.time()
 
     def get_ping(self):
@@ -40,9 +39,11 @@ class ExportTestResults:
             with open(self.filename, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
+                time_str = time.strftime("%H:%M:%S")
+
                 occurrence_str = 'Startup'
 
-                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
         except Exception as e:
@@ -53,9 +54,11 @@ class ExportTestResults:
             with open(self.filename, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
+                time_str = time.strftime("%H:%M:%S")
+
                 occurrence_str = filename + ' has been retrieved'
 
-                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
         except Exception as e:
@@ -66,9 +69,11 @@ class ExportTestResults:
             with open(self.filename, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
+                time_str = time.strftime("%H:%M:%S")
+
                 occurrence_str = fault + ' fault has occurred'
 
-                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
         except Exception as e:
@@ -79,9 +84,11 @@ class ExportTestResults:
             with open(self.filename, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
+                time_str = time.strftime("%H:%M:%S")
+
                 occurrence_str = str(value) + ' has been predicted for ' + type_of_data
 
-                writer.writerow(writer.writerow({'Time': self.time_str, 'Occurrence': occurrence_str,
+                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
         except Exception as e:
