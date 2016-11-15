@@ -83,12 +83,22 @@ class DataStore:
                 data_file.write(data_file_contents)
 
     # TODO - Implement cold start prediction
-    def cold_start_prediction(self):
+    def cold_start_prediction(self, type_of_data):
 
         if self.get_prediction_cache_file_count > 0:
             print "Files are available for cold start prediction"
 
+            filename = self.get_prediction_cache_file_count()[1][0]
+
             # Pass file prediction cache to File Handler to be deserialized
+            if type_of_data == 'CPU':
+                self.response_deserialization.parse_cpu_data(filename)
+            if type_of_data == 'Memory':
+                self.response_deserialization.parse_memory_data(filename)
+            if type_of_data == 'Jobs':
+                self.response_deserialization.parse_jobs_data(filename)
+            if type_of_data == 'Energy':
+                self.response_deserialization.parse_energy_data(filename)
 
         else:
             print "No files are available for cold start prediction"

@@ -175,12 +175,10 @@ class MemoryGraph(LineGraph):
             # TODO - Predict next value
 
             # If no data has previously been plotted use cold start prediction
-            if len(self.plotted_memory_values) is not 0:
+            if len(self.plotted_memory_values) == 0:
                 print "Now Predicting next Memory value using cold start prediction"
 
-                print self.plotted_memory_values
-
-                self.data_store.cold_start_prediction()
+                self.data_store.cold_start_prediction('Memory')
 
             # Else use simple linear regression utilising previously plotted data
             else:
