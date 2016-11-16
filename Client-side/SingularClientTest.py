@@ -9,11 +9,7 @@ from ExportTestResults import ExportTestResults
 from RESTClient import RESTClient
 
 
-# Repeated Loop
-# TODO - If response is successful, deserialize data, pass data to visualizer
-# TODO - Else, use prediction
-# TODO - Exhaust file call new one
-# TODO - Repeat till all files have retrieved from sever-side and rendered to user
+# TODO - Restart program_loop when the connection to server is reinstated
 
 class Startup:
 
@@ -103,6 +99,8 @@ class Startup:
 
         # Start program loop
         self.main(index)
+
+        # TODO - End UI loop and call test_run_cleanup
 
         # End UI loop
         self.user_interface.main_loop(root)
