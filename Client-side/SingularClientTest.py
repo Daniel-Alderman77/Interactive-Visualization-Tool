@@ -56,6 +56,7 @@ class Startup:
         # Calls function that continuously calculates ping
         self.calculate_ping(self.web_service_client)
 
+        # Create test file
         self.export_test_results.create_test_file()
 
         self.export_test_results.write_startup_to_file()
@@ -74,7 +75,7 @@ class Startup:
                     list_of_files = self.web_service_client.get_local_file_count()["List of files"]
 
                     self.export_test_results.write_fetch_to_file(list_of_files[index])
-
+                    
                     filename = 'data_store/' + list_of_files[index]
 
                     # Deserialize filename passed as a parameter
@@ -83,12 +84,16 @@ class Startup:
                     self.response_deserialization.parse_jobs_data(filename)
                     self.response_deserialization.parse_energy_data(filename)
 
+                    # Increment index
                     index += 1
 
+                    # Updated filename to next file to be retrieved
                     filename = 'data_store/' + list_of_files[index]
 
+                    # Retrieve new file
                     self.rest_client.get_datafile(filename)
 
+                    # Make thread sleep for one second
                     time.sleep(1)
 
                 except:
@@ -103,7 +108,7 @@ class Startup:
         # Start UI
         root = self.user_interface.run()
 
-        # File local datafile index. Incremets as each new file is visualized
+        # File local datafile index. Increments as each new file is visualized
         index = 0
 
         # Start initial loop
