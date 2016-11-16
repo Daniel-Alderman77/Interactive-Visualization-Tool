@@ -90,6 +90,7 @@ class RESTClient:
 
                 list_of_files = response_dict['List of files']
 
+                print "Now retrieving " + list_of_files[index]
                 data = self.get_datafile(list_of_files[index])
 
                 data_store_path = "data_store"
@@ -97,12 +98,13 @@ class RESTClient:
                 if not os.path.exists(data_store_path):
                     os.makedirs(data_store_path)
 
-                filename = (list_of_files[0])
+                filename = list_of_files[index]
 
                 # Encode data into string from unicode
                 data_file_contents = data.text.encode('ascii', 'ignore')
 
                 with open(os.path.join(data_store_path, filename), 'wb') as data_file:
+                    print "Writing " + filename + " to data store"
                     data_file.write(data_file_contents)
 
                 # Write file to prediction cache

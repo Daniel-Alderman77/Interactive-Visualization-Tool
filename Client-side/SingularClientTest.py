@@ -87,17 +87,15 @@ class Startup:
                     # Increment index
                     index += 1
 
-                    # Updated filename to next file to be retrieved
-                    filename = 'data_store/' + list_of_files[index]
-
                     # Retrieve new file
-                    self.rest_client.get_datafile(filename)
+                    self.rest_client.read_datafile(index)
 
-                    # Make thread sleep for one second
-                    time.sleep(1)
+                except Exception as e:
+                    print e
+                    raise
 
-                except:
-                    sys.exit(0)
+            # Make thread sleep for one second
+            time.sleep(1)
 
     def main(self, index):
         # Executes function in background thread
