@@ -30,28 +30,25 @@ class DataStore:
 
     def __init__(self):
         self.name = self
+        self.prediction_cache_path = "prediction_cache"
 
         # Class instances
         self.export_test_results = ExportTestResults()
         self.response_deserialization = ResponseDeserialization()
 
-    @staticmethod
-    def get_prediction_cache_file_count():
-        file_count = (len(glob.glob1("data_store", "*.xml")))
+    def get_prediction_cache_file_count(self):
+        file_count = (len(glob.glob1(self.prediction_cache_path, "*.xml")))
 
         list_of_files = []
         if file_count > 0:
-            list_of_files = glob.glob1("data_store", "*.xml")
+            list_of_files = glob.glob1(self.prediction_cache_path, "*.xml")
 
         return file_count, list_of_files
 
     def prediction_cache(self, filename, data_file_contents):
-
-        prediction_cache_path = "prediction_cache"
-
         # If prediction cache doesn't exist create it
-        if not os.path.exists(prediction_cache_path):
-            os.makedirs(prediction_cache_path)
+        if not os.path.exists(self.prediction_cache_path):
+            os.makedirs(self.prediction_cache_path)
 
         # Check if number of files in cache is > 4
         if self.get_prediction_cache_file_count()[0] > 4:
@@ -61,12 +58,12 @@ class DataStore:
                 # Remove oldest file in prediction cache
                 oldest_file = self.get_prediction_cache_file_count()[1][0]
 
-                os.remove(prediction_cache_path + "/" + oldest_file)
+                os.remove(self.prediction_cache_path + "/" + oldest_file)
 
                 print "Oldest file " + oldest_file + " removed"
 
                 # Write new file as replacement
-                with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+                with open(os.path.join(self.prediction_cache_path, filename), 'wb') as data_file:
                     data_file.write(data_file_contents)
 
                 print "New file " + filename + " written as replacement"
@@ -80,7 +77,7 @@ class DataStore:
             print "Less than 4 files in prediction_cache"
 
             # Write file to prediction cache
-            with open(os.path.join(prediction_cache_path, filename), 'wb') as data_file:
+            with open(os.path.join(self.prediction_cache_path, filename), 'wb') as data_file:
                 data_file.write(data_file_contents)
 
             print "Wrote " + filename + " to prediction cache"
