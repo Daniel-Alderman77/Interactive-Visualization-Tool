@@ -32,6 +32,11 @@ class ExportTestResults:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 writer.writeheader()
+
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
+
         except Exception as e:
             print e
 
@@ -46,6 +51,10 @@ class ExportTestResults:
 
                 writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
+
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
 
         except Exception as e:
             print e
@@ -62,6 +71,10 @@ class ExportTestResults:
                 writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
+
         except Exception as e:
             print e
 
@@ -77,6 +90,10 @@ class ExportTestResults:
                 writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
 
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
+
         except Exception as e:
             print e
 
@@ -91,6 +108,10 @@ class ExportTestResults:
 
                 writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
                                                  'Ping': self.get_ping()}))
+
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
 
         except Exception as e:
             print e
