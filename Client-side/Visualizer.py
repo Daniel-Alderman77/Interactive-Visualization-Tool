@@ -137,16 +137,20 @@ class MemoryGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 100))
         self.ax.set_title('Memory Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Memory Usage')
-        self.line, = self.ax.plot([], [], lw=2)
+        self.memory, = self.ax.plot([], [], lw=2)
+        self.average, = self.ax.plot([], [], lw=2)
 
         # Initialise list to store plotted values for prediction
         self.index = 0
         self.plotted_x_values = []
         self.plotted_y_values = []
+
+        # Set up legend
+        self.ax.legend((self.memory, self.average), ('Current Utilisation', 'Average Utilisation'))
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -165,14 +169,14 @@ class MemoryGraph(LineGraph):
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-            self.line.set_data(x, y)
+            self.memory.set_data(x, y)
             plt.draw()
 
             # Append plotted values to list for prediction
             self.plotted_x_values.append(x)
             self.plotted_y_values.append(y)
 
-            return self.line,
+            return self.memory,
 
         except Exception:
             # If no data has previously been plotted use cold start prediction
@@ -200,7 +204,7 @@ class MemoryGraph(LineGraph):
                 if x[-1] > self.ax.get_xlim()[1]:
                     self.ax.set_xlim([x[-1] - 10, x[-1]])
 
-                self.line.set_data(x, y)
+                self.memory.set_data(x, y)
                 plt.draw()
 
                 # Append plotted values to list for prediction
@@ -210,7 +214,7 @@ class MemoryGraph(LineGraph):
                 # Write to test file
                 self.export_test_results.write_predicted_value_to_file(y, 'Memory')
 
-                return self.line,
+                return self.memory,
 
 
 class JobsGraph(LineGraph):
