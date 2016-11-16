@@ -1,5 +1,4 @@
-import glob
-import os
+import shutil
 import threading
 import time
 
@@ -36,15 +35,13 @@ class Startup:
 
     @staticmethod
     def test_run_cleanup():
-        # Load filenames in data_store in array
-        data_store = glob.glob1("data_store", "*.xml")
-
-        # Deletes each file named in the list
-        for data_file in data_store:
-            try:
-                os.remove(data_file)
-            except OSError:
-                pass
+        # Delete data_store and visualizer_cache directories
+        try:
+            shutil.rmtree('data_store')
+            shutil.rmtree('visualizer_cache')
+        except Exception as e:
+            print e
+            pass
 
     def program_loop(self, index):
 

@@ -9,3 +9,4 @@ env/
 .idea/inspectionProfiles/profiles_settings.xml
 Client-side/data_store
 Client-side/prediction_cache
+Client-side/visualizer_cache
