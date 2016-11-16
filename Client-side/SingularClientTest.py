@@ -12,9 +12,6 @@ from ExportTestResults import ExportTestResults
 from RESTClient import RESTClient
 
 
-# Initial Loop
-# TODO - Exhaust file call new one
-
 # Repeated Loop
 # TODO - If response is successful, deserialize data, pass data to visualizer
 # TODO - Else, use prediction
@@ -109,10 +106,8 @@ class Startup:
         # File local datafile index. Increments as each new file is visualized
         index = 0
 
-        # Start initial loop
+        # Start program loop
         self.main(index)
-
-        # TODO - Start repeated loop
 
         # End UI loop
         self.user_interface.main_loop(root)
