@@ -220,7 +220,7 @@ class JobsGraph(LineGraph):
         self.name = self
 
         # Set up the figure and the axis
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 50))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 100))
         self.ax.set_title('Number of jobs running over time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Number of jobs running')
@@ -364,10 +364,10 @@ class LatencyGraph(LineGraph):
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(12, 5), dpi=50)
-        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 30))
+        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 2))
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Time')
-        self.ax.set_ylabel('Latency')
+        self.ax.set_ylabel('Latency (seconds)')
 
         # Set up line animated lines to be plotted
         self.latency, = self.ax.plot([], [], lw=2)
