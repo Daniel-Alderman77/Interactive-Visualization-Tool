@@ -1,4 +1,5 @@
 import csv
+import os
 import time
 import cPickle
 
@@ -27,7 +28,13 @@ class ExportTestResults:
             pass
 
     def create_test_file(self):
+        test_results_path = "test_results"
+
         try:
+            # If test_results directory doesn't exist create it
+            if not os.path.exists(test_results_path):
+                os.makedirs(test_results_path)
+
             with open(test_file_name, 'wb') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 

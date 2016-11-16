@@ -49,6 +49,7 @@ class DataStore:
 
         prediction_cache_path = "prediction_cache"
 
+        # If prediction cache doesn't exist create it
         if not os.path.exists(prediction_cache_path):
             os.makedirs(prediction_cache_path)
 
