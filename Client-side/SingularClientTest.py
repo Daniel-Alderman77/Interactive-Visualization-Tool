@@ -3,8 +3,6 @@ import os
 import threading
 import time
 
-import sys
-
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
 from Views import UserInterface
@@ -61,11 +59,9 @@ class Startup:
         # Contact server and return number of remote files available
         number_of_remote_files = self.web_service_client.get_remote_file_count(index)
 
-        number_of_local_files = self.web_service_client.get_local_file_count()['Number of files']
-
         print("Number of remote files: %s" % number_of_remote_files)
 
-        while number_of_remote_files > number_of_local_files:
+        while index < number_of_remote_files:
             # Check file transfer has been successful
             if self.web_service_client.check_transfer(index):
                 try:
@@ -93,6 +89,8 @@ class Startup:
 
             # Make thread sleep for one second
             time.sleep(1)
+
+        print "Exhausted all files on the server"
 
     def main(self, index):
         # Executes function in background thread
