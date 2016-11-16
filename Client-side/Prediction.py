@@ -61,7 +61,7 @@ class DataStore:
                 # Remove oldest file in prediction cache
                 oldest_file = self.get_prediction_cache_file_count()[1][0]
 
-                os.remove(prediction_cache_path + oldest_file)
+                os.remove(prediction_cache_path + "/" + oldest_file)
 
                 print "Oldest file " + oldest_file + " removed"
 
