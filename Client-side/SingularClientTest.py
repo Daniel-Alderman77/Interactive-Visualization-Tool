@@ -3,10 +3,13 @@ import os
 import threading
 import time
 
+import sys
+
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
 from Views import UserInterface
 from ExportTestResults import ExportTestResults
+from RESTClient import RESTClient
 
 
 # Initial Loop
@@ -28,6 +31,7 @@ class Startup:
         self.web_service_client = WebServiceClient()
         self.response_deserialization = ResponseDeserialization()
         self.user_interface = UserInterface()
+        self.rest_client = RESTClient()
 
     @staticmethod
     def calculate_ping(class_instance):
@@ -63,22 +67,32 @@ class Startup:
 
         print("Number of remote files: %s" % number_of_remote_files)
 
-        while number_of_remote_files < number_of_local_files:
+        while number_of_remote_files > number_of_local_files:
             # Check file transfer has been successful
             if self.web_service_client.check_transfer(index):
-                list_of_files = self.web_service_client.get_local_file_count()["List of files"]
+                try:
+                    list_of_files = self.web_service_client.get_local_file_count()["List of files"]
 
-                self.export_test_results.write_fetch_to_file(list_of_files[index])
+                    self.export_test_results.write_fetch_to_file(list_of_files[index])
 
-                filename = 'data_store/' + list_of_files[index]
+                    filename = 'data_store/' + list_of_files[index]
 
-                # Deserialize filename passed as a parameter
-                self.response_deserialization.parse_cpu_data(filename)
-                self.response_deserialization.parse_memory_data(filename)
-                self.response_deserialization.parse_jobs_data(filename)
-                self.response_deserialization.parse_energy_data(filename)
+                    # Deserialize filename passed as a parameter
+                    self.response_deserialization.parse_cpu_data(filename)
+                    self.response_deserialization.parse_memory_data(filename)
+                    self.response_deserialization.parse_jobs_data(filename)
+                    self.response_deserialization.parse_energy_data(filename)
 
-                time.sleep(1)
+                    index += 1
+
+                    filename = 'data_store/' + list_of_files[index]
+
+                    self.rest_client.get_datafile(filename)
+
+                    time.sleep(1)
+
+                except:
+                    sys.exit(0)
 
     def main(self, index):
         # Executes function in background thread
