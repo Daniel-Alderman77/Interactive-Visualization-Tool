@@ -9,6 +9,7 @@ from Tkinter import HORIZONTAL
 
 from Prediction import PredictionAlgorithm, DataStore
 from ExportTestResults import ExportTestResults
+from FaultDetection import FaultDetection
 
 
 class LineGraph:
@@ -31,6 +32,7 @@ class LineGraph:
         self.export_test_results = ExportTestResults()
         self.prediction_algorithm = PredictionAlgorithm()
         self.data_store = DataStore()
+        self.fault_detection = FaultDetection()
 
     # initialization function: plot the background of each frame
     def init(self):
@@ -179,6 +181,8 @@ class MemoryGraph(LineGraph):
             return self.memory,
 
         except Exception:
+            self.fault_detection.null_values_fault('Memory')
+
             # If no data has previously been plotted use cold start prediction
             if len(self.plotted_y_values) == 0:
                 print "Now Predicting next Memory value using cold start prediction"

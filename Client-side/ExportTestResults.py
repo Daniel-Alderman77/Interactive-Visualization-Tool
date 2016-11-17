@@ -106,11 +106,6 @@ class ExportTestResults:
 
     # TODO - Implement write_finish_to_file method
     def write_finish_to_file(self):
-        # TODO - Write 'Throughput'to file
-        # TODO - Write 'Percentage of jobs completed' to file
-        # TODO - Write 'Dropped packets' to file
-        # TODO - Write 'Faults recovered from, by type' to file
-
         try:
             with open(test_file_name, 'ab') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
@@ -132,9 +127,15 @@ class ExportTestResults:
                 # Write time elapsed
                 writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
 
+                # TODO - Write 'Faults occurred, by type' to file
                 # Write 'Faults occurred, by type' to file
                 for key, value in self.faults_occurred.iteritems():
                     writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
+
+                # TODO - Write 'Throughput'to file
+                # TODO - Write 'Percentage of jobs completed' to file
+                # TODO - Write 'Dropped packets' to file
+                # TODO - Write 'Faults recovered from, by type' to file
 
         except Exception as e:
             print e
