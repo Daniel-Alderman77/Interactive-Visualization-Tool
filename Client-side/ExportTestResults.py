@@ -131,5 +131,26 @@ class ExportTestResults:
         # TODO - Write 'Faults occurred, by type' to file
         # TODO - Write 'Faults recovered from, by type' to file
 
-        end_time = time.time()
-        print("Time elapsed = %s" % (end_time - self.start_time))
+        try:
+            with open(test_file_name, 'ab') as test_file:
+                writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
+
+                # Write blank row
+                writer.writerow(writer.writerow({'Time': '', 'Occurrence': '', 'Ping': ''}))
+
+                time_str = time.strftime("%H:%M:%S")
+
+                # occurrence_str = "test"
+                #
+                # end_time = time.time()
+                # print("Time elapsed = %s" % (end_time - self.start_time))
+                #
+                # writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
+                #                                  'Ping': self.get_ping()}))
+
+        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
+        except TypeError:
+            pass
+
+        except Exception as e:
+            print e

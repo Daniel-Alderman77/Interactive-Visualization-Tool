@@ -49,6 +49,8 @@ class Startup:
 
         self.export_test_results.write_startup_to_file()
 
+        self.export_test_results.write_finish_to_file()
+
         # Contact server and return number of remote files available
         number_of_remote_files = self.web_service_client.get_remote_file_count(index)
 
