@@ -124,12 +124,23 @@ class ExportTestResults:
                 # Write blank row
                 writer.writerow({'Time': '', 'Occurrence': '', 'Ping': ''})
 
+                # Write Test Run Summary
+                writer.writerow({'Time': 'Test Run Summary', 'Occurrence': '', 'Ping': ''})
+
+                end_time = time.time()
+                time_elapsed = end_time - self.start_time
+
+                # Round time_elapsed to two decimal places
+                time_elapsed = round(time_elapsed, 2)
+
+                print("Time elapsed = %s" % time_elapsed)
+
+                # Write time elapsed
+                writer.writerow({'Time': 'Time elapsed = ' + str(time_elapsed) + ' seconds', 'Occurrence': '', 'Ping': ''})
+
                 time_str = time.strftime("%H:%M:%S")
 
                 occurrence_str = "test"
-
-                end_time = time.time()
-                print("Time elapsed = %s" % (end_time - self.start_time))
 
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
