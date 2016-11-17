@@ -40,10 +40,6 @@ class ExportTestResults:
 
                 writer.writeheader()
 
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
-
         except Exception as e:
             print e
 
@@ -56,12 +52,7 @@ class ExportTestResults:
 
                 occurrence_str = 'Startup'
 
-                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
-                                                 'Ping': self.get_ping()}))
-
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
@@ -113,12 +104,7 @@ class ExportTestResults:
 
                 occurrence_str = str(value) + ' has been predicted for ' + type_of_data
 
-                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
-                                                 'Ping': self.get_ping()}))
-
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
@@ -136,21 +122,16 @@ class ExportTestResults:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 # Write blank row
-                writer.writerow(writer.writerow({'Time': '', 'Occurrence': '', 'Ping': ''}))
+                writer.writerow({'Time': '', 'Occurrence': '', 'Ping': ''})
 
                 time_str = time.strftime("%H:%M:%S")
 
-                # occurrence_str = "test"
-                #
-                # end_time = time.time()
-                # print("Time elapsed = %s" % (end_time - self.start_time))
-                #
-                # writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
-                #                                  'Ping': self.get_ping()}))
+                occurrence_str = "test"
 
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
+                end_time = time.time()
+                print("Time elapsed = %s" % (end_time - self.start_time))
+
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
