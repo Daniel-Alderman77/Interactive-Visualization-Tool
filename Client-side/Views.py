@@ -217,13 +217,14 @@ class UserInterface:
 
     def __init__(self):
         self.name = self
+        self.root = None
 
     def run(self):
         root = Tk()
         app = MainView(root)
         root.title('Interactive Visualization Tool')
 
-        return root
+        self.root = root
 
-    def main_loop(self, root):
-        root.mainloop()
+    def destroy_ui(self):
+        self.root.mainloop()
