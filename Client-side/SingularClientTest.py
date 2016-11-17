@@ -49,8 +49,6 @@ class Startup:
 
         self.export_test_results.write_startup_to_file()
 
-        self.export_test_results.write_finish_to_file()
-
         # Contact server and return number of remote files available
         number_of_remote_files = self.web_service_client.get_remote_file_count(index)
 
@@ -83,9 +81,11 @@ class Startup:
                     raise
 
             # Make thread sleep for one second
-            time.sleep(1)
+            # time.sleep(1)
 
         print "Exhausted all files on the server"
+
+        self.export_test_results.write_finish_to_file()
 
     def main(self, index):
         # Executes function in background thread

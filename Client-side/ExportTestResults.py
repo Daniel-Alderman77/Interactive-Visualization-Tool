@@ -14,6 +14,8 @@ class ExportTestResults:
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
         self.start_time = time.time()
 
+        self.faults_occurred = defaultdict(int)
+
     def get_ping(self):
         try:
             pickle_file = 'visualizer_cache/latency_data.p'
@@ -83,8 +85,6 @@ class ExportTestResults:
 
                 self.faults_occurred[fault] += 1
 
-                print self.faults_occurred[fault]
-
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
@@ -109,7 +109,6 @@ class ExportTestResults:
         # TODO - Write 'Throughput'to file
         # TODO - Write 'Percentage of jobs completed' to file
         # TODO - Write 'Dropped packets' to file
-        # TODO - Write 'Faults occurred, by type' to file
         # TODO - Write 'Faults recovered from, by type' to file
 
         try:
@@ -132,6 +131,10 @@ class ExportTestResults:
 
                 # Write time elapsed
                 writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
+
+                # Write 'Faults occurred, by type' to file
+                for key, value in self.faults_occurred.iteritems():
+                    writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
 
         except Exception as e:
             print e
