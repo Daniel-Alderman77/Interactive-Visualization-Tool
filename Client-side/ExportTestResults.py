@@ -2,6 +2,7 @@ import csv
 import os
 import time
 import cPickle
+from collections import defaultdict
 
 test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 
@@ -80,6 +81,10 @@ class ExportTestResults:
 
                 occurrence_str = fault + ' fault has occurred'
 
+                self.faults_occurred[fault] += 1
+
+                print self.faults_occurred[fault]
+
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
@@ -123,10 +128,10 @@ class ExportTestResults:
                 # Round time_elapsed to two decimal places
                 time_elapsed = round(time_elapsed, 2)
 
-                print("Time elapsed = %s" % time_elapsed)
+                print("Time Elapsed = %s" % time_elapsed)
 
                 # Write time elapsed
-                writer.writerow({'Time': 'Time elapsed = ' + str(time_elapsed) + ' seconds', 'Occurrence': ''})
+                writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
 
         except Exception as e:
             print e
