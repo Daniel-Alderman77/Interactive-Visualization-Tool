@@ -66,12 +66,7 @@ class ExportTestResults:
 
                 occurrence_str = filename + ' has been retrieved'
 
-                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
-                                                 'Ping': self.get_ping()}))
-
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
@@ -85,12 +80,7 @@ class ExportTestResults:
 
                 occurrence_str = fault + ' fault has occurred'
 
-                writer.writerow(writer.writerow({'Time': time_str, 'Occurrence': occurrence_str,
-                                                 'Ping': self.get_ping()}))
-
-        # Ignore "TypeError - 'NoneType' object is not iterable" exceptions being raised
-        except TypeError:
-            pass
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
