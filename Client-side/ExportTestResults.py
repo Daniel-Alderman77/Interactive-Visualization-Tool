@@ -122,10 +122,10 @@ class ExportTestResults:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
 
                 # Write blank row
-                writer.writerow({'Time': '', 'Occurrence': '', 'Ping': ''})
+                writer.writerow({})
 
                 # Write Test Run Summary
-                writer.writerow({'Time': 'Test Run Summary', 'Occurrence': '', 'Ping': ''})
+                writer.writerow({'Time': 'Test Run Summary'})
 
                 end_time = time.time()
                 time_elapsed = end_time - self.start_time
@@ -136,13 +136,7 @@ class ExportTestResults:
                 print("Time elapsed = %s" % time_elapsed)
 
                 # Write time elapsed
-                writer.writerow({'Time': 'Time elapsed = ' + str(time_elapsed) + ' seconds', 'Occurrence': '', 'Ping': ''})
-
-                time_str = time.strftime("%H:%M:%S")
-
-                occurrence_str = "test"
-
-                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
+                writer.writerow({'Time': 'Time elapsed = ' + str(time_elapsed) + ' seconds', 'Occurrence': ''})
 
         except Exception as e:
             print e
