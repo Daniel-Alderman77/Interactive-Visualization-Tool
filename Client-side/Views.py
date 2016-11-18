@@ -225,14 +225,8 @@ class UserInterface:
         root.title('Interactive Visualization Tool')
 
         self.root = root
-<<<<<<< HEAD
 
         return root
 
     def destroy(self):
         self.root.destroy()
-=======
-
-    def destroy_ui(self):
-        self.root.mainloop()
->>>>>>> origin/master

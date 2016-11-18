@@ -87,19 +87,11 @@ class Startup:
 
         self.export_test_results.write_finish_to_file()
 
-<<<<<<< HEAD
-        self.test_run_cleanup()
-
-        # End UI loop
-        self.user_interface.destroy()
-=======
         print "Cleaning test environment..."
         self.test_run_cleanup()
 
         # End UI loop
-        print "Now Terminating Program"
-        self.user_interface.destroy_ui()
->>>>>>> origin/master
+        self.user_interface.destroy()
 
     def main(self, index):
         # Executes function in background thread
@@ -108,7 +100,7 @@ class Startup:
 
     def __call__(self):
         # Start UI
-        self.user_interface.run()
+        root = self.user_interface.run()
 
         # File local datafile index. Increments as each new file is visualized
         index = 0
@@ -116,11 +108,7 @@ class Startup:
         # Start program loop
         self.main(index)
 
-<<<<<<< HEAD
         root.mainloop()
-
-=======
->>>>>>> origin/master
 
 startup = Startup()
 startup()
