@@ -139,7 +139,7 @@ class MemoryGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 100))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10000))
         self.ax.set_title('Memory Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Memory Usage')
@@ -162,7 +162,7 @@ class MemoryGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 memory_data = cPickle.load(pickle)
 
-            memory_value = memory_data[1]['memory'][0]
+            memory_value = memory_data[0]
             print("Memory value: %s" % memory_value)
 
             x = self.randomise_values()[0]
