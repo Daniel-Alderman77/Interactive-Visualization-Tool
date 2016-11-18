@@ -87,6 +87,11 @@ class Startup:
 
         self.export_test_results.write_finish_to_file()
 
+        self.test_run_cleanup()
+
+        # End UI loop
+        self.user_interface.destroy()
+
     def main(self, index):
         # Executes function in background thread
         main_thread = threading.Thread(target=self.program_loop, args=[index])
@@ -102,12 +107,7 @@ class Startup:
         # Start program loop
         self.main(index)
 
-        # TODO - End UI loop and call test_run_cleanup
-
-        # End UI loop
-        self.user_interface.main_loop(root)
-
-        self.test_run_cleanup()
+        root.mainloop()
 
 
 startup = Startup()
