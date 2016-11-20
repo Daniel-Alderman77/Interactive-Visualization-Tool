@@ -7,15 +7,20 @@ import sys
 
 client_number = 0
 run_number = 0
+test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 
-try:
-    client_number = "client_" + sys.argv[1]
-    run_number = "run_number" + sys.argv[2]
-except:
+# Store command line arguments if present and change test test_file_name
+if sys.argv > 1:
+    try:
+        client_number = "client_" + sys.argv[1]
+        run_number = "run_number" + sys.argv[2]
+        test_file_name = 'test_results/' + str(run_number) + '/' + str(client_number) + '/' + time.strftime(
+            "%d-%m-%Y--%H:%M:%S") + '.csv'
+
+    except:
+        pass
+else:
     print "No command line arguments entered"
-    pass
-
-test_file_name = 'test_results/' + run_number + '/' + client_number + '/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 
 
 class ExportTestResults:
@@ -42,7 +47,10 @@ class ExportTestResults:
             pass
 
     def create_test_file(self):
-        test_results_path = "test_results" + "/" + run_number + "/" + client_number
+        test_results_path = "test_results"
+
+        if run_number and client_number != 0:
+            test_results_path = "test_results" + "/" + str(run_number) + "/" + str(client_number)
 
         try:
             # If test_results directory doesn't exist create it
