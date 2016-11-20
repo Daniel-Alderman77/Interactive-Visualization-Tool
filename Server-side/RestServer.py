@@ -25,5 +25,6 @@ api.add_resource(Server, '/file_count/')
 def get_data(path):
     return app.send_static_file(path)
 
+# Enabled threading to handle multiple requests
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

@@ -54,7 +54,15 @@ class Startup:
 
         print("Number of remote files: %s" % number_of_remote_files)
 
+        # Catch if client cannot establish connection to Server
+        while number_of_remote_files < 0:
+            number_of_remote_files = self.web_service_client.get_remote_file_count(index)
+
         while index < number_of_remote_files:
+            # Catch if client cannot establish connection to Server
+            while number_of_remote_files < 0:
+                number_of_remote_files = self.web_service_client.get_remote_file_count(index)
+
             # Check file transfer has been successful
             if self.web_service_client.check_transfer(index):
                 try:
