@@ -165,6 +165,9 @@ class MemoryGraph(LineGraph):
             memory_value = memory_data[0]
             print("Memory value: %s" % memory_value)
 
+            # if memory_value == 0 throw exception
+            assert memory_value != 0
+
             x = self.randomise_values()[0]
             y = memory_value
 

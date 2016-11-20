@@ -50,8 +50,8 @@ class DataStore:
         if not os.path.exists(self.prediction_cache_path):
             os.makedirs(self.prediction_cache_path)
 
-        # Check if number of files in cache is > 4
-        if self.get_prediction_cache_file_count()[0] > 4:
+        # Check if number of files in cache is > 10
+        if self.get_prediction_cache_file_count()[0] > 10:
             print "Greater than 4 files in prediction_cache"
 
             try:
@@ -74,7 +74,7 @@ class DataStore:
                 pass
 
         else:
-            print "Less than 4 files in prediction_cache"
+            print "Less than 10 files in prediction_cache"
 
             # Write file to prediction cache
             with open(os.path.join(self.prediction_cache_path, filename), 'wb') as data_file:
