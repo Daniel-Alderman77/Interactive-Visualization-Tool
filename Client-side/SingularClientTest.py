@@ -2,6 +2,7 @@ import shutil
 import threading
 import time
 import sys
+import cPickle
 
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
@@ -9,8 +10,6 @@ from Views import UserInterface
 from ExportTestResults import ExportTestResults
 from RESTClient import RESTClient
 
-
-# TODO - Restart program_loop when the connection to server is reinstated
 
 class Startup:
 
@@ -44,7 +43,7 @@ class Startup:
         # Create test file
         self.export_test_results.create_test_file()
 
-        # Calls function that continuously calculates ping
+        # Calculates ping between server and client
         self.calculate_ping(self.web_service_client)
 
         self.export_test_results.write_startup_to_file()
@@ -59,9 +58,24 @@ class Startup:
             number_of_remote_files = self.web_service_client.get_remote_file_count(index)
 
         while index < number_of_remote_files:
-            # Catch if client cannot establish connection to Server
-            while number_of_remote_files < 0:
-                number_of_remote_files = self.web_service_client.get_remote_file_count(index)
+            self.calculate_ping(self.web_service_client)
+
+            pickle_file = 'visualizer_cache/latency_data.p'
+            # Read data file from cache
+            with open(pickle_file, 'rb') as pickle:
+                latency = cPickle.load(pickle)
+
+            # Catch if client cannot establish connection to Server, then wait until connection is reestablished
+            while latency == 'ConnectionError':
+                print 'Attempting to reconnect with Server'
+
+                self.calculate_ping(self.web_service_client)
+
+                pickle_file = 'visualizer_cache/latency_data.p'
+                # Read data file from cache
+                with open(pickle_file, 'rb') as pickle:
+                    # When connection is reestablished latency will no longer be 'ConnectionError'
+                    latency = cPickle.load(pickle)
 
             # Check file transfer has been successful
             if self.web_service_client.check_transfer(index):
