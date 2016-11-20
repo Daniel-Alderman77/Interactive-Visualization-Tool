@@ -1,6 +1,7 @@
 import shutil
 import threading
 import time
+import sys
 
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
@@ -91,6 +92,9 @@ class Startup:
 
         # End UI loop
         self.user_interface.destroy()
+
+        # End program
+        sys.exit(1)
 
     def main(self, index):
         # Executes function in background thread
