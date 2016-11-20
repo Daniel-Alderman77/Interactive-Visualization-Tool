@@ -3,8 +3,19 @@ import os
 import time
 import cPickle
 from collections import defaultdict
+import sys
 
-test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
+client_number = 0
+run_number = 0
+
+try:
+    client_number = "client_" + sys.argv[1]
+    run_number = "run_number" + sys.argv[2]
+except:
+    print "No command line arguments entered"
+    pass
+
+test_file_name = 'test_results/' + run_number + '/' + client_number + '/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 
 
 class ExportTestResults:
@@ -31,7 +42,7 @@ class ExportTestResults:
             pass
 
     def create_test_file(self):
-        test_results_path = "test_results"
+        test_results_path = "test_results" + "/" + run_number + "/" + client_number
 
         try:
             # If test_results directory doesn't exist create it

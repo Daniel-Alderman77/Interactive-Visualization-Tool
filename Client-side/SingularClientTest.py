@@ -1,7 +1,6 @@
 import shutil
 import threading
 import time
-import sys
 
 from WebServiceClient import WebServiceClient
 from FileHandler import ResponseDeserialization
@@ -40,13 +39,12 @@ class Startup:
             print e
             pass
 
-    def program_loop(self, index, client_number, run_number):
+    def program_loop(self, index):
+        # Create test file
+        self.export_test_results.create_test_file()
 
         # Calls function that continuously calculates ping
         self.calculate_ping(self.web_service_client)
-
-        # Create test file
-        self.export_test_results.create_test_file()
 
         self.export_test_results.write_startup_to_file()
 
@@ -94,22 +92,12 @@ class Startup:
         # End UI loop
         self.user_interface.destroy()
 
-    def main(self, index, client_number, run_number):
+    def main(self, index):
         # Executes function in background thread
-        main_thread = threading.Thread(target=self.program_loop, args=[index, client_number, run_number])
+        main_thread = threading.Thread(target=self.program_loop, args=[index])
         main_thread.start()
 
     def __call__(self):
-        client_number = 0
-        run_number = 0
-
-        try:
-            client_number = "Client" + sys.argv[1]
-            run_number = "RunNumber" + sys.argv[2]
-        except:
-            print "No command line arguments entered"
-            pass
-
         # Start UI
         root = self.user_interface.run()
 
@@ -117,7 +105,7 @@ class Startup:
         index = 0
 
         # Start program loop
-        self.main(index, client_number, run_number)
+        self.main(index)
 
         root.mainloop()
 
