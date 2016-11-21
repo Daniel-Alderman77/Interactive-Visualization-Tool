@@ -127,8 +127,6 @@ class CPUGraph(LineGraph):
 
             print("Average CPU value: %s" % y)
 
-            self.y_average_array.append(y)
-
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
@@ -211,8 +209,6 @@ class MemoryGraph(LineGraph):
 
             print("Average Memory value: %s" % y)
 
-            self.y_average_array.append(y)
-
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
@@ -260,9 +256,6 @@ class MemoryGraph(LineGraph):
                     # Animate cpu utilisation
                     x = self.x_array
                     y = self.y_array
-
-                    print y
-                    print x
 
                     if x[-1] > self.ax.get_xlim()[1]:
                         self.ax.set_xlim([x[-1] - 10, x[-1]])
