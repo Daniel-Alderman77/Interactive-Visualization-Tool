@@ -84,7 +84,7 @@ class CPUGraph(LineGraph):
         # Initialise list to store plotted values for prediction
         self.x_array = []
         self.y_array = []
-
+        
         # Set up legend
         self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Utilisation'))
 
@@ -126,6 +126,8 @@ class CPUGraph(LineGraph):
             y = total_cpu_values / len(self.y_array)
 
             print("Average CPU value: %s" % y)
+
+            self.y_average_array.append(y)
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -209,6 +211,8 @@ class MemoryGraph(LineGraph):
 
             print("Average Memory value: %s" % y)
 
+            self.y_average_array.append(y)
+
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
@@ -257,7 +261,8 @@ class MemoryGraph(LineGraph):
                     x = self.x_array
                     y = self.y_array
 
-                    print x, y
+                    print y
+                    print x
 
                     if x[-1] > self.ax.get_xlim()[1]:
                         self.ax.set_xlim([x[-1] - 10, x[-1]])
