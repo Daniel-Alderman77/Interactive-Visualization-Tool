@@ -84,8 +84,6 @@ class CPUGraph(LineGraph):
         # Initialise list to store plotted values for prediction
         self.x_array = []
         self.y_array = []
-        self.x_average = []
-        self.y_average = []
 
         # Set up legend
         self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Utilisation'))
@@ -154,7 +152,7 @@ class MemoryGraph(LineGraph):
         self.name = self
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 25000))
         self.ax.set_title('Memory Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Memory Usage')
@@ -165,8 +163,6 @@ class MemoryGraph(LineGraph):
         self.prediction_index = 0
         self.x_array = []
         self.y_array = []
-        self.x_average = []
-        self.y_average = []
 
         # Set up legend
         self.ax.legend((self.memory, self.average), ('Current Utilisation', 'Average Utilisation'))
@@ -227,7 +223,7 @@ class MemoryGraph(LineGraph):
             self.fault_detection.null_values_fault('Memory')
 
             # If no data has previously been plotted use cold start prediction
-            if len(self.y_array) == 0:
+            if self.y_array[0] == 0:
                 print "Now Predicting next Memory value using cold start prediction"
 
                 memory_value = 0
@@ -245,6 +241,12 @@ class MemoryGraph(LineGraph):
                     # Increment index
                     self.prediction_index += 1
 
+                # Remove null value
+                self.y_array.pop(0)
+
+                # Append value so it can be plotted
+                self.y_array.append(memory_value)
+
                 print("Cold start prediction has prediction %s as the next Memory value" % memory_value)
 
                 # Reset prediction cache index back to zero
@@ -254,6 +256,9 @@ class MemoryGraph(LineGraph):
                     # Animate cpu utilisation
                     x = self.x_array
                     y = self.y_array
+
+                    print y
+                    print x
 
                     if x[-1] > self.ax.get_xlim()[1]:
                         self.ax.set_xlim([x[-1] - 10, x[-1]])
