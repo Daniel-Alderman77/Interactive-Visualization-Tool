@@ -81,8 +81,11 @@ class CPUGraph(LineGraph):
         self.cpu, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
 
+        # Initialise lists to store plotted values
         self.x_array = []
         self.y_array = []
+        self.x_average = []
+        self.y_average = []
 
         # Set up legend
         self.ax.legend((self.cpu, self.average), ('Current Utilisation', 'Average Utilisation'))
@@ -107,6 +110,7 @@ class CPUGraph(LineGraph):
 
             print("CPU value: %s" % cpu_value)
 
+            # # Animate cpu utilisation
             x = self.x_array
             y = self.y_array
 
@@ -119,9 +123,13 @@ class CPUGraph(LineGraph):
             total_cpu_values = 0
 
             for i in self.y_array:
-                total_cpu_values += int(i)
+                total_cpu_values += float(i)
+
+            print total_cpu_values
 
             y = total_cpu_values / len(self.y_array)
+
+            print("Average CPU value: %s" % y)
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -131,7 +139,10 @@ class CPUGraph(LineGraph):
             # Update graph
             plt.draw()
 
-        except Exception:
+            return self.cpu, self.average,
+
+        except Exception as e:
+            print e
             print "Now Predicting next CPU value"
             # TODO - Predict next value
             pass
