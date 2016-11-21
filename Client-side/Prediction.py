@@ -50,9 +50,9 @@ class DataStore:
         if not os.path.exists(self.prediction_cache_path):
             os.makedirs(self.prediction_cache_path)
 
-        # Check if number of files in cache is > 10
-        if self.get_prediction_cache_file_count()[0] > 10:
-            print "Greater than 4 files in prediction_cache"
+        # Check if number of files in cache is > 30
+        if self.get_prediction_cache_file_count()[0] > 30:
+            print "Greater than 30 files in prediction_cache"
 
             try:
                 # Remove oldest file in prediction cache
@@ -74,7 +74,7 @@ class DataStore:
                 pass
 
         else:
-            print "Less than 10 files in prediction_cache"
+            print "Less than 30 files in prediction_cache"
 
             # Write file to prediction cache
             with open(os.path.join(self.prediction_cache_path, filename), 'wb') as data_file:
@@ -92,13 +92,13 @@ class DataStore:
 
                 # Pass file prediction cache to File Handler to be deserialized
                 if type_of_data == 'CPU':
-                    self.response_deserialization.parse_cpu_data(filename)
+                    self.response_deserialization.parse_cpu_data('prediction_cache/' + filename)
                 if type_of_data == 'Memory':
-                    self.response_deserialization.parse_memory_data(filename)
+                    self.response_deserialization.parse_memory_data('prediction_cache/' + filename)
                 if type_of_data == 'Jobs':
-                    self.response_deserialization.parse_jobs_data(filename)
+                    self.response_deserialization.parse_jobs_data('prediction_cache/' + filename)
                 if type_of_data == 'Energy':
-                    self.response_deserialization.parse_energy_data(filename)
+                    self.response_deserialization.parse_energy_data('prediction_cache/' + filename)
 
             except IndexError:
                 print 'Cold start prediction has exhausted files in prediction cache for ' + type_of_data

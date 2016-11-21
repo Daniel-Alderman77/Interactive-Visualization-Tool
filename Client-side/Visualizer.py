@@ -147,7 +147,7 @@ class MemoryGraph(LineGraph):
         self.average, = self.ax.plot([], [], lw=2)
 
         # Initialise list to store plotted values for prediction
-        self.index = 0
+        self.prediction_index = 0
         self.plotted_x_values = []
         self.plotted_y_values = []
 
@@ -190,17 +190,50 @@ class MemoryGraph(LineGraph):
             if len(self.plotted_y_values) == 0:
                 print "Now Predicting next Memory value using cold start prediction"
 
-                self.data_store.cold_start_prediction('Memory', self.index)
+                memory_value = 0
 
-                # Increment index
-                self.index += 1
+                while memory_value == 0:
+                    self.data_store.cold_start_prediction('Memory', self.prediction_index)
+
+                    pickle_file = 'visualizer_cache/memory_data.p'
+                    # Read data file from cache
+                    with open(pickle_file, 'rb') as pickle:
+                        memory_data = cPickle.load(pickle)
+
+                    memory_value = memory_data[0]
+
+                    # Increment index
+                    self.prediction_index += 1
+
+                print("Cold start prediction has prediction %s as the next Memory value" % memory_value)
+
+                # Reset prediction cache index back to zero
+                self.prediction_index = 0
+
+                # try:
+                #     x = self.randomise_values()[0]
+                #     y = memory_value
+                #
+                #     if x[-1] > self.ax.get_xlim()[1]:
+                #         self.ax.set_xlim([x[-1] - 10, x[-1]])
+                #
+                #     self.memory.set_data(x, y)
+                #     plt.draw()
+                #
+                #     # Append plotted values to list for prediction
+                #     self.plotted_x_values.append(x)
+                #     self.plotted_y_values.append(y)
+                #
+                #     return self.memory,
+                # except:
+                #     pass
 
             # Else use simple linear regression utilising previously plotted data
             else:
                 print "Now Predicting next Memory value using simple linear regression"
                 
                 # Reset prediction cache index back to zero
-                self.index = 0
+                self.prediction_index = 0
 
                 x = self.randomise_values()[0]
 
