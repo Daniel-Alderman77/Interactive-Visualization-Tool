@@ -144,7 +144,6 @@ class CPUGraph(LineGraph):
             pass
 
 
-# TODO - Implement Memory graph
 class MemoryGraph(LineGraph):
 
     def __init__(self):
@@ -289,29 +288,58 @@ class MemoryGraph(LineGraph):
             else:
                 print "Now Predicting next Memory value using simple linear regression"
 
-                # # Reset prediction cache index back to zero
-                # self.prediction_index = 0
-                #
-                # x = self.randomise_values()[0]
-                #
-                # n = len(self.plotted_y_values) + 1
-                #
-                # y = self.prediction_algorithm.simple_linear_regression(self.plotted_x_values, self.plotted_y_values, n)
-                #
-                # if x[-1] > self.ax.get_xlim()[1]:
-                #     self.ax.set_xlim([x[-1] - 10, x[-1]])
-                #
-                # self.memory.set_data(x, y)
-                # plt.draw()
-                #
-                # # Append plotted values to list for prediction
-                # self.plotted_x_values.append(x)
-                # self.plotted_y_values.append(y)
-                #
-                # # Write to test file
-                # self.export_test_results.write_predicted_value_to_file(y, 'Memory')
-                #
-                # return self.memory,
+                try:
+                    n = len(self.y_array) - 1
+                    y = self.y_array[0]
+
+                    if n == 1:
+                        self.y_array[1] = y
+                    else:
+                        print n
+                        del self.x_array[-1]
+                        del self.y_array[-1]
+
+                        y = self.prediction_algorithm.simple_linear_regression(self.x_array, self.y_array, n)
+
+                        self.x_array.append(n)
+                        self.y_array.append(y)
+
+                        print("Simple linear regression has prediction %s as the next Memory value" % y)
+
+                    # Animate cpu utilisation
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.memory.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_memory_values = 0
+
+                    for i in self.y_array:
+                        total_memory_values += float(i)
+
+                    y = total_memory_values / len(self.y_array)
+
+                    print("Average Memory value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    # Write to test file
+                    self.export_test_results.write_predicted_value_to_file(y, 'Memory')
+
+                    return self.memory, self.average,
+
+                except:
+                    raise
 
 
 class JobsGraph(LineGraph):
