@@ -47,7 +47,7 @@ class RESTClient:
             fault_detection.late_timing_fault()
 
         except ConnectionError:
-            print "Failed to establish connection to Server"
+            # print "Failed to establish connection to Server"
             fault_detection.connection_error()
 
         return request
@@ -116,6 +116,5 @@ class RESTClient:
 
             return True
 
-        except Exception as e:
-            print(e)
+        except Exception:
             return False
