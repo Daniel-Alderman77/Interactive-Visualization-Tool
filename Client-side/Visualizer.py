@@ -82,6 +82,7 @@ class CPUGraph(LineGraph):
         self.average, = self.ax.plot([], [], lw=2)
 
         # Initialise list to store plotted values for prediction
+        self.prediction_index = 0
         self.x_array = []
         self.y_array = []
         
@@ -137,11 +138,133 @@ class CPUGraph(LineGraph):
 
             return self.cpu, self.average,
 
-        except Exception as e:
-            print e
-            print "Now Predicting next CPU value"
-            # TODO - Predict next value
-            pass
+        except Exception:
+            self.fault_detection.null_values_fault('CPU')
+
+            # If no data has previously been plotted use cold start prediction
+            if self.y_array[0] == 0:
+
+                print "Now Predicting next CPU value using cold start prediction"
+
+                cpu_value = 0
+
+                while cpu_value == 0:
+                    self.data_store.cold_start_prediction('CPU', self.prediction_index)
+
+                    pickle_file = 'visualizer_cache/cpu_data.p'
+
+                    # Read data file from cache
+                    with open(pickle_file, 'rb') as pickle:
+                        cpu_data = cPickle.load(pickle)
+
+                    cpu_value = cpu_data[0]
+
+                    # Increment index
+                    self.prediction_index += 1
+
+                # Remove null value
+                self.y_array.pop(0)
+
+                # Append value so it can be plotted
+                self.y_array.append(cpu_value)
+
+                print("Cold start prediction has prediction %s as the next CPU value" % cpu_value)
+
+                # Reset prediction cache index back to zero
+                self.prediction_index = 0
+
+                try:
+                    # Animate cpu utilisation
+                    x = self.x_array
+
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.cpu.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_cpu_values = 0
+
+                    for i in self.y_array:
+                        total_cpu_values += float(i)
+
+                    y = total_cpu_values / len(self.y_array)
+
+                    print("Average CPU value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    return self.cpu, self.average,
+
+                except:
+                    pass
+
+            # Else use simple linear regression utilising previously plotted data
+            else:
+                print "Now Predicting next CPU value using simple linear regression"
+
+                try:
+                    n = len(self.y_array) - 1
+
+                    y = self.y_array[0]
+
+                    if n == 1:
+                        self.y_array[1] = y
+
+                    else:
+                        del self.x_array[-1]
+                        del self.y_array[-1]
+
+                        y = self.prediction_algorithm.simple_linear_regression(self.x_array, self.y_array, n)
+
+                        self.x_array.append(n)
+                        self.y_array.append(y)
+
+                        print("Simple linear regression has prediction %s as the next CPU value" % y)
+
+                    # Animate cpu utilisation
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.cpu.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_cpu_values = 0
+
+                    for i in self.y_array:
+                        total_cpu_values += float(i)
+
+                    y = total_cpu_values / len(self.y_array)
+
+                    print("Average CPU value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    # Write to test file
+
+                    self.export_test_results.write_predicted_value_to_file(y, 'CPU')
+
+                    return self.cpu, self.average,
+
+                except:
+                    pass
 
 
 class MemoryGraph(LineGraph):
@@ -339,7 +462,7 @@ class MemoryGraph(LineGraph):
                     return self.memory, self.average,
 
                 except:
-                    raise
+                    pass
 
 
 class JobsGraph(LineGraph):
