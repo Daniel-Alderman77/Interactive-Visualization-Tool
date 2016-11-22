@@ -652,6 +652,8 @@ class EnergyGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
+                self.export_test_results.write_predicted_value_to_file(energy_value, 'Energy')
+
                 try:
                     # Animate cpu utilisation
                     x = self.x_array
@@ -820,15 +822,15 @@ class LatencyGraph(LineGraph):
             return self.latency, self.average,
 
         except Exception:
-            self.fault_detection.null_values_fault('Energy')
+            self.fault_detection.null_values_fault('Latency')
 
             # If no data has previously been plotted use cold start prediction
             if self.y_array[0] == 0:
                 print "Now Predicting next Latency value using cold start prediction"
 
-                energy_value = 0
+                latency_value = 0
 
-                while energy_value == 0:
+                while latency_value == 0:
                     self.data_store.cold_start_prediction('Latency', self.prediction_index)
 
                     pickle_file = 'visualizer_cache/latency_data.p'
@@ -836,7 +838,7 @@ class LatencyGraph(LineGraph):
                     with open(pickle_file, 'rb') as pickle:
                         latency = cPickle.load(pickle)
 
-                    energy_value = latency
+                    latency_value = latency
 
                     # Increment index
                     self.prediction_index += 1
@@ -845,15 +847,17 @@ class LatencyGraph(LineGraph):
                 self.y_array.pop(0)
 
                 # Append value so it can be plotted
-                self.y_array.append(energy_value)
+                self.y_array.append(latency_value)
 
-                print("Cold start prediction has prediction %s as the next Latency value" % energy_value)
+                print("Cold start prediction has prediction %s as the next Latency value" % latency_value)
 
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
+                self.export_test_results.write_predicted_value_to_file(latency_value, 'Latency')
+
                 try:
-                    # Animate cpu utilisation
+                    # Animate current latency
                     x = self.x_array
                     y = self.y_array
 
@@ -862,7 +866,7 @@ class LatencyGraph(LineGraph):
 
                     self.latency.set_data(x, y)
 
-                    # Animate average cpu utilisation
+                    # Animate average latency
                     total_latency_values = 0
 
                     for i in self.y_array:
