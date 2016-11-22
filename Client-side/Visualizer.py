@@ -545,10 +545,9 @@ class EnergyGraph(LineGraph):
     def __init__(self):
         LineGraph.__init__(self)
         self.name = self
-        self.energy_values = []
 
         # First set up the figure, the axis, and the plot element we want to animate
-        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 15000))
+        self.ax = plt.axes(xlim=(0, 10), ylim=(0, 20000))
         self.ax.set_title('Energy Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Energy Usage')
@@ -573,16 +572,21 @@ class EnergyGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 energy_data = cPickle.load(pickle)
 
-            x = self.randomise_values()[0]
-
             energy_value = energy_data[1]['energy'][0]
 
-            self.energy_values.append(energy_value)
+            if len(self.x_array) == 0:
+                self.x_array.append(0)
+            else:
+                x = self.x_array[-1] + 1
+                self.x_array.append(x)
+
+            self.y_array.append(energy_value)
 
             print("Energy value: %s" % energy_value)
 
-            # Animate energy usage
-            y = energy_value
+            # Animate cpu utilisation
+            x = self.x_array
+            y = self.y_array
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -592,10 +596,12 @@ class EnergyGraph(LineGraph):
             # Animate average energy usage
             total_energy_values = 0
 
-            for i in self.energy_values:
-                total_energy_values += int(i)
+            for i in self.y_array:
+                total_energy_values += float(i)
 
-            y = total_energy_values / len(self.energy_values)
+            y = total_energy_values / len(self.y_array)
+
+            print("Average CPU value: %s" % y)
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -604,6 +610,8 @@ class EnergyGraph(LineGraph):
 
             # Update graph
             plt.draw()
+
+            return self.energy, self.average,
 
         except Exception:
             self.fault_detection.null_values_fault('Energy')
