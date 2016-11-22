@@ -745,7 +745,6 @@ class LatencyGraph(LineGraph):
     def __init__(self):
         LineGraph.__init__(self)
         self.name = self
-        self.latency_values = []
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(12, 5), dpi=50)
@@ -799,10 +798,10 @@ class LatencyGraph(LineGraph):
             # Animate average latency
             total_latency_values = 0
 
-            for i in self.latency_values:
+            for i in self.y_array:
                 total_latency_values += int(i)
 
-            y = total_latency_values / len(self.latency_values)
+            y = total_latency_values / len(self.y_array)
 
             print("Average Latency value: %s" % y)
 
@@ -817,9 +816,128 @@ class LatencyGraph(LineGraph):
             return self.latency, self.average,
 
         except Exception:
-            print "Now Predicting next Latency value"
-            # TODO - Predict next value
-            pass
+            self.fault_detection.null_values_fault('Energy')
+
+            # If no data has previously been plotted use cold start prediction
+            if self.y_array[0] == 0:
+                print "Now Predicting next Latency value using cold start prediction"
+
+                energy_value = 0
+
+                while energy_value == 0:
+                    self.data_store.cold_start_prediction('Latency', self.prediction_index)
+
+                    pickle_file = 'visualizer_cache/latency_data.p'
+                    # Read data file from cache
+                    with open(pickle_file, 'rb') as pickle:
+                        latency = cPickle.load(pickle)
+
+                    energy_value = latency
+
+                    # Increment index
+                    self.prediction_index += 1
+
+                # Remove null value
+                self.y_array.pop(0)
+
+                # Append value so it can be plotted
+                self.y_array.append(energy_value)
+
+                print("Cold start prediction has prediction %s as the next Latency value" % energy_value)
+
+                # Reset prediction cache index back to zero
+                self.prediction_index = 0
+
+                try:
+                    # Animate cpu utilisation
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.latency.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_latency_values = 0
+
+                    for i in self.y_array:
+                        total_latency_values += float(i)
+
+                    y = total_latency_values / len(self.y_array)
+
+                    print("Average Latency value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    return self.latency, self.average,
+
+                except:
+                    pass
+
+            # Else use simple linear regression utilising previously plotted data
+            else:
+                print "Now Predicting next Latency value using simple linear regression"
+
+                try:
+                    n = len(self.y_array) - 1
+
+                    y = self.y_array[0]
+
+                    if n == 1:
+                        self.y_array[1] = y
+
+                    else:
+                        del self.x_array[-1]
+                        del self.y_array[-1]
+
+                        y = self.prediction_algorithm.simple_linear_regression(self.x_array, self.y_array, n)
+
+                        self.x_array.append(n)
+                        self.y_array.append(y)
+
+                        print("Simple linear regression has prediction %s as the next Latency value" % y)
+
+                    # Animate current latency
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.latency.set_data(x, y)
+
+                    # Animate average latency
+                    total_latency_values = 0
+
+                    for i in self.y_array:
+                        total_latency_values += float(i)
+
+                    y = total_latency_values / len(self.y_array)
+
+                    print("Average Latency value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    # Write to test file
+                    self.export_test_results.write_predicted_value_to_file(y, 'Latency')
+
+                    return self.latency, self.average,
+
+                except:
+                    pass
 
 
 # TODO - (Extension) Implement Gauge plot
