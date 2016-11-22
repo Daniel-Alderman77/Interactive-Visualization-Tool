@@ -418,7 +418,6 @@ class MemoryGraph(LineGraph):
                     if n == 1:
                         self.y_array[1] = y
                     else:
-                        print n
                         del self.x_array[-1]
                         del self.y_array[-1]
 
@@ -558,6 +557,11 @@ class EnergyGraph(LineGraph):
         self.energy, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
 
+        # Initialise list to store plotted values for prediction
+        self.prediction_index = 0
+        self.x_array = []
+        self.y_array = []
+
         # Set up legend
         self.ax.legend((self.energy, self.average), ('Current Utilisation', 'Average Utilisation'))
 
@@ -577,7 +581,7 @@ class EnergyGraph(LineGraph):
 
             print("Energy value: %s" % energy_value)
 
-            # Animate CPU utilisation
+            # Animate energy usage
             y = energy_value
 
             if x[-1] > self.ax.get_xlim()[1]:
@@ -602,9 +606,130 @@ class EnergyGraph(LineGraph):
             plt.draw()
 
         except Exception:
-            print "Now Predicting next Energy value"
-            # TODO - Predict next value
-            pass
+            self.fault_detection.null_values_fault('Energy')
+
+            # If no data has previously been plotted use cold start prediction
+            if self.y_array[0] == 0:
+
+                print "Now Predicting next Energy value using cold start prediction"
+
+                energy_value = 0
+
+                while energy_value == 0:
+                    self.data_store.cold_start_prediction('Energy', self.prediction_index)
+
+                    pickle_file = 'visualizer_cache/energy_data.p'
+
+                    # Read data file from cache
+                    with open(pickle_file, 'rb') as pickle:
+                        memory_data = cPickle.load(pickle)
+
+                    energy_value = memory_data[0]
+
+                    # Increment index
+                    self.prediction_index += 1
+
+                # Remove null value
+                self.y_array.pop(0)
+
+                # Append value so it can be plotted
+                self.y_array.append(energy_value)
+
+                print("Cold start prediction has prediction %s as the next Energy value" % energy_value)
+
+                # Reset prediction cache index back to zero
+                self.prediction_index = 0
+
+                try:
+                    # Animate cpu utilisation
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.energy.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_energy_values = 0
+
+                    for i in self.y_array:
+                        total_energy_values += float(i)
+
+                    y = total_energy_values / len(self.y_array)
+
+                    print("Average Energy value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    return self.energy, self.average,
+
+                except:
+                    pass
+
+            # Else use simple linear regression utilising previously plotted data
+            else:
+                print "Now Predicting next Energy value using simple linear regression"
+
+                try:
+                    n = len(self.y_array) - 1
+
+                    y = self.y_array[0]
+
+                    if n == 1:
+                        self.y_array[1] = y
+
+                    else:
+                        del self.x_array[-1]
+                        del self.y_array[-1]
+
+                        y = self.prediction_algorithm.simple_linear_regression(self.x_array, self.y_array, n)
+
+                        self.x_array.append(n)
+                        self.y_array.append(y)
+
+                        print("Simple linear regression has prediction %s as the next Energy value" % y)
+
+                    # Animate cpu utilisation
+                    x = self.x_array
+                    y = self.y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.energy.set_data(x, y)
+
+                    # Animate average cpu utilisation
+                    total_energy_values = 0
+
+                    for i in self.y_array:
+                        total_energy_values += float(i)
+
+                    y = total_energy_values / len(self.y_array)
+
+                    print("Average Energy value: %s" % y)
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    # Write to test file
+                    self.export_test_results.write_predicted_value_to_file(y, 'Energy')
+
+                    return self.energy, self.average,
+
+                except:
+                    pass
 
 
 class LatencyGraph(LineGraph):
