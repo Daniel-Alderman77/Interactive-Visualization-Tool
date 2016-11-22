@@ -758,6 +758,11 @@ class LatencyGraph(LineGraph):
         self.latency, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
 
+        # Initialise list to store plotted values for prediction
+        self.prediction_index = 0
+        self.x_array = []
+        self.y_array = []
+
         # Set up legend
         self.ax.legend((self.latency, self.average), ('Current Latency', 'Average Latency'))
 
@@ -769,30 +774,37 @@ class LatencyGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 latency = cPickle.load(pickle)
 
-            x = self.randomise_values()[0]
+            if len(self.x_array) == 0:
+                self.x_array.append(0)
+            else:
+                x = self.x_array[-1] + 1
+                self.x_array.append(x)
 
             # Convert latency from timedelta object to seconds. Then round up to the nearest second
             latency_value = math.ceil(latency.total_seconds())
 
-            self.latency_values.append(latency_value)
+            self.y_array.append(latency_value)
 
             print("Current latency: %s" % latency)
 
-            # Animate CPU utilisation
-            y = latency_value
+            # Animate current latency
+            x = self.x_array
+            y = self.y_array
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
 
             self.latency.set_data(x, y)
 
-            # Animate average energy usage
+            # Animate average latency
             total_latency_values = 0
 
             for i in self.latency_values:
-                        total_latency_values += int(i)
+                total_latency_values += int(i)
 
             y = total_latency_values / len(self.latency_values)
+
+            print("Average Latency value: %s" % y)
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -801,6 +813,8 @@ class LatencyGraph(LineGraph):
 
             # Update graph
             plt.draw()
+
+            return self.latency, self.average,
 
         except Exception:
             print "Now Predicting next Latency value"
