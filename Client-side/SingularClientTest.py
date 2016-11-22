@@ -9,6 +9,7 @@ from FileHandler import ResponseDeserialization
 from Views import UserInterface
 from ExportTestResults import ExportTestResults
 from RESTClient import RESTClient
+from Prediction import DataStore
 
 
 class Startup:
@@ -22,6 +23,7 @@ class Startup:
         self.response_deserialization = ResponseDeserialization()
         self.user_interface = UserInterface()
         self.rest_client = RESTClient()
+        self.data_store = DataStore()
 
     @staticmethod
     def calculate_ping(class_instance):
@@ -54,8 +56,13 @@ class Startup:
         print("Number of remote files: %s" % number_of_remote_files)
 
         # Catch if client cannot establish connection to Server
-        while number_of_remote_files < 0:
+        while number_of_remote_files is None:
             number_of_remote_files = self.web_service_client.get_remote_file_count(index)
+
+            self.data_store.cold_start_prediction('CPU', 0)
+            self.data_store.cold_start_prediction('Memory', 0)
+            self.data_store.cold_start_prediction('Jobs', 0)
+            self.data_store.cold_start_prediction('Energy', 0)
 
         while index < number_of_remote_files:
             self.calculate_ping(self.web_service_client)
