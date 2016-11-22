@@ -146,14 +146,18 @@ class ExportTestResults:
                 # Write time elapsed
                 writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
 
-                # TODO - Write 'Faults occurred, by type' to file
-                # Write 'Faults occurred, by type' to file
-                for key, value in self.faults_occurred.iteritems():
-                    writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
+                # TODO - Write 'Percentage of jobs completed' to file
+
 
                 # TODO - Write 'Throughput'to file
-                # TODO - Write 'Percentage of jobs completed' to file
-                # TODO - Write 'Dropped packets' to file
+                # (Number of users X Percentage of users who are active) / Request rate
+                # Example : (700 users X 10% concurrent users)  / 30 request rate per hour =  70/30 = 2 RPS ( approx)
+
+                # # TODO - Write 'Faults occurred, by type' to file
+                # # Write 'Faults occurred, by type' to file
+                # for key, value in self.faults_occurred.iteritems():
+                #     writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
+
                 # TODO - Write 'Faults recovered from, by type' to file
 
         except Exception as e:

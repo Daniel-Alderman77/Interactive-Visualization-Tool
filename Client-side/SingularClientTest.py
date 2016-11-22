@@ -110,7 +110,7 @@ class Startup:
                     raise
 
             # Make thread sleep for one second
-            time.sleep(1)
+            # time.sleep(1)
 
         print "Exhausted all files on the server"
 
