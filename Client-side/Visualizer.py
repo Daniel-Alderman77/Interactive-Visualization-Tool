@@ -565,9 +565,158 @@ class JobsGraph(LineGraph):
             return self.node1, self.node2, self.average,
 
         except Exception:
-            print "Now Predicting next Jobs value"
-            # TODO - Predict next value
-            pass
+            self.fault_detection.null_values_fault('Jobs')
+
+            # If no data has previously been plotted use cold start prediction
+            if self.node1_y_array[0] or self.node2_y_array[0] == 0:
+                print "Now Predicting next Jobs values using cold start prediction"
+
+                node1_jobs = 0
+                node2_jobs = 0
+                jobs_data = 0
+
+                while node1_jobs or node2_jobs == 0:
+                    self.data_store.cold_start_prediction('Jobs', self.prediction_index)
+
+                    pickle_file = 'visualizer_cache/jobs_data.p'
+
+                    # Read data file from cache
+                    with open(pickle_file, 'rb') as pickle:
+                        jobs_data = cPickle.load(pickle)
+
+                    for i in jobs_data[2]:
+                        for key in i:
+                            if key == '1':
+                                node1_jobs += 1
+                            else:
+                                node2_jobs += 1
+
+                    # Increment index
+                    self.prediction_index += 1
+
+                # Remove null value
+                self.node1_y_array.pop(0)
+                self.node2_y_array.pop(0)
+
+                # Append value so it can be plotted
+                self.node1_y_array.append(node1_jobs)
+                self.node2_y_array.append(node2_jobs)
+
+                print("Cold start prediction has predicted %s and %s as the next Jobs values" % (node1_jobs, node2_jobs))
+
+                # Reset prediction cache index back to zero
+                self.prediction_index = 0
+
+                self.export_test_results.write_predicted_value_to_file(str(node1_jobs) + " and " + str(node2_jobs),
+                                                                       'Memory')
+
+                try:
+                    # Animate node 1 line
+                    x = self.x_array
+                    y = self.node1_y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.node1.set_data(x, y)
+
+                    # Animate node 2 line
+                    x = self.x_array
+                    y = self.node2_y_array
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.node2.set_data(x, y)
+
+                    # Animate average jobs line
+                    average_jobs = jobs_data[1] / jobs_data[0]
+                    print("Average number of jobs: %s" % average_jobs)
+
+                    y = average_jobs
+
+                    if x[-1] > self.ax.get_xlim()[1]:
+                        self.ax.set_xlim([x[-1] - 10, x[-1]])
+
+                    self.average.set_data(x, y)
+
+                    # Update graph
+                    plt.draw()
+
+                    return self.node1, self.node2, self.average,
+
+                except:
+                    pass
+
+            # Else use simple linear regression utilising previously plotted data
+            else:
+                print "Now Predicting next Jobs values using simple linear regression"
+
+                # try:
+                #
+                #     n = len(self.y_array) - 1
+                #
+                #     y = self.y_array[0]
+                #
+                #     if n == 1:
+                #
+                #         self.y_array[1] = y
+                #
+                #     else:
+                #
+                #         del self.x_array[-1]
+                #
+                #         del self.y_array[-1]
+                #
+                #         y = self.prediction_algorithm.simple_linear_regression(self.x_array, self.y_array, n)
+                #
+                #         self.x_array.append(n)
+                #
+                #         self.y_array.append(y)
+                #
+                #         print("Simple linear regression has prediction %s as the next Memory value" % y)
+                #
+                #     # Animate cpu utilisation
+                #
+                #     x = self.x_array
+                #
+                #     y = self.y_array
+                #
+                #     if x[-1] > self.ax.get_xlim()[1]:
+                #         self.ax.set_xlim([x[-1] - 10, x[-1]])
+                #
+                #     self.memory.set_data(x, y)
+                #
+                #     # Animate average cpu utilisation
+                #
+                #     total_memory_values = 0
+                #
+                #     for i in self.y_array:
+                #         total_memory_values += float(i)
+                #
+                #     y = total_memory_values / len(self.y_array)
+                #
+                #     print("Average Memory value: %s" % y)
+                #
+                #     if x[-1] > self.ax.get_xlim()[1]:
+                #         self.ax.set_xlim([x[-1] - 10, x[-1]])
+                #
+                #     self.average.set_data(x, y)
+                #
+                #     # Update graph
+                #
+                #     plt.draw()
+                #
+                #     # Write to test file
+                #
+                #     self.export_test_results.write_predicted_value_to_file(y, 'Memory')
+                #
+                #     return self.memory, self.average,
+                #
+                #
+                # except:
+                #
+                #     pass
 
 
 class EnergyGraph(LineGraph):
