@@ -26,7 +26,7 @@ class LineGraph:
         self.line, = self.ax.plot([], [], lw=2)
 
         self.x_array = []
-        self.y_array = []
+        self.node1_y_array = []
 
         # Class instances
         self.export_test_results = ExportTestResults()
@@ -48,9 +48,9 @@ class LineGraph:
             x = self.x_array[-1] + 1
             self.x_array.append(x)
 
-        self.y_array.append(y)
+        self.node1_y_array.append(y)
 
-        return self.x_array, self.y_array
+        return self.x_array, self.node1_y_array
 
     # animation function.  This is called sequentially
     def animate(self, i):
@@ -485,6 +485,12 @@ class JobsGraph(LineGraph):
         self.node2, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
 
+        # Initialise list to store plotted values for prediction
+        self.prediction_index = 0
+        self.x_array = []
+        self.node1_y_array = []
+        self.node2_y_array = []
+
         # Set up legend
         self.ax.legend((self.node1, self.node2, self.average), ('Node 1', 'Node 2', 'Average Number of Jobs'))
 
@@ -496,8 +502,6 @@ class JobsGraph(LineGraph):
             with open(pickle_file, 'rb') as pickle:
                 jobs_data = cPickle.load(pickle)
 
-            x = self.randomise_values()[0]
-
             node1_jobs = 0
             node2_jobs = 0
 
@@ -508,8 +512,27 @@ class JobsGraph(LineGraph):
                     else:
                         node2_jobs += 1
 
+            if len(self.x_array) == 0:
+                self.x_array.append(0)
+            else:
+                x = self.x_array[-1] + 1
+                self.x_array.append(x)
+
+            # if jobs == 0 throw exception
+            assert node1_jobs != 0
+            assert node2_jobs != 0
+
+            self.node1_y_array.append(node1_jobs)
+
+            print("Number of jobs for Node 1: %s" % node1_jobs)
+
+            self.node2_y_array.append(node2_jobs)
+
+            print("Number of jobs for Node 2: %s" % node2_jobs)
+
             # Animate node 1 line
-            y = node1_jobs
+            x = self.x_array
+            y = self.node1_y_array
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -517,7 +540,8 @@ class JobsGraph(LineGraph):
             self.node1.set_data(x, y)
 
             # Animate node 2 line
-            y = node2_jobs
+            x = self.x_array
+            y = self.node2_y_array
 
             if x[-1] > self.ax.get_xlim()[1]:
                 self.ax.set_xlim([x[-1] - 10, x[-1]])
@@ -537,6 +561,8 @@ class JobsGraph(LineGraph):
 
             # Update graph
             plt.draw()
+
+            return self.node1, self.node2, self.average,
 
         except Exception:
             print "Now Predicting next Jobs value"
