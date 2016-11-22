@@ -173,6 +173,8 @@ class CPUGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
+                self.export_test_results.write_predicted_value_to_file(cpu_value, 'CPU')
+
                 try:
                     # Animate cpu utilisation
                     x = self.x_array
