@@ -17,8 +17,12 @@ class LineGraph:
     def __init__(self):
         self.name = self
 
+        plt.style.use('ggplot')
+        plt.rcParams['font.family'] = 'sans-serif'
+        plt.rcParams['font.size'] = 11
+
         # First set up the figure, the axis, and the plot element we want to animate
-        self.fig = plt.figure(figsize=(7, 5), dpi=50)
+        self.fig = plt.figure(figsize=(7, 5.5), dpi=50)
         self.ax = plt.axes(xlim=(0, 10), ylim=(0, 10))
         self.ax.set_title('Title')
         self.ax.set_xlabel('X Label')
