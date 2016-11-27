@@ -1,27 +1,39 @@
-from Tkinter import *
+import tkinter as tk
+import os
 
-root = Tk()
+def populate(frame):
+    '''Put in some fake data'''
+    for row in range(100):
+        tk.Label(frame, text="%s" % row, width=3, borderwidth="1",
+                 relief="solid").grid(row=row, column=0)
+        t="this is the second column for row %s" %row
+        tk.Label(frame, text=t).grid(row=row, column=1)
 
-frame = Frame(root, bd=2, relief=SUNKEN)
+def onFrameConfigure(canvas):
+    '''Reset the scroll region to encompass the inner frame'''
+    canvas.configure(scrollregion=canvas.bbox("all"))
 
-frame.grid_rowconfigure(0, weight=1)
-frame.grid_columnconfigure(0, weight=1)
+def _on_mousewheel(event):
+    # If Unix
+    if os.name == "posix":
+        canvas.yview_scroll(-1*(event.delta), "units")
+    # Windows
+    else:
+        canvas.yview_scroll(-1*(event.delta/120), "units")
 
-xscrollbar = Scrollbar(frame, orient=HORIZONTAL)
-xscrollbar.grid(row=1, column=0, sticky=E + W)
+root = tk.Tk()
+canvas = tk.Canvas(root, borderwidth=0, background="#ffffff")
+canvas.bind_all("<MouseWheel>", _on_mousewheel)
+frame = tk.Frame(canvas, background="#ffffff")
+vsb = tk.Scrollbar(root, orient="vertical", command=canvas.yview)
+canvas.configure(yscrollcommand=vsb.set)
 
-yscrollbar = Scrollbar(frame)
-yscrollbar.grid(row=0, column=1, sticky=N + S)
+vsb.pack(side="right", fill="y")
+canvas.pack(side="left", fill="both", expand=True)
+canvas.create_window((4,4), window=frame, anchor="nw")
 
-canvas = Canvas(frame, bd=0, scrollregion=(0, 0, 3000, 3000),
-                xscrollcommand=xscrollbar.set,
-                yscrollcommand=yscrollbar.set)
+frame.bind("<Configure>", lambda event, canvas=canvas: onFrameConfigure(canvas))
 
-canvas.grid(row=0, column=0, sticky=N + S + E + W)
+populate(frame)
 
-xscrollbar.config(command=canvas.xview)
-yscrollbar.config(command=canvas.yview)
-
-frame.pack()
-
-mainloop()
+root.mainloop()
