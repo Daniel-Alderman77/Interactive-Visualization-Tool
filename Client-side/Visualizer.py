@@ -95,8 +95,8 @@ class CPUGraph(LineGraph):
         title.set_weight('bold')
 
         # Set up line animated lines to be plotted
-        self.cpu, = self.ax.plot([], [], lw=2)
-        self.average, = self.ax.plot([], [], lw=2)
+        self.cpu, = self.ax.plot([], [], lw=2, marker='o')
+        self.average, = self.ax.plot([], [], lw=2, linestyle='dashed')
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
@@ -297,8 +297,6 @@ class MemoryGraph(LineGraph):
         self.ax.set_title('Memory Usage Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Memory Usage')
-        self.memory, = self.ax.plot([], [], lw=2)
-        self.average, = self.ax.plot([], [], lw=2)
 
         # Tweak the axis labels
         x_label = self.ax.xaxis.get_label()
@@ -313,6 +311,10 @@ class MemoryGraph(LineGraph):
         title = self.ax.title
         title.set_size(16)
         title.set_weight('bold')
+
+        # Set up line animated lines to be plotted
+        self.memory, = self.ax.plot([], [], lw=2, marker='o')
+        self.average, = self.ax.plot([], [], lw=2, linestyle='dashed')
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
@@ -526,9 +528,9 @@ class JobsGraph(LineGraph):
         title.set_weight('bold')
 
         # Set up line animated lines to be plotted
-        self.node1, = self.ax.plot([], [], lw=2)
-        self.average, = self.ax.plot([], [], lw=2)
-        self.node2, = self.ax.plot([], [], lw=2)
+        self.node1, = self.ax.plot([], [], lw=2, marker='o')
+        self.average, = self.ax.plot([], [], lw=2, linestyle='dashed')
+        self.node2, = self.ax.plot([], [], lw=2, marker='^')
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
@@ -801,8 +803,8 @@ class EnergyGraph(LineGraph):
         title.set_weight('bold')
 
         # Set up line animated lines to be plotted
-        self.energy, = self.ax.plot([], [], lw=2)
-        self.average, = self.ax.plot([], [], lw=2)
+        self.energy, = self.ax.plot([], [], lw=2, marker='o')
+        self.average, = self.ax.plot([], [], lw=2, linestyle='dashed')
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
@@ -1018,8 +1020,8 @@ class LatencyGraph(LineGraph):
         title.set_weight('bold')
 
         # Set up line animated lines to be plotted
-        self.latency, = self.ax.plot([], [], lw=2)
-        self.average, = self.ax.plot([], [], lw=2)
+        self.latency, = self.ax.plot([], [], lw=2, marker='o')
+        self.average, = self.ax.plot([], [], lw=2, linestyle='dashed')
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
