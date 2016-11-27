@@ -77,6 +77,20 @@ class CPUGraph(LineGraph):
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('CPU Usage')
 
+        # Tweak the axis labels
+        x_label = self.ax.xaxis.get_label()
+        y_label = self.ax.yaxis.get_label()
+
+        x_label.set_style('italic')
+        x_label.set_size(14)
+        y_label.set_style('italic')
+        y_label.set_size(14)
+
+        # Tweak the title
+        title = self.ax.title
+        title.set_size(16)
+        title.set_weight('bold')
+
         # Set up line animated lines to be plotted
         self.cpu, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
@@ -283,6 +297,20 @@ class MemoryGraph(LineGraph):
         self.memory, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
 
+        # Tweak the axis labels
+        x_label = self.ax.xaxis.get_label()
+        y_label = self.ax.yaxis.get_label()
+
+        x_label.set_style('italic')
+        x_label.set_size(14)
+        y_label.set_style('italic')
+        y_label.set_size(14)
+
+        # Tweak the title
+        title = self.ax.title
+        title.set_size(16)
+        title.set_weight('bold')
+
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
         self.x_array = []
@@ -479,6 +507,20 @@ class JobsGraph(LineGraph):
         self.ax.set_title('Number of jobs running over time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Number of jobs running')
+
+        # Tweak the axis labels
+        x_label = self.ax.xaxis.get_label()
+        y_label = self.ax.yaxis.get_label()
+
+        x_label.set_style('italic')
+        x_label.set_size(14)
+        y_label.set_style('italic')
+        y_label.set_size(14)
+
+        # Tweak the title
+        title = self.ax.title
+        title.set_size(16)
+        title.set_weight('bold')
 
         # Set up line animated lines to be plotted
         self.node1, = self.ax.plot([], [], lw=2)
@@ -741,6 +783,20 @@ class EnergyGraph(LineGraph):
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Energy Usage')
 
+        # Tweak the axis labels
+        x_label = self.ax.xaxis.get_label()
+        y_label = self.ax.yaxis.get_label()
+
+        x_label.set_style('italic')
+        x_label.set_size(14)
+        y_label.set_style('italic')
+        y_label.set_size(14)
+
+        # Tweak the title
+        title = self.ax.title
+        title.set_size(16)
+        title.set_weight('bold')
+
         # Set up line animated lines to be plotted
         self.energy, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
@@ -943,6 +999,20 @@ class LatencyGraph(LineGraph):
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Latency (seconds)')
+
+        # Tweak the axis labels
+        x_label = self.ax.xaxis.get_label()
+        y_label = self.ax.yaxis.get_label()
+
+        x_label.set_style('italic')
+        x_label.set_size(14)
+        y_label.set_style('italic')
+        y_label.set_size(14)
+
+        # Tweak the title
+        title = self.ax.title
+        title.set_size(16)
+        title.set_weight('bold')
 
         # Set up line animated lines to be plotted
         self.latency, = self.ax.plot([], [], lw=2)
