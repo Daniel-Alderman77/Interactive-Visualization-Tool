@@ -1,17 +1,20 @@
 import tkinter as tk
 import os
 
+
 def populate(frame):
-    '''Put in some fake data'''
+    """Put in some fake data"""
     for row in range(100):
         tk.Label(frame, text="%s" % row, width=3, borderwidth="1",
                  relief="solid").grid(row=row, column=0)
         t="this is the second column for row %s" %row
         tk.Label(frame, text=t).grid(row=row, column=1)
 
-def onFrameConfigure(canvas):
-    '''Reset the scroll region to encompass the inner frame'''
+
+def on_frame_configure(canvas):
+    """Reset the scroll region to encompass the inner frame"""
     canvas.configure(scrollregion=canvas.bbox("all"))
+
 
 def _on_mousewheel(event):
     # If Unix
@@ -32,7 +35,7 @@ vsb.pack(side="right", fill="y")
 canvas.pack(side="left", fill="both", expand=True)
 canvas.create_window((4,4), window=frame, anchor="nw")
 
-frame.bind("<Configure>", lambda event, canvas=canvas: onFrameConfigure(canvas))
+frame.bind("<Configure>", lambda event, canvas=canvas: on_frame_configure(canvas))
 
 populate(frame)
 
