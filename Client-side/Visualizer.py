@@ -17,9 +17,8 @@ class LineGraph:
     def __init__(self):
         self.name = self
 
+        # Set plot style to mimic ggplot2 library appearance
         plt.style.use('ggplot')
-        plt.rcParams['font.family'] = 'sans-serif'
-        plt.rcParams['font.size'] = 11
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(7, 5.5), dpi=50)
@@ -528,8 +527,8 @@ class JobsGraph(LineGraph):
 
         # Set up line animated lines to be plotted
         self.node1, = self.ax.plot([], [], lw=2)
-        self.node2, = self.ax.plot([], [], lw=2)
         self.average, = self.ax.plot([], [], lw=2)
+        self.node2, = self.ax.plot([], [], lw=2)
 
         # Initialise list to store plotted values for prediction
         self.prediction_index = 0
