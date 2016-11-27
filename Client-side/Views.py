@@ -4,11 +4,11 @@ matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
 
-
 from Tkinter import Tk, Toplevel, HORIZONTAL, S
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
-from Visualizer import CPUGraph, MemoryGraph, JobsGraph, EnergyGraph, LatencyGraph, ProgressBar
+
+from Visualizer import CPUGraph, MemoryGraph, JobsGraph, EnergyGraph, LatencyGraph
 
 
 # TODO - Display percentage progress through number of remote files
@@ -19,8 +19,8 @@ class MainView:
 
         self.frame = Frame(self.master)
 
-        self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
-        self.cpu_button.grid(row=0, column=0)
+        # self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
+        # self.cpu_button.grid(row=0, column=0)
 
         cpu_graph = CPUGraph()
 
@@ -34,8 +34,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=1, column=0)
 
-        self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
-        self.memory_button.grid(row=0, column=1)
+        # self.memory_button = Button(self.frame, text='Memory Utilisation', width=25, command=self.memory_view)
+        # self.memory_button.grid(row=0, column=1)
 
         memory_graph = MemoryGraph()
 
@@ -49,8 +49,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=1, column=1)
 
-        self.jobs_button = Button(self.frame, text='Current Jobs', width=25, command=self.jobs_view)
-        self.jobs_button.grid(row=2, column=0)
+        # self.jobs_button = Button(self.frame, text='Current Jobs', width=25, command=self.jobs_view)
+        # self.jobs_button.grid(row=2, column=0)
 
         jobs_graph = JobsGraph()
 
@@ -64,8 +64,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=3, column=0)
 
-        self.energy_button = Button(self.frame, text='Energy View', width=25, command=self.energy_view)
-        self.energy_button.grid(row=2, column=1)
+        # self.energy_button = Button(self.frame, text='Energy View', width=25, command=self.energy_view)
+        # self.energy_button.grid(row=2, column=1)
 
         energy_graph = EnergyGraph()
 
@@ -79,8 +79,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=3, column=1)
 
-        self.latency_button = Button(self.frame, text='Faults', width=25, command=self.faults_view)
-        self.latency_button.grid(row=4, columnspan=2)
+        # self.latency_button = Button(self.frame, text='Faults', width=25, command=self.faults_view)
+        # self.latency_button.grid(row=4, columnspan=2)
 
         latency_graph = LatencyGraph()
 
@@ -94,9 +94,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=5, columnspan=2, sticky=S)
 
-        progress_bar = ProgressBar()
-
-        progress_bar.draw_frame(50)
+        # progress_bar = ProgressBar()
+        # progress_bar.draw_frame(50)
 
         self.frame.pack()
 
