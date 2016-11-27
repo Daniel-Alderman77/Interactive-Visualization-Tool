@@ -5,7 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
 
 
-from Tkinter import BOTTOM, Tk, Toplevel, HORIZONTAL
+from Tkinter import Tk, Toplevel, HORIZONTAL, S
 # Override the basic Tk widgets, with platform specific widgets
 from tkinter.ttk import *
 from Visualizer import CPUGraph, MemoryGraph, JobsGraph, EnergyGraph, LatencyGraph, ProgressBar
@@ -18,9 +18,6 @@ class MainView:
         self.master = master
 
         self.frame = Frame(self.master)
-
-        self.bottom_frame = Frame(self.master)
-        self.bottom_frame.pack(side=BOTTOM)
 
         self.cpu_button = Button(self.frame, text='CPU Utilisation', width=25, command=self.cpu_view)
         self.cpu_button.grid(row=0, column=0)
@@ -82,8 +79,8 @@ class MainView:
         canvas.show()
         canvas.get_tk_widget().grid(row=3, column=1)
 
-        self.latency_button = Button(self.bottom_frame, text='Faults', width=25, command=self.faults_view)
-        self.latency_button.grid(row=5, column=0)
+        self.latency_button = Button(self.frame, text='Faults', width=25, command=self.faults_view)
+        self.latency_button.grid(row=4, columnspan=2)
 
         latency_graph = LatencyGraph()
 
@@ -95,7 +92,7 @@ class MainView:
                                        frames=200, interval=1000, blit=False)
 
         canvas.show()
-        canvas.get_tk_widget().grid(row=5)
+        canvas.get_tk_widget().grid(row=5, columnspan=2, sticky=S)
 
         progress_bar = ProgressBar()
 
