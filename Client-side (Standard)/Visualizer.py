@@ -190,7 +190,7 @@ class CPUGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
-                self.export_test_results.write_predicted_value_to_file(cpu_value, 'CPU')
+                self.export_test_results.write_predicted_value_to_file('Null value fault', cpu_value, 'CPU')
 
                 try:
                     # Animate cpu utilisation
@@ -278,7 +278,7 @@ class CPUGraph(LineGraph):
 
                     # Write to test file
 
-                    self.export_test_results.write_predicted_value_to_file(y, 'CPU')
+                    self.export_test_results.write_predicted_value_to_file('Null value fault', y, 'CPU')
 
                     return self.cpu, self.average,
 
@@ -409,7 +409,7 @@ class MemoryGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
-                self.export_test_results.write_predicted_value_to_file(memory_value, 'Memory')
+                self.export_test_results.write_predicted_value_to_file('Null value fault', memory_value, 'Memory')
 
                 try:
                     # Animate cpu utilisation
@@ -493,7 +493,7 @@ class MemoryGraph(LineGraph):
                     plt.draw()
 
                     # Write to test file
-                    self.export_test_results.write_predicted_value_to_file(y, 'Memory')
+                    self.export_test_results.write_predicted_value_to_file('Null value fault', y, 'Memory')
 
                     return self.memory, self.average,
 
@@ -655,8 +655,8 @@ class JobsGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
-                self.export_test_results.write_predicted_value_to_file(str(node1_jobs) + " and " + str(node2_jobs),
-                                                                       'Memory')
+                self.export_test_results.write_predicted_value_to_file('Null value fault', str(node1_jobs) + " and " +
+                                                                       str(node2_jobs), 'Memory')
 
                 try:
                     # Animate node 1 line
@@ -898,7 +898,7 @@ class EnergyGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
-                self.export_test_results.write_predicted_value_to_file(energy_value, 'Energy')
+                self.export_test_results.write_predicted_value_to_file('Null value fault', energy_value, 'Energy')
 
                 try:
                     # Animate cpu utilisation
@@ -984,7 +984,7 @@ class EnergyGraph(LineGraph):
                     plt.draw()
 
                     # Write to test file
-                    self.export_test_results.write_predicted_value_to_file(y, 'Energy')
+                    self.export_test_results.write_predicted_value_to_file('Null value fault', y, 'Energy')
 
                     return self.energy, self.average,
 
@@ -1114,7 +1114,7 @@ class LatencyGraph(LineGraph):
                 # Reset prediction cache index back to zero
                 self.prediction_index = 0
 
-                self.export_test_results.write_predicted_value_to_file(latency_value, 'Latency')
+                self.export_test_results.write_predicted_value_to_file('Null value fault', latency_value, 'Latency')
 
                 try:
                     # Animate current latency
@@ -1200,7 +1200,7 @@ class LatencyGraph(LineGraph):
                     plt.draw()
 
                     # Write to test file
-                    self.export_test_results.write_predicted_value_to_file(y, 'Latency')
+                    self.export_test_results.write_predicted_value_to_file('Null value fault', y, 'Latency')
 
                     return self.latency, self.average,
 

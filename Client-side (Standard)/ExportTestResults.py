@@ -10,6 +10,7 @@ client_number = 0
 run_number = 0
 test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 faults = 0
+faults_recovered = defaultdict(int)
 
 # Store command line arguments if present and change test test_file_name
 if sys.argv > 1:
@@ -117,7 +118,7 @@ class ExportTestResults:
         except Exception as e:
             print e
 
-    def write_predicted_value_to_file(self, value, type_of_data):
+    def write_predicted_value_to_file(self, fault, value, type_of_data):
         try:
             with open(test_file_name, 'a') as test_file:
                 writer = csv.DictWriter(test_file, fieldnames=self.fieldnames)
@@ -127,6 +128,10 @@ class ExportTestResults:
                 occurrence_str = str(value) + ' has been predicted for ' + type_of_data
 
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
+
+                key = fault + ', ' + type_of_data
+
+                faults_recovered[key] = faults_recovered.get(key, 0) + 1
 
         except Exception as e:
             print e
@@ -178,12 +183,18 @@ class ExportTestResults:
                 # Write throughput
                 writer.writerow({'Time': 'Throughput (per second)', 'Occurrence': throughput})
 
-                # # TODO - Write 'Faults occurred, by type' to file
-                # # Write 'Faults occurred, by type' to file
+                # TODO - Write 'Faults occurred, by type' to file
+                # Write 'Faults occurred, by type' to file
                 # for key, value in self.faults_occurred.iteritems():
+                #     print("key, value %s %s" % key, value)
                 #     writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
 
-                # TODO - Write 'Faults recovered from, by type' to file
+                for key, value in faults_recovered.iteritems():
+                    print key, value
+                    print("Faults recovered from: %s, %s" % (key, value))
+
+                    # Write Faults recovered from, by type
+                    writer.writerow({'Time': 'Faults recovered from: ' + key, 'Occurrence': value})
 
         except Exception as e:
             print e
