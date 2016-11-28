@@ -8,6 +8,7 @@ import sys
 client_number = 0
 run_number = 0
 test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
+faults = 0
 
 # Store command line arguments if present and change test test_file_name
 if sys.argv > 1:
@@ -24,12 +25,14 @@ else:
 
 
 class ExportTestResults:
+    number_of_faults = 0
 
     def __init__(self):
         self.name = self
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
         self.start_time = time.time()
 
+        self.number_of_faults = 0
         self.faults_occurred = defaultdict(int)
 
     def get_ping(self):
@@ -104,6 +107,10 @@ class ExportTestResults:
 
                 self.faults_occurred[fault] += 1
 
+                self.increment_number_of_faults()
+
+                print("self.number_of_faults = %s" % self.number_of_faults)
+
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
@@ -122,6 +129,13 @@ class ExportTestResults:
 
         except Exception as e:
             print e
+
+    @staticmethod
+    def increment_number_of_faults():
+        global faults
+        faults += 1
+
+        return faults
 
     # TODO - Implement write_finish_to_file method
     def write_finish_to_file(self):
@@ -147,7 +161,7 @@ class ExportTestResults:
                 writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
 
                 # TODO - Write 'Percentage of jobs completed' to file
-
+                print("Number of faults = %s" % (self.increment_number_of_faults() - 1))
 
                 # TODO - Write 'Throughput'to file
                 # (Number of users X Percentage of users who are active) / Request rate
