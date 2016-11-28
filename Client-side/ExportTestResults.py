@@ -1,3 +1,4 @@
+from __future__ import division
 import csv
 import os
 import time
@@ -32,7 +33,7 @@ class ExportTestResults:
         self.fieldnames = ['Time', 'Occurrence', 'Ping']
         self.start_time = time.time()
 
-        self.number_of_faults = 0
+        self.number_jobs_completed = 0
         self.faults_occurred = defaultdict(int)
 
     def get_ping(self):
@@ -91,6 +92,8 @@ class ExportTestResults:
 
                 occurrence_str = filename + ' has been retrieved'
 
+                self.number_jobs_completed += 1
+
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
@@ -108,8 +111,6 @@ class ExportTestResults:
                 self.faults_occurred[fault] += 1
 
                 self.increment_number_of_faults()
-
-                print("self.number_of_faults = %s" % self.number_of_faults)
 
                 writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
@@ -160,8 +161,16 @@ class ExportTestResults:
                 # Write time elapsed
                 writer.writerow({'Time': 'Time Elapsed (seconds)', 'Occurrence': str(time_elapsed)})
 
-                # TODO - Write 'Percentage of jobs completed' to file
-                print("Number of faults = %s" % (self.increment_number_of_faults() - 1))
+                number_of_faults = (self.increment_number_of_faults() - 1)
+                print("Number of faults = %s" % number_of_faults)
+                print("Number of jobs complete = %s" % self.number_jobs_completed)
+
+                percentage_of_jobs_failed = (number_of_faults / self.number_jobs_completed) * 100
+                percentage_of_jobs_completed = 100 - round(percentage_of_jobs_failed, 2)
+                print("Percentage of jobs completed = %s" % percentage_of_jobs_completed)
+
+                # Write time elapsed
+                writer.writerow({'Time': 'Percentage of jobs completed', 'Occurrence': percentage_of_jobs_completed})
 
                 # TODO - Write 'Throughput'to file
                 # (Number of users X Percentage of users who are active) / Request rate
