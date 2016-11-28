@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Message Type="Log" UTCTimeStamp="2016-03-22T14:22:10.6559204Z">
+  <LOG Time="1200">
+    <LOG-GRAPH Time="1200" Type="SEED.GenericDomain.Network.Graph" />
+    <LOG-NODE ID="1" Time="1200" Type="FullDataCenter.Rack">
+      <Property Name="T_out" Value="335.69025049616715" />
+      <Property Name="Status" Value="Executing" />
+      <Property Name="ID" Value="1" />
+      <FUNCTIONS>
+        <LOG-NODE ID="3" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="65" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="3" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="65" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 3" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="65" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="5" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="66" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69827174437847" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="5" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="66" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 5" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="66" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="7" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="67" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="7" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="67" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 7" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="67" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="9" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="68" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="9" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="68" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 9" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="68" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="11" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="69" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="11" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="69" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 11" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="69" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="13" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="70" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="13" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="70" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 13" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="70" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="15" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="71" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="15" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="71" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 15" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="71" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="17" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="72" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="17" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="72" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 17" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="72" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="19" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="73" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="19" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="73" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 19" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="73" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="21" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="74" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="21" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="74" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 21" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="74" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="23" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="75" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="23" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="75" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 23" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="75" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="25" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="76" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="25" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="76" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 25" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="76" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="27" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="77" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="27" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="77" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 27" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="77" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="29" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="78" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="29" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="78" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 29" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="78" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="31" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="79" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69827174437847" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 1" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="31" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="79" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 31" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="79" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+      </FUNCTIONS>
+    </LOG-NODE>
+    <LOG-NODE ID="33" Time="1200" Type="FullDataCenter.Rack">
+      <Property Name="T_out" Value="335.69062680771157" />
+      <Property Name="Status" Value="Executing" />
+      <Property Name="ID" Value="33" />
+      <FUNCTIONS>
+        <LOG-NODE ID="35" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="80" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="35" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="80" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 35" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="80" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="37" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="81" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="37" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="81" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 37" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="81" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="39" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="82" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="39" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="82" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 39" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="82" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="41" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="83" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="41" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="83" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 41" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="83" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="43" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="84" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="43" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="84" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 43" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="84" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="45" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="85" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="45" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="85" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 45" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="85" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="47" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="86" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="47" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="86" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 47" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="86" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="49" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="87" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="49" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="87" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 49" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="87" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="51" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="88" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="51" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="88" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 51" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="88" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="53" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="89" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="53" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="89" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 53" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="89" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="55" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="90" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="55" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="90" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 55" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="90" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="57" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="91" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="57" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="91" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 57" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="91" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="59" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="92" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="59" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="92" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 59" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="92" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="61" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="93" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="61" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="93" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 61" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="93" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+        <LOG-NODE ID="63" Time="1200" Type="FullDataCenter.Server">
+          <Property Name="Load" Value="0" />
+          <Property Name="Allocation">
+            <Item Key="94" Value="(NaN, NaN)" />
+          </Property>
+          <Property Name="Power" Value="105" />
+          <Property Name="Energy" Value="10500" />
+          <Property Name="T_cpu" Value="335.69589516933286" />
+          <Property Name="HostMachine" Value="FullDataCenter.Rack : 33" />
+          <Property Name="Status" Value="Executing" />
+          <Property Name="ID" Value="63" />
+          <FUNCTIONS>
+            <LOG-ACTION ID="94" Time="1800" Type="FullDataCenter.Task">
+              <Property Name="CPU" Value="0" />
+              <Property Name="Memory" Value="0" />
+              <Property Name="Progress" Value="0" />
+              <Property Name="HostMachine" Value="FullDataCenter.Server : 63" />
+              <Property Name="Status" Value="Executing" />
+              <Property Name="ID" Value="94" />
+            </LOG-ACTION>
+          </FUNCTIONS>
+        </LOG-NODE>
+      </FUNCTIONS>
+    </LOG-NODE>
+  </LOG>
+</Message>
