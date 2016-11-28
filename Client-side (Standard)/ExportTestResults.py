@@ -10,6 +10,7 @@ client_number = 0
 run_number = 0
 test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 faults = 0
+faults_occurred = defaultdict(int)
 faults_recovered = defaultdict(int)
 
 # Store command line arguments if present and change test test_file_name
@@ -35,7 +36,6 @@ class ExportTestResults:
         self.start_time = time.time()
 
         self.number_jobs_completed = 0
-        self.faults_occurred = defaultdict(int)
 
     def get_ping(self):
         try:
@@ -109,7 +109,7 @@ class ExportTestResults:
 
                 occurrence_str = fault + ' fault has occurred'
 
-                self.faults_occurred[fault] += 1
+                faults_occurred[fault] = faults_occurred.get(fault, 0) + 1
 
                 self.increment_number_of_faults()
 
@@ -127,11 +127,11 @@ class ExportTestResults:
 
                 occurrence_str = str(value) + ' has been predicted for ' + type_of_data
 
-                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
-
                 key = fault + ', ' + type_of_data
 
                 faults_recovered[key] = faults_recovered.get(key, 0) + 1
+
+                writer.writerow({'Time': time_str, 'Occurrence': occurrence_str, 'Ping': self.get_ping()})
 
         except Exception as e:
             print e
@@ -143,7 +143,6 @@ class ExportTestResults:
 
         return faults
 
-    # TODO - Implement write_finish_to_file method
     def write_finish_to_file(self):
         try:
             with open(test_file_name, 'ab') as test_file:
@@ -183,17 +182,16 @@ class ExportTestResults:
                 # Write throughput
                 writer.writerow({'Time': 'Throughput (per second)', 'Occurrence': throughput})
 
-                # TODO - Write 'Faults occurred, by type' to file
-                # Write 'Faults occurred, by type' to file
-                # for key, value in self.faults_occurred.iteritems():
-                #     print("key, value %s %s" % key, value)
-                #     writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
+                for key, value in faults_occurred.iteritems():
+                    print("Faults occurred: %s, %s" % (key, value))
+
+                    # Write 'Faults occurred, by type' to file
+                    writer.writerow({'Time': 'Fault Type: ' + key, 'Occurrence': value})
 
                 for key, value in faults_recovered.iteritems():
-                    print key, value
                     print("Faults recovered from: %s, %s" % (key, value))
 
-                    # Write Faults recovered from, by type
+                    # Write 'Faults recovered from, by type' to file
                     writer.writerow({'Time': 'Faults recovered from: ' + key, 'Occurrence': value})
 
         except Exception as e:
