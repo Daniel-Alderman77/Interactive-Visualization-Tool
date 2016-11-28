@@ -172,9 +172,11 @@ class ExportTestResults:
                 # Write time elapsed
                 writer.writerow({'Time': 'Percentage of jobs completed', 'Occurrence': percentage_of_jobs_completed})
 
-                # TODO - Write 'Throughput'to file
-                # (Number of users X Percentage of users who are active) / Request rate
-                # Example : (700 users X 10% concurrent users)  / 30 request rate per hour =  70/30 = 2 RPS ( approx)
+                throughput = round((self.number_jobs_completed / time_elapsed), 2)
+                print("Throughput (per second) = %s" % throughput)
+
+                # Write throughput
+                writer.writerow({'Time': 'Throughput (per second)', 'Occurrence': throughput})
 
                 # # TODO - Write 'Faults occurred, by type' to file
                 # # Write 'Faults occurred, by type' to file
