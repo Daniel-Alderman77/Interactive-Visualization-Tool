@@ -3,9 +3,23 @@ import cPickle
 import os
 import requests
 from requests.exceptions import ReadTimeout, ConnectionError, HTTPError
+import sys
 
 from RESTClient import RESTClient
 from FaultDetection import FaultDetection
+
+host_url = None
+
+# Store command line argument as host_url
+if sys.argv > 1:
+    try:
+        host_url = sys.argv[1]
+    except:
+        host_url = 'http://127.0.0.1:5000/'
+
+        pass
+else:
+    print "No command line arguments entered"
 
 
 class WebServiceClient:
@@ -72,7 +86,7 @@ class WebServiceClient:
         try:
             session = requests.Session()
 
-            request = session.get('http://127.0.0.1:5000/')
+            request = session.get(host_url)
 
             self.ping = request.elapsed
 

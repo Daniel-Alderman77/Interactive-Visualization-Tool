@@ -16,8 +16,8 @@ faults_recovered = defaultdict(int)
 # Store command line arguments if present and change test test_file_name
 if sys.argv > 1:
     try:
-        client_number = "client_" + sys.argv[1]
-        run_number = "run_number" + sys.argv[2]
+        client_number = "client_" + sys.argv[2]
+        run_number = "run_number" + sys.argv[3]
         test_file_name = 'test_results/' + str(run_number) + '/' + str(client_number) + '/' + time.strftime(
             "%d-%m-%Y--%H:%M:%S") + '.csv'
 

@@ -2,8 +2,22 @@ import os
 import requests
 from requests.exceptions import ReadTimeout, ConnectionError, HTTPError
 import json
+import sys
 
 from FaultDetection import FaultDetection
+
+host_url = None
+
+# Store command line argument as host_url
+if sys.argv > 1:
+    try:
+        host_url = sys.argv[1]
+    except:
+        host_url = 'http://127.0.0.1:5000/'
+
+        pass
+else:
+    print "No command line arguments entered"
 
 
 class RESTClient:
@@ -32,7 +46,7 @@ class RESTClient:
         try:
             session = requests.Session()
 
-            request = session.get('http://127.0.0.1:5000/file_count/', timeout=0.1)
+            request = session.get(host_url + 'file_count/', timeout=0.1)
 
             request.raise_for_status()
 
@@ -59,7 +73,7 @@ class RESTClient:
         try:
             session = requests.Session()
 
-            path = 'http://127.0.0.1:5000/data/' + argument
+            path = host_url + 'data/' + argument
 
             request = session.get(path, timeout=0.1)
 
