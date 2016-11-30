@@ -9,17 +9,21 @@ from RESTClient import RESTClient
 from FaultDetection import FaultDetection
 
 host_url = None
+client_number = None
 
 # Store command line argument as host_url
 if sys.argv > 1:
     try:
         host_url = sys.argv[1]
+        client_number = sys.argv[2]
     except:
         host_url = 'http://127.0.0.1:5000/'
 
         pass
 else:
     print "No command line arguments entered"
+
+visualizer_cache_path = 'visualizer_cache_' + client_number
 
 
 class WebServiceClient:
@@ -79,9 +83,7 @@ class WebServiceClient:
     def calculate_ping(self):
         fault_detection = FaultDetection()
 
-        pickle_name = 'visualizer_cache/latency_data.p'
-
-        directory = 'visualizer_cache'
+        pickle_name = visualizer_cache_path + '/latency_data.p'
 
         try:
             session = requests.Session()
@@ -103,8 +105,8 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
@@ -131,8 +133,8 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
@@ -155,8 +157,8 @@ class WebServiceClient:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
