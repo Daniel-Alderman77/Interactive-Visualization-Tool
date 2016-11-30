@@ -11,6 +11,20 @@ from ExportTestResults import ExportTestResults
 from RESTClient import RESTClient
 from Prediction import DataStore
 
+client_number = 0
+
+# Store command line arguments if present and change test test_file_name
+if sys.argv > 1:
+    try:
+        client_number = sys.argv[2]
+    except:
+        pass
+else:
+    print "No command line arguments entered"
+
+visualizer_cache_path = 'visualizer_cache_' + client_number
+data_store_path = 'data_store_' + client_number
+
 
 class Startup:
 
@@ -35,8 +49,8 @@ class Startup:
     def test_run_cleanup():
         # Delete data_store and visualizer_cache directories
         try:
-            shutil.rmtree('data_store')
-            shutil.rmtree('visualizer_cache')
+            shutil.rmtree(data_store_path)
+            shutil.rmtree(visualizer_cache_path)
         except Exception as e:
             print e
             pass
@@ -67,7 +81,7 @@ class Startup:
         while index < number_of_remote_files:
             self.calculate_ping(self.web_service_client)
 
-            pickle_file = 'visualizer_cache/latency_data.p'
+            pickle_file = visualizer_cache_path + '/latency_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 latency = cPickle.load(pickle)
@@ -78,7 +92,7 @@ class Startup:
 
                 self.calculate_ping(self.web_service_client)
 
-                pickle_file = 'visualizer_cache/latency_data.p'
+                pickle_file = visualizer_cache_path + '/latency_data.p'
                 # Read data file from cache
                 with open(pickle_file, 'rb') as pickle:
                     # When connection is reestablished latency will no longer be 'ConnectionError'
@@ -91,7 +105,7 @@ class Startup:
 
                     self.export_test_results.write_fetch_to_file(list_of_files[index])
                     
-                    filename = 'data_store/' + list_of_files[index]
+                    filename = data_store_path + '/' + list_of_files[index]
 
                     # Deserialize filename passed as a parameter
                     self.response_deserialization.parse_cpu_data(filename)

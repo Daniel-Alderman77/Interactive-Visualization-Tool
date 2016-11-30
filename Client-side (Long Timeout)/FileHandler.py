@@ -1,8 +1,22 @@
 import cPickle
 import os
 from lxml import etree
+import sys
 
 from FaultDetection import FaultDetection
+
+client_number = 0
+
+# Store command line arguments if present and change test test_file_name
+if sys.argv > 1:
+    try:
+        client_number = sys.argv[2]
+    except:
+        pass
+else:
+    print "No command line arguments entered"
+
+visualizer_cache_path = 'visualizer_cache_' + client_number
 
 
 class ResponseDeserialization:
@@ -42,7 +56,7 @@ class ResponseDeserialization:
 
             cpu_data = [cpu_values, time_stamp]
 
-            pickle_name = 'visualizer_cache/cpu_data.p'
+            pickle_name = visualizer_cache_path + '/cpu_data.p'
 
             # Check with pickle exists
             if os.path.isfile(pickle_name):
@@ -55,9 +69,8 @@ class ResponseDeserialization:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
@@ -101,7 +114,7 @@ class ResponseDeserialization:
 
             memory_data = [total_memory, memory_values, time_stamp]
 
-            pickle_name = 'visualizer_cache/memory_data.p'
+            pickle_name = visualizer_cache_path + '/memory_data.p'
 
             # Check with pickle exists
             if os.path.isfile(pickle_name):
@@ -114,9 +127,8 @@ class ResponseDeserialization:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
@@ -165,7 +177,7 @@ class ResponseDeserialization:
 
             jobs_data = [total_machines, total_jobs, job_values, time_stamp]
 
-            pickle_name = 'visualizer_cache/jobs_data.p'
+            pickle_name = visualizer_cache_path + '/jobs_data.p'
 
             # Check with pickle exists
             if os.path.isfile(pickle_name):
@@ -178,9 +190,8 @@ class ResponseDeserialization:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
@@ -224,7 +235,7 @@ class ResponseDeserialization:
 
             energy_data = [total_energy, energy_values, time_stamp]
 
-            pickle_name = 'visualizer_cache/energy_data.p'
+            pickle_name = visualizer_cache_path + '/energy_data.p'
 
             # Check with pickle exists
             if os.path.isfile(pickle_name):
@@ -237,9 +248,8 @@ class ResponseDeserialization:
 
             else:
                 # If visualizer_cache doesnt't exist create it
-                directory = 'visualizer_cache'
-                if not os.path.exists(directory):
-                    os.makedirs(directory)
+                if not os.path.exists(visualizer_cache_path):
+                    os.makedirs(visualizer_cache_path)
 
                 # Pickle data to a new file
                 with open(pickle_name, 'wb') as pickle:
