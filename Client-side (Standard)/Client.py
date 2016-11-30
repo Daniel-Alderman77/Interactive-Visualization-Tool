@@ -23,6 +23,7 @@ else:
     print "No command line arguments entered"
 
 visualizer_cache_path = 'visualizer_cache_' + client_number
+data_store_path = 'data_store_' + client_number
 
 
 class Startup:
@@ -48,7 +49,7 @@ class Startup:
     def test_run_cleanup():
         # Delete data_store and visualizer_cache directories
         try:
-            shutil.rmtree('data_store')
+            shutil.rmtree(data_store_path)
             shutil.rmtree(visualizer_cache_path)
         except Exception as e:
             print e
@@ -104,7 +105,7 @@ class Startup:
 
                     self.export_test_results.write_fetch_to_file(list_of_files[index])
                     
-                    filename = 'data_store/' + list_of_files[index]
+                    filename = data_store_path + '/' + list_of_files[index]
 
                     # Deserialize filename passed as a parameter
                     self.response_deserialization.parse_cpu_data(filename)

@@ -24,6 +24,7 @@ else:
     print "No command line arguments entered"
 
 visualizer_cache_path = 'visualizer_cache_' + client_number
+data_store_path = 'data_store_' + client_number
 
 
 class WebServiceClient:
@@ -34,11 +35,11 @@ class WebServiceClient:
 
     @staticmethod
     def get_local_file_count():
-        file_count = (len(glob.glob1("data_store", "*.xml")))
+        file_count = (len(glob.glob1(data_store_path, "*.xml")))
 
         list_of_files = []
         if file_count > 0:
-            list_of_files = glob.glob1("data_store", "*.xml")
+            list_of_files = glob.glob1(data_store_path, "*.xml")
 
         return {'Number of files': file_count,
                 'List of files': list_of_files}

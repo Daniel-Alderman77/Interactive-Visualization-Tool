@@ -8,17 +8,21 @@ from Prediction import DataStore
 from FaultDetection import FaultDetection
 
 host_url = None
+client_number = None
 
 # Store command line argument as host_url
 if sys.argv > 1:
     try:
         host_url = sys.argv[1]
+        client_number = sys.argv[2]
     except:
         host_url = 'http://127.0.0.1:5000/'
 
         pass
 else:
     print "No command line arguments entered"
+
+data_store_path = 'data_store_' + client_number
 
 
 class RESTClient:
@@ -106,8 +110,6 @@ class RESTClient:
 
                 print "Now retrieving " + list_of_files[index]
                 data = self.get_datafile(list_of_files[index])
-
-                data_store_path = "data_store"
 
                 if not os.path.exists(data_store_path):
                     os.makedirs(data_store_path)
