@@ -13,7 +13,7 @@ client_number = None
 # Store command line argument as host_url
 if sys.argv > 1:
     try:
-        host_url = 'http://' + str(sys.argv[1]) + ':5000/'
+        host_url = 'http://' + str(sys.argv[1])
         client_number = sys.argv[2]
     except:
         host_url = 'http://127.0.0.1:5000/'
