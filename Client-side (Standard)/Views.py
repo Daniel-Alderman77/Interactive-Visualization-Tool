@@ -3,10 +3,7 @@ import matplotlib
 matplotlib.use("TkAgg")
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib import animation
-
-from Tkinter import Tk, Toplevel, HORIZONTAL, S
-# Override the basic Tk widgets, with platform specific widgets
-from tkinter.ttk import *
+from Tkinter import *
 
 from Visualizer import CPUGraph, MemoryGraph, JobsGraph, EnergyGraph, LatencyGraph
 
@@ -143,10 +140,10 @@ class CPUView(SubView):
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
 
 # TODO - Implement MemoryView UI
@@ -158,10 +155,10 @@ class MemoryView(SubView):
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
 
 # TODO - Implement JobsView UI
@@ -173,10 +170,10 @@ class JobsView(SubView):
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
 
 # TODO - Implement EnergyView UI
@@ -188,10 +185,10 @@ class EnergyView(SubView):
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
 
 # TODO - Implement FaultsView UI
@@ -203,10 +200,10 @@ class FaultsView(SubView):
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
 
 class UserInterface:

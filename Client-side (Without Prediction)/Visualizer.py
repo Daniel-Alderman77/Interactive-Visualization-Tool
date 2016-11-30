@@ -2,10 +2,7 @@ import cPickle
 import random
 from matplotlib import pyplot as plt
 import math
-
-# Override the basic Tk widgets, with platform specific widgets
-from tkinter.ttk import *
-from Tkinter import HORIZONTAL
+from Tkinter import *
 
 from ExportTestResults import ExportTestResults
 from FaultDetection import FaultDetection
