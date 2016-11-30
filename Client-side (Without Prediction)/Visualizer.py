@@ -1,7 +1,6 @@
 import cPickle
 import random
 from matplotlib import pyplot as plt
-import math
 from Tkinter import *
 
 from ExportTestResults import ExportTestResults
@@ -460,7 +459,7 @@ class LatencyGraph(LineGraph):
 
         # First set up the figure, the axis, and the plot element we want to animate
         self.fig = plt.figure(figsize=(12, 5), dpi=50)
-        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 2))
+        self.ax = plt.axes(xlim=(0, 20), ylim=(0, 1))
         self.ax.set_title('Latency Over Time')
         self.ax.set_xlabel('Time')
         self.ax.set_ylabel('Latency (seconds)')
@@ -505,8 +504,8 @@ class LatencyGraph(LineGraph):
                 x = self.x_array[-1] + 1
                 self.x_array.append(x)
 
-            # Convert latency from timedelta object to seconds. Then round up to the nearest second
-            latency_value = math.ceil(latency.total_seconds())
+            # Convert latency from timedelta object to seconds
+            latency_value = latency.total_seconds()
 
             self.y_array.append(latency_value)
 
@@ -566,9 +565,9 @@ class ProgressBar:
         progress_label = Label(self.frame, text=progress_string)
         progress_label.pack()
 
-        progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
-        progress_bar.pack()
-        progress_bar["maximum"] = 100
-        progress_bar["value"] = progress_value
+        # progress_bar = Progressbar(self.frame, orient=HORIZONTAL, length=600, mode='determinate')
+        # progress_bar.pack()
+        # progress_bar["maximum"] = 100
+        # progress_bar["value"] = progress_value
 
         self.frame.pack()
