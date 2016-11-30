@@ -1,14 +1,26 @@
 import glob
-
+import sys
 from flask import Flask
 from flask_restful import Resource, Api
 
 app = Flask(__name__, static_url_path='')
 api = Api(app)
 
+host_url = None
+
+# Store command line argument as host_url
+if sys.argv > 1:
+    try:
+        host_url = sys.argv[1]
+    except:
+        pass
+else:
+    print "No command line arguments entered"
+
 
 class Server(Resource):
-    def get(self):
+    @staticmethod
+    def get():
         file_count = (len(glob.glob1("static", "*.xml")))
 
         list_of_files = []
@@ -25,6 +37,7 @@ api.add_resource(Server, '/file_count/')
 def get_data(path):
     return app.send_static_file(path)
 
+# host_url can be specified as a command line argument
 # Enabled threading to handle multiple requests
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    app.run(host=host_url, threaded=True)
