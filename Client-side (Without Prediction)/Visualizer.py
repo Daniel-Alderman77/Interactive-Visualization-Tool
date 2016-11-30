@@ -6,6 +6,19 @@ from Tkinter import *
 from ExportTestResults import ExportTestResults
 from FaultDetection import FaultDetection
 
+client_number = 0
+
+# Store command line arguments if present and change test test_file_name
+if sys.argv > 1:
+    try:
+        client_number = sys.argv[2]
+    except:
+        pass
+else:
+    print "No command line arguments entered"
+
+visualizer_cache_path = 'visualizer_cache_' + client_number
+
 
 class LineGraph:
 
@@ -102,7 +115,7 @@ class CPUGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
-            pickle_file = 'visualizer_cache/cpu_data.p'
+            pickle_file = visualizer_cache_path + '/cpu_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 cpu_data = cPickle.load(pickle)
@@ -193,7 +206,7 @@ class MemoryGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
-            pickle_file = 'visualizer_cache/memory_data.p'
+            pickle_file = visualizer_cache_path + '/memory_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 memory_data = cPickle.load(pickle)
@@ -289,7 +302,7 @@ class JobsGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
-            pickle_file = 'visualizer_cache/jobs_data.p'
+            pickle_file = visualizer_cache_path + '/jobs_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 jobs_data = cPickle.load(pickle)
@@ -401,7 +414,7 @@ class EnergyGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
-            pickle_file = 'visualizer_cache/energy_data.p'
+            pickle_file = visualizer_cache_path + '/energy_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 energy_data = cPickle.load(pickle)
@@ -493,7 +506,7 @@ class LatencyGraph(LineGraph):
     # animation function.  This is called sequentially
     def animate(self, i):
         try:
-            pickle_file = 'visualizer_cache/latency_data.p'
+            pickle_file = visualizer_cache_path + '/latency_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 latency = cPickle.load(pickle)

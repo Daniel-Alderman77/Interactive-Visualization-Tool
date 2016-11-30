@@ -7,6 +7,7 @@ from collections import defaultdict
 import sys
 
 client_number = 0
+client = 0
 run_number = 0
 test_file_name = 'test_results/' + time.strftime("%d-%m-%Y--%H:%M:%S") + '.csv'
 faults = 0
@@ -17,6 +18,7 @@ faults_recovered = defaultdict(int)
 if sys.argv > 1:
     try:
         client_number = "client_" + sys.argv[2]
+        client = sys.argv[2]
         run_number = "run_number" + sys.argv[3]
         test_file_name = 'test_results/' + str(run_number) + '/' + str(client_number) + '/' + time.strftime(
             "%d-%m-%Y--%H:%M:%S") + '.csv'
@@ -25,6 +27,8 @@ if sys.argv > 1:
         pass
 else:
     print "No command line arguments entered"
+
+visualizer_cache_path = 'visualizer_cache_' + client
 
 
 class ExportTestResults:
@@ -39,7 +43,7 @@ class ExportTestResults:
 
     def get_ping(self):
         try:
-            pickle_file = 'visualizer_cache/latency_data.p'
+            pickle_file = visualizer_cache_path + '/latency_data.p'
             # Read data file from cache
             with open(pickle_file, 'rb') as pickle:
                 latency = cPickle.load(pickle)
