@@ -11,5 +11,10 @@ Client-side (Standard)/data_store
 Client-side (Standard)/prediction_cache
 Client-side (Standard)/visualizer_cache
 Client-side (Standard)/Prediction.pyc
-
+Client-side (Long Timeout)/data_store
+Client-side (Long Timeout)/prediction_cache
+Client-side (Long Timeout)/visualizer_cache
+Client-side (Without Prediction)/data_store
+Client-side (Without Prediction)/prediction_cache
+Client-side (Without Prediction)/visualizer_cache
 .idea/dictionaries/danielalderman.xml
